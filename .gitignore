@@ -1,0 +1,59 @@
+# This .gitignore obtained from:
+# https://github.com/kiooeht/ModTheSpire/blob/master/.gitignore
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# IntelliJ
+.idea/
+out/
+ModTheSpire.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# maven build target
+target/
+
+# Custom
+_archive/
+backup/
+bin/
+crashlogs/
+decompiled/
+mods/
+preferences/
+saves/
+tools/
+_build.bat
+_decompile.bat
+_runJ9.bat
+*.displayconfig
+
+# maven other
+dependency-reduced-pom.xml
+
+# maven wrapper
+!/.mvn/wrapper/maven-wrapper.jar
