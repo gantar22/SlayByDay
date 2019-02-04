@@ -2,19 +2,24 @@ package slay_by_day;
 
 import basemod.BaseMod;
 import basemod.interfaces.EditCardsSubscriber;
+import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import slay_by_day.cards.*;
 
+import static basemod.BaseMod.loadCustomStringsFile;
+
 @SpireInitializer
 public class SlayByDay implements PostExhaustSubscriber,
-        PostBattleSubscriber, PostDungeonInitializeSubscriber, EditCardsSubscriber {
+        PostBattleSubscriber, PostDungeonInitializeSubscriber,
+        EditStringsSubscriber, EditCardsSubscriber {
 
     private int count, totalCount;
 
@@ -52,5 +57,10 @@ public class SlayByDay implements PostExhaustSubscriber,
     @Override
     public void receivePostDungeonInitialize() {
         resetCounts();
+    }
+
+    @Override
+    public void receiveEditStrings() {
+        loadCustomStringsFile(CardStrings.class, "localization/cards.json");
     }
 }

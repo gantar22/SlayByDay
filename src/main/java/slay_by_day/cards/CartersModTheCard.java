@@ -18,10 +18,12 @@ import basemod.abstracts.CustomCard;
 public class CartersModTheCard
         extends CustomCard {
     public static final String ID = "SlayByDay:CartersModTheCard";
-    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+//    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // Get object containing the strings that are displayed in the game.
-    public static final String NAME = cardStrings.NAME;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+//    public static final String NAME = cardStrings.NAME;
+//    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String NAME = "Carters Mod - The Card";
+    public static final String DESCRIPTION = "Does !D! damage, and some other stuff, I think.";
     public static final String IMG_PATH = "img/QoP.png";
     private static final int COST = 0;
     private static final int ATTACK_DMG = 3;
