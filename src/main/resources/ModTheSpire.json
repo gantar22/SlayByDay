@@ -4,7 +4,7 @@
   "author_list": ["CMU Game Creation Society"],
   "description": "Slay by day, also slay by night I guess. Also this is Carter's Mod.",
   "version": "1.0",
-  "sts_version": "03-29-2018",
-  "mts_version": "2.6.0",
-  "dependencies": ["basemod"]
+  "sts_version": "01-23-2019",
+  "mts_version": "3.8.0",
+  "dependencies": ["basemod", "stslib"]
 }

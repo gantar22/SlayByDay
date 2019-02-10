@@ -18,7 +18,7 @@ import basemod.abstracts.CustomCard;
 public class CartersModTheCard
         extends CustomCard {
     public static final String ID = "SlayByDay:CartersModTheCard";
-//    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // Get object containing the strings that are displayed in the game.
 //    public static final String NAME = cardStrings.NAME;
 //    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -35,6 +35,11 @@ public class CartersModTheCard
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION,
                 AbstractCard.CardType.ATTACK, AbstractCard.CardColor.RED,
                 AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
+//        if (cardStrings.NAME == null) {
+//            System.out.println("cardStrings.NAME is null");
+//        } else {
+//            System.out.println("cardStrings.NAME not null. It is: " + cardStrings.NAME);
+//        }
         this.magicNumber = this.baseMagicNumber = VULNERABLE_AMT;
         this.damage=this.baseDamage = ATTACK_DMG;
 

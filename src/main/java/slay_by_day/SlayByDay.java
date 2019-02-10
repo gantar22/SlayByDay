@@ -1,25 +1,44 @@
 package slay_by_day;
 
 import basemod.BaseMod;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
+import basemod.helpers.RelicType;
+import basemod.interfaces.*;
 
+import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-import slay_by_day.cards.*;
+import java.nio.charset.StandardCharsets;
 
-import static basemod.BaseMod.loadCustomStringsFile;
+import slay_by_day.cards.*;
+import slay_by_day.relics.*;
+
+import static basemod.BaseMod.addRelic;
+import static basemod.BaseMod.addRelicToCustomPool;
+
 
 @SpireInitializer
 public class SlayByDay implements PostExhaustSubscriber,
         PostBattleSubscriber, PostDungeonInitializeSubscriber,
-        EditStringsSubscriber, EditCardsSubscriber {
+        EditStringsSubscriber, EditCardsSubscriber, EditRelicsSubscriber {
+
+    private static final String MODNAME = "SlayByDay";
+    private static final String AUTHOR = "CMU Game Creation Society";
+    private static final String DESCRIPTION = "A complete expansion with a new unique character.";
+
+    // Path variables
+    public static final String IMG_PATH = "img/";
+    public static final String LOCALIZATION_PATH = "localization/";
+
+    public static final String RELIC_IMG_PATH = IMG_PATH + "relics/";
+
+    public static final String CARD_STRINGS_PATH = LOCALIZATION_PATH + "cards.json";
+    public static final String RELIC_STRINGS_PATH = LOCALIZATION_PATH + "relics.json";
+
 
     private int count, totalCount;
 
@@ -61,6 +80,27 @@ public class SlayByDay implements PostExhaustSubscriber,
 
     @Override
     public void receiveEditStrings() {
-        loadCustomStringsFile(CardStrings.class, "localization/cards.json");
+        System.out.println("Start receiveEditStrings");
+
+        // RelicStrings
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/relics.json");
+//        String relicStrings = Gdx.files.internal(RELIC_STRINGS_PATH).readString(
+//                String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+        // CardStrings
+        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/cards.json");
+//        String cardStrings = Gdx.files.internal(CARD_STRINGS_PATH).readString(
+//                String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+
+        System.out.println("Finish receiveEditStrings");
+    }
+
+    @Override
+    public void receiveEditRelics() {
+        // Universal relics
+//        addRelic(AbstractRelic relic, RelicType.SHARED);
+        // Relics custom to our character
+        addRelicToCustomPool(new Pomelo2(), AbstractCard.CardColor.RED);
     }
 }
