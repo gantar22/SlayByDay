@@ -83,12 +83,12 @@ public class SlayByDay implements PostExhaustSubscriber,
         System.out.println("Start receiveEditStrings");
 
         // RelicStrings
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/relics.json");
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "SlayByDay/localization/relics.json");
 //        String relicStrings = Gdx.files.internal(RELIC_STRINGS_PATH).readString(
 //                String.valueOf(StandardCharsets.UTF_8));
 //        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
         // CardStrings
-        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/cards.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "SlayByDay/localization/cards.json");
 //        String cardStrings = Gdx.files.internal(CARD_STRINGS_PATH).readString(
 //                String.valueOf(StandardCharsets.UTF_8));
 //        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
@@ -101,6 +101,9 @@ public class SlayByDay implements PostExhaustSubscriber,
         // Universal relics
 //        addRelic(AbstractRelic relic, RelicType.SHARED);
         // Relics custom to our character
-        addRelicToCustomPool(new Pomelo2(), AbstractCard.CardColor.RED);
+        Pomelo thonk = new Pomelo();
+        System.out.println(thonk);
+        System.out.println(AbstractCard.CardColor.RED);
+        addRelicToCustomPool(thonk, AbstractCard.CardColor.RED);
     }
 }
