@@ -18,7 +18,7 @@ import basemod.abstracts.CustomCard;
 public class CartersModTheCard
         extends CustomCard {
     public static final String ID = "SlayByDay:CartersModTheCard";
-    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+//    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     // Get object containing the strings that are displayed in the game.
 //    public static final String NAME = cardStrings.NAME;
 //    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
