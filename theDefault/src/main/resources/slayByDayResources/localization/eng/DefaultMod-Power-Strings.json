@@ -1,0 +1,10 @@
+{
+"slayByDay:CommonPower": {
+        "NAME": "Placeholder Power",
+        "DESCRIPTIONS": ["You applied ", " keyword.", " keywords."]
+},
+"slayByDay:RarePower": {
+        "NAME": "Placeholder Power",
+        "DESCRIPTIONS": ["At the start of your turn, TOUCH ", " enemy." , " enemies."]
+}
+}

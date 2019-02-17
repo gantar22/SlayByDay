@@ -1,0 +1,12 @@
+{
+  "modid": "slayByDay",
+  "name": "Default Mod (really SlayByDay)",
+  "author_list": ["CMU Game Creation Society"],
+  "description": "CARTER'S MOD.",
+  "version": "${project.version}",
+  "sts_version": "${SlayTheSpire.version}",
+  "mts_version": "${ModTheSpire.version}",
+  "dependencies": ["basemod", "stslib"],
+  "update_json": ""
+}
+
