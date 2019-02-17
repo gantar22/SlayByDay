@@ -56,6 +56,14 @@ public class SlayByDay implements PostExhaustSubscriber,
         BaseMod.addCard(new CartersModTheCard());
     }
 
+    @Override
+    public void receiveEditRelics() {
+        // Universal relics
+//        addRelic(AbstractRelic relic, RelicType.SHARED);
+        // Relics custom to our character
+//        addRelicToCustomPool(new Pomelo2(), AbstractCard.CardColor.RED);
+    }
+
     private void resetCounts() {
         totalCount = count = 0;
     }
@@ -83,24 +91,16 @@ public class SlayByDay implements PostExhaustSubscriber,
         System.out.println("Start receiveEditStrings");
 
         // RelicStrings
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/relics.json");
+//        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/relics.json");
 //        String relicStrings = Gdx.files.internal(RELIC_STRINGS_PATH).readString(
 //                String.valueOf(StandardCharsets.UTF_8));
 //        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
         // CardStrings
-        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/cards.json");
+//        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/cards.json");
 //        String cardStrings = Gdx.files.internal(CARD_STRINGS_PATH).readString(
 //                String.valueOf(StandardCharsets.UTF_8));
 //        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
         System.out.println("Finish receiveEditStrings");
-    }
-
-    @Override
-    public void receiveEditRelics() {
-        // Universal relics
-//        addRelic(AbstractRelic relic, RelicType.SHARED);
-        // Relics custom to our character
-        addRelicToCustomPool(new Pomelo2(), AbstractCard.CardColor.RED);
     }
 }
