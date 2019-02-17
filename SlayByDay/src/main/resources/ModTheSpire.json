@@ -1,8 +1,8 @@
 {
-  "modid": "slayByDay",
-  "name": "Default Mod (really SlayByDay)",
+  "modid": "SlayByDay",
+  "name": "SlayByDay",
   "author_list": ["CMU Game Creation Society"],
-  "description": "CARTER'S MOD.",
+  "description": "CARTER'S MOD (description goes here).",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
