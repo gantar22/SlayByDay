@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheDefault;
+import SlayByDay.characters.TheModal;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
@@ -41,7 +41,7 @@ public class DefaultAttackWithVariable extends CustomCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
 
     private static final int COST = 1;
     private static final int DAMAGE = 7;
