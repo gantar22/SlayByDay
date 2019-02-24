@@ -1,5 +1,6 @@
 package SlayByDay;
 
+import SlayByDay.relics.*;
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
@@ -22,10 +23,6 @@ import SlayByDay.cards.*;
 import SlayByDay.characters.TheDefault;
 import SlayByDay.events.IdentityCrisisEvent;
 import SlayByDay.potions.PlaceholderPotion;
-import SlayByDay.relics.BottledPlaceholderRelic;
-import SlayByDay.relics.DefaultClickableRelic;
-import SlayByDay.relics.PlaceholderRelic;
-import SlayByDay.relics.PlaceholderRelic2;
 import SlayByDay.util.TextureLoader;
 import SlayByDay.variables.DefaultCustomVariable;
 import SlayByDay.variables.DefaultSecondMagicNumber;
@@ -277,6 +274,7 @@ public class SlayByDay implements
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new BallpointPen(), TheDefault.Enums.COLOR_GRAY);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
