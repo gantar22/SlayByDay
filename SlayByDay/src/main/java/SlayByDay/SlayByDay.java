@@ -1,5 +1,6 @@
 package SlayByDay;
 
+import SlayByDay.cards.switchCards.PredictionFeatherShieldSwitch;
 import SlayByDay.relics.*;
 import basemod.BaseMod;
 import basemod.ModLabel;
@@ -314,6 +315,9 @@ public class SlayByDay implements
         BaseMod.addCard(new DefaultRareAttack());
         BaseMod.addCard(new DefaultRareSkill());
         BaseMod.addCard(new DefaultRarePower());
+        System.out.println("Trying to add PredictionFeatherShieldSwitch");
+        BaseMod.addCard(new PredictionFeatherShieldSwitch());
+        System.out.println("Finished adding PredictionFeatherShieldSwitch");
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards

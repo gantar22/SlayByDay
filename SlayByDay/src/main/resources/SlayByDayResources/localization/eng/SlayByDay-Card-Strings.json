@@ -49,5 +49,15 @@
   "SlayByDay:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "FeatherShield": {
+    "NAME": "Feather Shield",
+    "DESCRIPTION": "Deal !D! damage. NL Switches into Prediction.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Switches into Prediction+."
+  },
+  "Prediction": {
+    "NAME": "Prediction",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Switches into FeatherShield.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL Switches into FeatherShield+."
   }
 }
