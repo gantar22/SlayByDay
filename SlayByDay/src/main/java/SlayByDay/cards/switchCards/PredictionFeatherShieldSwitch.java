@@ -1,7 +1,7 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.SwitchAction;
-import SlayByDay.characters.TheDefault;
+import SlayByDay.characters.TheModal;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -26,8 +26,7 @@ public class PredictionFeatherShieldSwitch extends AbstractSwitchByModeCard {
 
     public PredictionFeatherShieldSwitch(String switchID) {
         super("SlayByDay:PredictionFeatherShield", "None", null, 0, "None", CardType.SKILL,
-                TheDefault.Enums.COLOR_GRAY, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE, PredictionFeatherShieldSwitch.class);
-        // TODO - change this ^^ card color to porple
+                TheModal.Enums.COLOR_M_PURPLE, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE, PredictionFeatherShieldSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;
