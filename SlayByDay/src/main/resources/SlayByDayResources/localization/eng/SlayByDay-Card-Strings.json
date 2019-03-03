@@ -52,12 +52,12 @@
   },
   "FeatherShield": {
     "NAME": "Feather Shield",
-    "DESCRIPTION": "Deal !D! damage. NL Switches into Prediction.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Switches into Prediction+."
+    "DESCRIPTION": "Gain !B! block. NL Switches into Prediction.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. NL Switches into Prediction+."
   },
   "Prediction": {
     "NAME": "Prediction",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Switches into FeatherShield.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL Switches into FeatherShield+."
+    "DESCRIPTION": "Next turn, gain !B! block. NL Switches into Feather Shield.",
+    "UPGRADE_DESCRIPTION": "Next turn, gain !B! block. NL Switches into Feather Shield+."
   }
 }
