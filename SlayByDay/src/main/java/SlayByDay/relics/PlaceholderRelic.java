@@ -6,7 +6,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import SlayByDay.SlayByDay;
 import SlayByDay.util.TextureLoader;
+import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.sun.org.apache.regexp.internal.RE;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import java.util.ArrayList;
 
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
@@ -25,6 +29,8 @@ public class PlaceholderRelic extends CustomRelic {
     public static final int PASSION_STARTING_COUNTER = 5;
     public static final String ID = SlayByDay.makeID("PlaceholderRelic");
 
+    public static ArrayList<IOnSwitch> switchers;
+
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
@@ -41,7 +47,9 @@ public class PlaceholderRelic extends CustomRelic {
     // Do nothing
     @Override
     public void onEquip() {
+
         this.counter = REASON_STARTING_COUNTER;
+        switchers = new ArrayList<IOnSwitch>();
     }
 
     // Undo nothing
@@ -51,19 +59,33 @@ public class PlaceholderRelic extends CustomRelic {
     }
 
     @Override
-    public void atTurnStart()
+    public void onPlayerEndTurn()
     {
-        this.counter--;
+        setCounter(this.counter - 1);
         if(this.counter == 0)
         {
-            if(TheModal.Reason_Mode)
-            {
-                TheModal.Reason_Mode = false;
-                this.counter = PASSION_STARTING_COUNTER;
-            } else {
-                TheModal.Reason_Mode = true;
-                this.counter = REASON_STARTING_COUNTER;
-            }
+            swap();
+        }
+    }
+
+    public void subscribe(IOnSwitch listener)
+    {
+        switchers.add(listener);
+    }
+
+    public void swap()
+    {
+        if(TheModal.Reason_Mode)
+        {
+            TheModal.Reason_Mode = false;
+            this.counter = PASSION_STARTING_COUNTER;
+        } else {
+            TheModal.Reason_Mode = true;
+            this.counter = REASON_STARTING_COUNTER;
+        }
+        for(int i = 0; i < switchers.size(); i++)
+        {
+            switchers.get(i).OnSwitch(TheModal.Reason_Mode);
         }
     }
 
@@ -74,3 +96,5 @@ public class PlaceholderRelic extends CustomRelic {
     }
 
 }
+
+

@@ -63,7 +63,7 @@ public class TheModal extends CustomPlayer  {
     public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 9;
-    public static final int ORB_SLOTS = 3;
+    public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================
 
@@ -103,7 +103,7 @@ public class TheModal extends CustomPlayer  {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "SlayByDayResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
