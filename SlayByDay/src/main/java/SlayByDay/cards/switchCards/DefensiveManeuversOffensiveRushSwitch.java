@@ -2,10 +2,10 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.SwitchAction;
 import SlayByDay.characters.TheModal;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,7 +22,7 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
             new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 3, 0, 0, 0, 4, 1,
-                    CardType.ATTACK, CardTarget.ENEMY, true, false, false, false) );
+                    CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
 
     public DefensiveManeuversOffensiveRushSwitch(String switchID) {
@@ -51,7 +51,12 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
                 break;
             case "OffensiveRush":
-                // Todo - multi damage. Might need custom action, as in Pummel/Whirlwind/FiendFire
+                // This uses the same action that Pummel uses. We could also write our own, near identical, action for this instead.
+                for (int i=0; i < magicNumber; i++) {
+                    AbstractDungeon.actionManager.addToBottom(new PummelDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+                }
+
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 break;
         }
 

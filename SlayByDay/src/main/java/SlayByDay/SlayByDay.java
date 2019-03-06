@@ -317,7 +317,10 @@ public class SlayByDay implements
         BaseMod.addCard(new DefaultRareAttack());
         BaseMod.addCard(new DefaultRareSkill());
         BaseMod.addCard(new DefaultRarePower());
+
+        // Dom's cards
         BaseMod.addCard(new PredictionFeatherShieldSwitch());
+        BaseMod.addCard(new DefensiveManeuversOffensiveRushSwitch());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
