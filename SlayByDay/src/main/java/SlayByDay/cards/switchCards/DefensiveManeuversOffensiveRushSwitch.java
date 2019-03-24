@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import java.util.Arrays;
@@ -18,7 +19,7 @@ import java.util.Random;
 public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new AbstractSwitchByModeCard.switchCard("DefensiveManeuvers", "OffensiveRush", 1, 0, 0, 6, 0, 2, 1,
+            new AbstractSwitchByModeCard.switchCard("DefensiveManeuvers", "OffensiveRush", 1, 0, 0, 6, 2, 2, 1,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
             new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 3, 0, 0, 0, 4, 1,
@@ -48,7 +49,7 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
         switch (this.currentID) {
             case "DefensiveManeuvers":
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
                 break;
             case "OffensiveRush":
                 // This uses the same action that Pummel uses. We could also write our own, near identical, action for this instead.

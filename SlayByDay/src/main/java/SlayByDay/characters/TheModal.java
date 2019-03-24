@@ -51,6 +51,8 @@ public class TheModal extends CustomPlayer  {
         public static AbstractCard.CardColor COLOR_M_PURPLE;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
+        @SpireEnum
+        public static AbstractCard.CardTags MODE_SWITCH_CARD;
     }
 
     // =============== CHARACTER ENUMERATORS  =================

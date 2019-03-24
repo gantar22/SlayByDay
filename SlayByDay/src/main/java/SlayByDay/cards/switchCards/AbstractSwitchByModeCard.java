@@ -2,6 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.SwitchAction;
+import SlayByDay.characters.TheModal;
 import SlayByDay.relics.IOnSwitch;
 import SlayByDay.relics.PlaceholderRelic;
 import basemod.abstracts.CustomCard;
@@ -104,8 +105,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
 
         this.switchClass = previewCard;
-//        this.tags.add(MODE_SWITCH_CARD);
-        // TODO - Fix this ^^^ by adding the enum to our character enums class
+        this.tags.add(TheModal.Enums.MODE_SWITCH_CARD);
     }
 
     public void OnSwitch(boolean Reason_Mode)

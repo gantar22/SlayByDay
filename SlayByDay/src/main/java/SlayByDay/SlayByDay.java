@@ -321,6 +321,10 @@ public class SlayByDay implements
         // Dom's cards
         BaseMod.addCard(new PredictionFeatherShieldSwitch());
         BaseMod.addCard(new DefensiveManeuversOffensiveRushSwitch());
+        BaseMod.addCard(new EvilEyePiercingGazeSwitch());
+        BaseMod.addCard(new MagicDefenseSharpenFeathersSwitch());
+        BaseMod.addCard(new ClawSlashClawSmashSwitch());
+        BaseMod.addCard(new RecollectForgetSwitch());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -382,6 +386,10 @@ public class SlayByDay implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/SlayByDay-Orb-Strings.json");
+
+        // UIStrings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/eng/SlayByDay-UI-Strings.json");
 
         logger.info("Done editing strings");
     }
