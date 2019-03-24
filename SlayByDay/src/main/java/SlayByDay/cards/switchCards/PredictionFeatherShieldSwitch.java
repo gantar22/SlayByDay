@@ -52,7 +52,5 @@ public class PredictionFeatherShieldSwitch extends AbstractSwitchByModeCard {
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
                 break;
         }
-
-        AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
     }
 }

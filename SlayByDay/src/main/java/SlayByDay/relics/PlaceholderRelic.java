@@ -5,6 +5,8 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import SlayByDay.SlayByDay;
 import SlayByDay.util.TextureLoader;
+import com.megacrit.cardcrawl.events.AbstractEvent;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,8 @@ public class PlaceholderRelic extends CustomRelic {
 
     public PlaceholderRelic() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+        this.counter = REASON_STARTING_COUNTER;
+        switchers = new ArrayList<IOnSwitch>();
     }
 
     // Flash at the start of Battle.
@@ -40,12 +44,12 @@ public class PlaceholderRelic extends CustomRelic {
         flash();
     }
 
+
     // Do nothing
     @Override
     public void onEquip() {
 
-        this.counter = REASON_STARTING_COUNTER;
-        switchers = new ArrayList<IOnSwitch>();
+
     }
 
     // Undo nothing
@@ -64,7 +68,7 @@ public class PlaceholderRelic extends CustomRelic {
         }
     }
 
-    public void subscribe(IOnSwitch listener)
+    public static void subscribe(IOnSwitch listener)
     {
         switchers.add(listener);
     }

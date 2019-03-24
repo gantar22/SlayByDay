@@ -1,6 +1,9 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.SlayByDay;
+import SlayByDay.actions.SwitchAction;
+import SlayByDay.relics.IOnSwitch;
+import SlayByDay.relics.PlaceholderRelic;
 import basemod.abstracts.CustomCard;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,7 +24,7 @@ import java.util.Iterator;
 
 
 // Source: https://github.com/Tempus/The-Disciple/blob/master/src/main/java/cards/switchCards/AbstractSelfSwitchCard.java#L259
-public abstract class AbstractSwitchByModeCard extends CustomCard {
+public abstract class AbstractSwitchByModeCard extends CustomCard implements IOnSwitch {
 
     public class switchCard {
         public CardType type;
@@ -105,6 +108,11 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         // TODO - Fix this ^^^ by adding the enum to our character enums class
     }
 
+    public void OnSwitch(boolean Reason_Mode)
+    {
+        AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+    }
+
     @Override
     public void renderInLibrary(SpriteBatch sb)
     {
@@ -137,6 +145,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         } catch (Throwable e) {
             System.out.println(e.toString());
         }
+        PlaceholderRelic.subscribe((AbstractSwitchByModeCard)c);
         return c;
     }
 
