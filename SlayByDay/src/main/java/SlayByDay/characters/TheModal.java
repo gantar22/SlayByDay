@@ -23,20 +23,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
-import SlayByDay.relics.DefaultClickableRelic;
 import SlayByDay.relics.PlaceholderRelic;
-import SlayByDay.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
 import static SlayByDay.SlayByDay.*;
-import static SlayByDay.characters.TheDefault.Enums.COLOR_GRAY;
+import static SlayByDay.characters.TheModal.Enums.COLOR_M_PURPLE;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in SlayByDay-character-Strings.json in the resources
 
-public class TheDefault extends CustomPlayer {
+public class TheModal extends CustomPlayer  {
     public static final Logger logger = LogManager.getLogger(SlayByDay.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
@@ -48,9 +46,9 @@ public class TheDefault extends CustomPlayer {
 
     public static class Enums {
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_DEFAULT;
+        public static AbstractPlayer.PlayerClass THE_MODAL;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor COLOR_GRAY;
+        public static AbstractCard.CardColor COLOR_M_PURPLE;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
@@ -65,14 +63,14 @@ public class TheDefault extends CustomPlayer {
     public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 9;
-    public static final int ORB_SLOTS = 3;
+    public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================
 
 
     // =============== STRINGS =================
 
-    private static final String ID = makeID("DefaultCharacter");
+    private static final String ID = makeID("ModalCharacter");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -99,20 +97,22 @@ public class TheDefault extends CustomPlayer {
 
     // =============== CHARACTER CLASS START =================
 
-    public TheDefault(String name, PlayerClass setClass) {
+    public static boolean Reason_Mode = true;
+
+    public TheModal(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "SlayByDayResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in SlayByDay.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
-                THE_DEFAULT_SHOULDER_1, // campfire pose
-                THE_DEFAULT_SHOULDER_2, // another campfire pose
-                THE_DEFAULT_CORPSE, // dead corpse
+                THE_MODAL_SHOULDER_1, // campfire pose
+                THE_MODAL_SHOULDER_2, // another campfire pose
+                THE_MODAL_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -121,8 +121,8 @@ public class TheDefault extends CustomPlayer {
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_DEFAULT_SKELETON_ATLAS,
-                THE_DEFAULT_SKELETON_JSON,
+                THE_MODAL_SKELETON_ATLAS,
+                THE_MODAL_SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -156,21 +156,11 @@ public class TheDefault extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultUncommonAttack.ID);
-        retVal.add(DefaultRareAttack.ID);
+        for(int i = 0; i < 6; i++)
+            retVal.add(DefaultCommonAttack.ID);
+        for(int i = 0; i < 6; i++)
+            retVal.add(DefaultCommonSkill.ID);
 
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultUncommonSkill.ID);
-        retVal.add(DefaultRareSkill.ID);
-
-        retVal.add(DefaultCommonPower.ID);
-        retVal.add(DefaultUncommonPower.ID);
-        retVal.add(DefaultRarePower.ID);
-
-        retVal.add(DefaultAttackWithVariable.ID);
-        retVal.add(DefaultSecondMagicNumberSkill.ID);
-        retVal.add(OrbSkill.ID);
         return retVal;
     }
 
@@ -179,12 +169,12 @@ public class TheDefault extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
+        //retVal.add(PlaceholderRelic2.ID);
+        //retVal.add(DefaultClickableRelic.ID);
 
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
+        //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;
     }
@@ -213,13 +203,13 @@ public class TheDefault extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return COLOR_M_PURPLE;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return SlayByDay.DEFAULT_GRAY;
+        return SlayByDay.MODAL_PURPLE;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -250,20 +240,20 @@ public class TheDefault extends CustomPlayer {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheDefault(name, chosenClass);
+        return new TheModal(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return SlayByDay.DEFAULT_GRAY;
+        return SlayByDay.MODAL_PURPLE;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return SlayByDay.DEFAULT_GRAY;
+        return SlayByDay.MODAL_PURPLE;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

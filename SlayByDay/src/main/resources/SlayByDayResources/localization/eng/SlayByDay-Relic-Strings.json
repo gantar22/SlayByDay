@@ -30,5 +30,12 @@
       ".",
       "Select a card to bottle for "
     ]
+  },
+  "SlayByDay:BallpointPen": {
+    "NAME": "Ballpoint Pen",
+    "FLAVOR": "It's a pen. Idk bro.",
+    "DESCRIPTIONS": [
+      "All buffs and debuffs applied to you have +1 stack."
+    ]
   }
 }

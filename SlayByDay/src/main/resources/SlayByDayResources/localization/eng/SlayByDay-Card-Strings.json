@@ -49,5 +49,25 @@
   "SlayByDay:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "FeatherShield": {
+    "NAME": "Feather Shield",
+    "DESCRIPTION": "Gain !B! block. NL Switches into Prediction.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. NL Switches into Prediction+."
+  },
+  "Prediction": {
+    "NAME": "Prediction",
+    "DESCRIPTION": "Next turn, gain !B! block. NL Switches into Feather Shield.",
+    "UPGRADE_DESCRIPTION": "Next turn, gain !B! block. NL Switches into Feather Shield+."
+  },
+  "DefensiveManeuvers": {
+    "NAME": "Defensive Maneuvers",
+    "DESCRIPTION": "Gain !B! block. Draw !M! cards. NL Switches into Offensive Rush.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. Draw !M! cards. NL Switches into Offensive Rush+."
+  },
+  "OffensiveRush": {
+    "NAME": "Offensive Rush",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Switches into Defensive Maneuvers.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL Switches into Defensive Maneuvers+."
   }
 }

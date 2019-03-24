@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheDefault;
+import SlayByDay.characters.TheModal;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
@@ -40,7 +40,7 @@ public class DefaultCommonSkill extends CustomCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
 
     private static final int COST = 1;
     private static final int BLOCK = 5;
