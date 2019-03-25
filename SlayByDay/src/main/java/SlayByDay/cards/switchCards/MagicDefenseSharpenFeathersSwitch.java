@@ -28,6 +28,12 @@ public class MagicDefenseSharpenFeathersSwitch extends AbstractSwitchByModeCard 
             new switchCard("SharpenFeathers", "MagicDefense", 2, 0, 0, 0, 0, 5, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, true, false) );
 
+    public String reasonCardID() {
+        return "MagicDefense";
+    }
+    public String passionCardID() {
+        return "SharpenFeathers";
+    }
 
     public MagicDefenseSharpenFeathersSwitch(String switchID) {
         super("SlayByDay:MagicDefenseSharpenFeathers", "None", null, 0, "None", CardType.SKILL,

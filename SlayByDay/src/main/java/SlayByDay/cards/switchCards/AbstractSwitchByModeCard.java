@@ -101,6 +101,9 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
     public String switchID;
     public String currentID;
 
+    public abstract String reasonCardID();
+    public abstract String passionCardID();
+
     public AbstractSwitchByModeCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, Class previewCard) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
 
@@ -108,9 +111,23 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
         this.tags.add(TheModal.Enums.MODE_SWITCH_CARD);
     }
 
-    public void OnSwitch(boolean Reason_Mode)
-    {
-        AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+    public void OnSwitch(boolean Reason_Mode) {
+        validateSwitchCardMode();
+    }
+
+    // Make sure that this card has switched correctly to whichever mode it's supposed to be in.
+    public void validateSwitchCardMode() {
+        System.out.println("Validating switch card mode.");
+        if (AbstractDungeon.currMapNode == null) {
+            System.out.println("AbstractDungeon.currMapNode IS null");
+            return;
+        }
+        System.out.println("AbstractDungeon.currMapNode is NOT null");
+        if (TheModal.Reason_Mode && this.currentID != reasonCardID()) {
+            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+        } else if (!TheModal.Reason_Mode && this.currentID != passionCardID()) {
+            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+        }
     }
 
     @Override
@@ -146,7 +163,15 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
             System.out.println(e.toString());
         }
         PlaceholderRelic.subscribe((AbstractSwitchByModeCard)c);
+        System.out.println("Making copy of an AbstractSwitchByModeCard");
+        validateSwitchCardMode();
         return c;
+    }
+
+    @Override
+    public void finalize() {
+        System.out.println("Unsubscribing from PlaceholderRelic in AbstractSwitchByModeCard");
+        PlaceholderRelic.unsubscribe(this);
     }
 
     public AbstractCard makeStatEquivalentCopy()
@@ -262,6 +287,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
             this.rawDescription = this.upgradeDescription;
             initializeDescription();
         }
+        validateSwitchCardMode();
     }
 
     // Card Preview

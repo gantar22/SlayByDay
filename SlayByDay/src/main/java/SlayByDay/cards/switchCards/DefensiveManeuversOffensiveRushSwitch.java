@@ -25,6 +25,12 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
             new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 3, 0, 0, 0, 4, 1,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
+    public String reasonCardID() {
+        return "DefensiveManeuvers";
+    }
+    public String passionCardID() {
+        return "OffensiveRush";
+    }
 
     public DefensiveManeuversOffensiveRushSwitch(String switchID) {
         super("SlayByDay:DefensiveManeuversOffensiveRush", "None", null, 0, "None", CardType.SKILL,

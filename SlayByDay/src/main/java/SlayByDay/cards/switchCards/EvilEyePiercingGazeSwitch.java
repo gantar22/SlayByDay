@@ -28,6 +28,12 @@ public class EvilEyePiercingGazeSwitch extends AbstractSwitchByModeCard {
             new switchCard("PiercingGaze", "EvilEye", 1, 6, 2, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ALL_ENEMY, true, false, false, false) );
 
+    public String reasonCardID() {
+        return "EvilEye";
+    }
+    public String passionCardID() {
+        return "PiercingGaze";
+    }
 
     public EvilEyePiercingGazeSwitch(String switchID) {
         super("SlayByDay:EvilEyePiercingGaze", "None", null, 0, "None", CardType.SKILL,

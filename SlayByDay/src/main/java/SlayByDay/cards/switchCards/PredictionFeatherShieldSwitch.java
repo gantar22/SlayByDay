@@ -23,6 +23,12 @@ public class PredictionFeatherShieldSwitch extends AbstractSwitchByModeCard {
             new AbstractSwitchByModeCard.switchCard("FeatherShield", "Prediction", 1, 0, 0, 9, 3, 0, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false) );
 
+    public String reasonCardID() {
+        return "Prediction";
+    }
+    public String passionCardID() {
+        return "FeatherShield";
+    }
 
     public PredictionFeatherShieldSwitch(String switchID) {
         super("SlayByDay:PredictionFeatherShield", "None", null, 0, "None", CardType.SKILL,

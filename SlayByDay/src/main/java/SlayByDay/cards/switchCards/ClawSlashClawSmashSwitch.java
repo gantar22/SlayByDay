@@ -25,6 +25,12 @@ public class ClawSlashClawSmashSwitch extends AbstractSwitchByModeCard {
             new switchCard("ClawSmash", "ClawSlash", 1, 8, 4, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
+    public String reasonCardID() {
+        return "ClawSlash";
+    }
+    public String passionCardID() {
+      return "ClawSmash";
+    }
 
     public ClawSlashClawSmashSwitch(String switchID) {
         super("SlayByDay:ClawSlashClawSmash", "None", null, 0, "None", CardType.ATTACK,

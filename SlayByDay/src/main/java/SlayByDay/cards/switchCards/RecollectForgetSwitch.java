@@ -25,6 +25,12 @@ public class RecollectForgetSwitch extends AbstractSwitchByModeCard {
             new switchCard("Forget", "Recollect", 1, 0, 0, 0, 0, 2, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false) );
 
+    public String reasonCardID() {
+        return "Recollect";
+    }
+    public String passionCardID() {
+        return "Forget";
+    }
 
     public RecollectForgetSwitch(String switchID) {
         super("SlayByDay:RecollectForget", "None", null, 0, "None", CardType.SKILL,

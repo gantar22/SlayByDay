@@ -72,6 +72,10 @@ public class PlaceholderRelic extends CustomRelic {
     {
         switchers.add(listener);
     }
+    public static void unsubscribe(IOnSwitch listener)
+    {
+        switchers.remove(listener);
+    }
 
     public void swap()
     {
