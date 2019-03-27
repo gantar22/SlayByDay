@@ -1,6 +1,5 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.actions.SwitchAction;
 import SlayByDay.characters.TheModal;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;

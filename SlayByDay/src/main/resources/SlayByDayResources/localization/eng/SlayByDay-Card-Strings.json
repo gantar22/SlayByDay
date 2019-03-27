@@ -62,8 +62,8 @@
   },
   "DefensiveManeuvers": {
     "NAME": "Defensive Maneuvers",
-    "DESCRIPTION": "Gain !B! block. Draw !M! cards. NL Switches into Offensive Rush.",
-    "UPGRADE_DESCRIPTION": "Gain !B! block. Draw !M! cards. NL Switches into Offensive Rush+."
+    "DESCRIPTION": "Gain !B! block. Next turn, draw !M! additional cards. NL Switches into Offensive Rush.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. Next turn, draw !M! additional cards. NL Switches into Offensive Rush+."
   },
   "OffensiveRush": {
     "NAME": "Offensive Rush",

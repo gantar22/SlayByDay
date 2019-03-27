@@ -1,6 +1,5 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.actions.SwitchAction;
 import SlayByDay.characters.TheModal;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -10,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import java.util.Arrays;
 import java.util.List;
@@ -66,7 +64,5 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 break;
         }
-
-        AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
     }
 }
