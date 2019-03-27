@@ -109,5 +109,15 @@
     "NAME": "Forget",
     "DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect.",
     "UPGRADE_DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect+."
+  },
+  "Hone": {
+    "NAME": "Hone",
+    "DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget.",
+    "UPGRADE_DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget+."
+  },
+  "Lacerate": {
+    "NAME": "Lacerate",
+    "DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone+."
   }
 }
