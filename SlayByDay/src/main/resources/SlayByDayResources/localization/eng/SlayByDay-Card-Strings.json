@@ -119,5 +119,15 @@
     "NAME": "Lacerate",
     "DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone+."
+  },
+  "Punishment": {
+    "NAME": "Punishment",
+    "DESCRIPTION": "Consume all debuffs on target. Deal !D! damage per debuff consumed. NL Switches into Fury.",
+    "UPGRADE_DESCRIPTION": "Consume all debuffs on target. Deal !D! damage per debuff consumed. NL Switches into Fury+."
+  },
+  "Fury": {
+    "NAME": "Fury",
+    "DESCRIPTION": "Lose all strength. Deal !D! damage for each strength lost. NL Switches into Punishment.",
+    "UPGRADE_DESCRIPTION": "Lose all strength. Deal !D! damage for each strength lost. NL Switches into Punishment+."
   }
 }

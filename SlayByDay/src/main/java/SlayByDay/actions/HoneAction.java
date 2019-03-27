@@ -1,5 +1,6 @@
 package SlayByDay.actions;
 
+import SlayByDay.cards.switchCards.HoneLacerateSwitch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -17,32 +18,24 @@ import java.util.UUID;
 
 // Source: ModifyBlockAction.class, or IncreaseMiscAction.class
 public class HoneAction extends AbstractGameAction {
-    private int miscIncrease;
-    private UUID uuid;
+    UUID uuid;
 
-    public HoneAction(UUID targetUUID, int miscValue, int miscIncrease) {
-        this.miscIncrease = miscIncrease;
+    public HoneAction(UUID targetUUID, int amount) {
+        this.setValues(this.target, this.source, amount);
+        this.actionType = ActionType.CARD_MANIPULATION;
         this.uuid = targetUUID;
     }
 
     public void update() {
-        Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
+        Iterator var1 = GetAllInBattleInstances.get(this.uuid).iterator();
 
-        AbstractCard c;
         while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
-            if (c.uuid.equals(this.uuid)) {
-                c.misc += this.miscIncrease;
-                c.applyPowers();
-                c.baseBlock = c.misc;
-                c.isBlockModified = false;
+            AbstractCard c = (AbstractCard)var1.next();
+            c.baseDamage += this.amount;
+            ((HoneLacerateSwitch)c).damage_counter += this.amount;
+            if (c.baseDamage < 0) {
+                c.baseDamage = 0;
             }
-        }
-
-        for(var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext(); c.baseDamage = c.misc) {
-            c = (AbstractCard)var1.next();
-            c.misc += this.miscIncrease;
-            c.applyPowers();
         }
 
         this.isDone = true;

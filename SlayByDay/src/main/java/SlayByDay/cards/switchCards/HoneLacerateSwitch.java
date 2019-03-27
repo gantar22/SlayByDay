@@ -60,6 +60,15 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
     public HoneLacerateSwitch() { this(null); }
 
     @Override
+    public void switchTo(String id) {
+        System.out.println("MY overridden switchTo called");
+        super.switchTo(id);
+        System.out.println("Old baseDamage: " + this.baseDamage);
+        this.baseDamage = damage_counter;
+        System.out.println("New baseDamage: " + this.baseDamage);
+    }
+
+    @Override
     public AbstractCard makeStatEquivalentCopy() {
         HoneLacerateSwitch card = (HoneLacerateSwitch)super.makeStatEquivalentCopy();
         card.damage_counter = this.damage_counter;
@@ -70,7 +79,7 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "Hone":
-                AbstractDungeon.actionManager.addToBottom(new HoneAction(this.uuid, this.damage_counter, this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new HoneAction(this.uuid, this.magicNumber));
             case "Lacerate":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 break;
