@@ -1,3 +1,5 @@
+package SlayByDay.cards;
+
 import SlayByDay.actions.SwitchAction;
 import SlayByDay.characters.TheModal;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -9,7 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import basemod.abstracts.CustomCard;
-import SlayByDay.cards;
 
 import java.util.List;
 import java.util.Arrays;
@@ -25,7 +26,7 @@ public class TheUltimatePact extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Nex));
+        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Nex));
 
         /*switch (this.currentID) {
             case "Prediction":

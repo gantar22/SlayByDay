@@ -322,6 +322,10 @@ public class SlayByDay implements
         BaseMod.addCard(new PredictionFeatherShieldSwitch());
         BaseMod.addCard(new DefensiveManeuversOffensiveRushSwitch());
 
+        // Joey's cards
+        BaseMod.addCard(new PossessionExpulsionSwitch());
+
+
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
         // This is so that they are all "seen" in the library, for people who like to look at the card list
