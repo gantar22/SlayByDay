@@ -8,6 +8,7 @@ import basemod.abstracts.CustomRelic;
 import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.BetterOnLoseHpRelic;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
 
-public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber, BetterOnLoseHpRelic {
+public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic {
 
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
@@ -37,7 +38,7 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
 
     public static final int REASON_STARTING_COUNTER = 5;
     public static final int PASSION_STARTING_COUNTER = 5;
-    public static final int PASSION_STAT_GAIN = 3;
+    public static final int PASSION_STAT_GAIN = 2;
     public static final String ID = SlayByDay.makeID("PlaceholderRelic");
     public static PlaceholderRelic instance;
 
@@ -47,13 +48,14 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
     private static final String my_retain_id = "my_retain";
+    private static int persistant_counter = REASON_STARTING_COUNTER;
 
     public PlaceholderRelic() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
         this.counter = REASON_STARTING_COUNTER;
         switchers = new ArrayList<IOnSwitch>();
         instance = this;
-        BaseMod.subscribe(this);
+        //BaseMod.subscribe(this);
     }
 
     // Flash at the start of Battle.
@@ -61,7 +63,6 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
     public void atBattleStartPreDraw() {
 
     }
-
 
     // Do nothing
     @Override
@@ -75,7 +76,6 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
     public void onUnequip() {
 
     }
-
 
     @Override
     public void onPlayerEndTurn()
@@ -152,16 +152,19 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
         {
             TheModal.Reason_Mode = false;
             setCounter(PASSION_STARTING_COUNTER);
+            System.out.println(this.counter);
             System.out.println("switch to passion");
         } else {
             TheModal.Reason_Mode = true;
             setCounter(REASON_STARTING_COUNTER);
             System.out.println("switch to reason");
         }
+
         for(int i = 0; i < switchers.size(); i++)
         {
             switchers.get(i).OnSwitch(TheModal.Reason_Mode);
         }
+        apply_stats_on_switch(TheModal.Reason_Mode);
     }
 
     // Description
@@ -170,8 +173,9 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
         return DESCRIPTIONS[0];
     }
 
-    @Override
+  /*  @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
+
         if(abstractCard.type == AbstractCard.CardType.ATTACK && TheModal.Reason_Mode)
         {
             addCounter(-2);
@@ -181,17 +185,23 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
             flash();
             addCounter(1);
         }
-    }
+    }*/
 
     @Override
     public int betterOnLoseHp(DamageInfo damageInfo, int i) {
         if(AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
         {
-            if(i > 0 && !TheModal.Reason_Mode)
-            {
-                flash();
-                addCounter(1);
-            }
+            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    if(i > 0 && !TheModal.Reason_Mode)
+                    {
+                        flash();
+                        addCounter(1);
+                    }
+                    isDone = true;
+                }
+            });
         }
         return i;
     }
@@ -199,6 +209,7 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
     @Override
     public void atBattleStart()
     {
+        setCounter(persistant_counter);
         if(TheModal.Reason_Mode)
         {
             AbstractPower my_retain = new RetainCardPower(AbstractDungeon.player,1);
@@ -209,6 +220,12 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
         } else {
             apply_passion_stats(PASSION_STAT_GAIN);
         }
+    }
+
+    @Override
+    public void onVictory()
+    {
+        persistant_counter = this.counter;
     }
 
     void apply_passion_stats(int amount)
@@ -229,14 +246,27 @@ public class PlaceholderRelic extends CustomRelic implements OnCardUseSubscriber
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         System.out.print("yo carter");
 
+        int dif = 0;
         if(m  == null) return;
         System.out.println(m.currentBlock);
         if(c.damage > m.currentBlock && !TheModal.Reason_Mode)
         {
             flash();
-            addCounter(-1);
+            dif -= 2;
         }
-
+        if(TheModal.Reason_Mode)
+        {
+            if(c.type == AbstractCard.CardType.ATTACK && TheModal.Reason_Mode)
+            {
+                dif -= 2;
+                flash();
+            } else if(c.type == AbstractCard.CardType.SKILL && TheModal.Reason_Mode)
+            {
+                flash();
+                dif += 1;
+            }
+        }
+        addCounter(dif);
     }
 
 }
