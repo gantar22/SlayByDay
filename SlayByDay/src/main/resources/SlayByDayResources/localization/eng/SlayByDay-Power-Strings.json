@@ -2,9 +2,14 @@
 "SlayByDay:CommonPower": {
         "NAME": "Placeholder Power",
         "DESCRIPTIONS": ["You applied ", " keyword.", " keywords."]
-},
-"SlayByDay:RarePower": {
+}, "SlayByDay:RarePower": {
         "NAME": "Placeholder Power",
         "DESCRIPTIONS": ["At the start of your turn, TOUCH ", " enemy." , " enemies."]
+}, "SlayByDay:SplashDamage": {
+        "NAME": "Splash Damage",
+        "DESCRIPTIONS": ["Whenever a potion is consumed, deal ", " damage to all enemies."]
+}, "SlayByDay:PowerUp": {
+        "NAME": "Power Up",
+        "DESCRIPTIONS": ["Whenever you gain strength, gain ", " additional strength."]
 }
 }

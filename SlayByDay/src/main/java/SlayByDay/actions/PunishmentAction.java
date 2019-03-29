@@ -32,7 +32,13 @@ public class PunishmentAction extends AbstractGameAction {
         while(var1.hasNext()) {
             AbstractPower p = (AbstractPower)var1.next();
             if (p.type == AbstractPower.PowerType.DEBUFF) {
-                total_removed++;
+                if (p.amount < 1) {
+                    total_removed++;
+                    System.out.println("Power: " + p.ID + " had amount < 1, so only 1 added");
+                } else {
+                    total_removed += p.amount;
+                    System.out.println("Power: " + p.ID + " had amount " + p.amount + ", so that much was added.");
+                }
                 AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.c, this.player, p.ID));
             }
         }

@@ -127,7 +127,17 @@
   },
   "Fury": {
     "NAME": "Fury",
-    "DESCRIPTION": "Lose all strength. Deal !D! damage for each strength lost. NL Switches into Punishment.",
-    "UPGRADE_DESCRIPTION": "Lose all strength. Deal !D! damage for each strength lost. NL Switches into Punishment+."
+    "DESCRIPTION": "Lose all strength. Deal !M! damage for each strength lost. NL Switches into Punishment.",
+    "UPGRADE_DESCRIPTION": "Lose all strength. Deal !M! damage for each strength lost. NL Switches into Punishment+."
+  },
+  "SplashDamage": {
+    "NAME": "Splash Damage",
+    "DESCRIPTION": "Whenever a potion is consumed, deal !M! damage to all enemies. NL Switches into Power Up.",
+    "UPGRADE_DESCRIPTION": "Whenever a potion is consumed, deal !M! damage to all enemies. NL Switches into Power Up+."
+  },
+  "PowerUp": {
+    "NAME": "Power Up",
+    "DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage.",
+    "UPGRADE_DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage+."
   }
 }
