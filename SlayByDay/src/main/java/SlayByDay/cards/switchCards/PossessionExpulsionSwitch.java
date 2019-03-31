@@ -50,14 +50,6 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         PlaceholderRelic.Switch_Mode();
-        /*switch (this.currentID) {
-            case "Possession":
-                PlaceholderRelic.Switch_Mode();
-                break;
-            case "Expulsion":
-                PlaceholderRelic.Switch_Mode();
-                break;
-        }*/
     }
 
     @Override

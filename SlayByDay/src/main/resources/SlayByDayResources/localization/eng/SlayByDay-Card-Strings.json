@@ -69,5 +69,18 @@
     "NAME": "Offensive Rush",
     "DESCRIPTION": "Deal !D! damage !M! times. NL Switches into Defensive Maneuvers.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL Switches into Defensive Maneuvers+."
+  },
+
+  "__Joey's cards": {
+  },
+  "Possession": {
+    "NAME": "Possession",
+    "DESCRIPTION": "Switch into Passion Mode.",
+    "UPGRADE_DESCRIPTION": "Switch into Passion Mode."
+  },
+  "Expulsion": {
+    "NAME": "Expulsion",
+    "DESCRIPTION": "Switch into Reason Mode.",
+    "UPGRADE_DESCRIPTION": "Switch into Reason Mode."
   }
 }

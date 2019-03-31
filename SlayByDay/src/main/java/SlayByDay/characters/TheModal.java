@@ -161,7 +161,7 @@ public class TheModal extends CustomPlayer  {
             retVal.add(DefaultCommonAttack.ID);
         for(int i = 0; i < 5; i++)
             retVal.add(DefaultCommonSkill.ID);
-        retVal.add("Possession");
+        retVal.add(new PossessionExpulsionSwitch("Expulsion").cardID);
 
         return retVal;
     }
