@@ -52,6 +52,8 @@ public class TheModal extends CustomPlayer  {
         public static AbstractCard.CardColor COLOR_M_PURPLE;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
+        @SpireEnum
+        public static AbstractCard.CardTags MODE_SWITCH_CARD;
     }
 
     // =============== CHARACTER ENUMERATORS  =================
@@ -63,7 +65,7 @@ public class TheModal extends CustomPlayer  {
     public static final int STARTING_HP = 75;
     public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
-    public static final int CARD_DRAW = 9;
+    public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================

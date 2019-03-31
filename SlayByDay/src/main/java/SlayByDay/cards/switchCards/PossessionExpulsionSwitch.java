@@ -1,6 +1,5 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.actions.SwitchAction;
 import SlayByDay.characters.TheModal;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -58,5 +57,12 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
             upgradeName();
             this.upgradeBaseCost(0);
         }
+    }
+
+    public String reasonCardID() {
+        return "Possession";
+    }
+    public String passionCardID() {
+        return "Expulsion";
     }
 }

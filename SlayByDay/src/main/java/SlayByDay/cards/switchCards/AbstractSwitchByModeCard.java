@@ -2,6 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.SwitchAction;
+import SlayByDay.characters.TheModal;
 import SlayByDay.relics.IOnSwitch;
 import SlayByDay.relics.PlaceholderRelic;
 import basemod.abstracts.CustomCard;
@@ -24,7 +25,7 @@ import java.util.Iterator;
 
 
 // Source: https://github.com/Tempus/The-Disciple/blob/master/src/main/java/cards/switchCards/AbstractSelfSwitchCard.java#L259
-public abstract class AbstractSwitchByModeCard extends CustomCard implements IOnSwitch {
+public abstract class AbstractSwitchByModeCard extends CustomCard {
 
     public class switchCard {
         public CardType type;
@@ -100,17 +101,40 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
     public String switchID;
     public String currentID;
 
+    private boolean switch_queued = false;
+
+    public abstract String reasonCardID();
+    public abstract String passionCardID();
+
     public AbstractSwitchByModeCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, Class previewCard) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
 
         this.switchClass = previewCard;
-//        this.tags.add(MODE_SWITCH_CARD);
-        // TODO - Fix this ^^^ by adding the enum to our character enums class
+        this.tags.add(TheModal.Enums.MODE_SWITCH_CARD);
     }
 
-    public void OnSwitch(boolean Reason_Mode)
-    {
-        AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+    @Override
+    public void update() {
+        validateSwitchCardMode();
+        super.update();
+    }
+
+    // Make sure that this card has switched correctly to whichever mode it's supposed to be in.
+    public void validateSwitchCardMode() {
+        if (this.switch_queued) {
+            return;
+        }
+        if (AbstractDungeon.currMapNode == null) {
+            return;
+        }
+
+        if (TheModal.Reason_Mode && this.currentID != reasonCardID()) {
+            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+            switch_queued = true;
+        } else if (!TheModal.Reason_Mode && this.currentID != passionCardID()) {
+            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+            switch_queued = true;
+        }
     }
 
     @Override
@@ -137,6 +161,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
 
     @Override
     public AbstractCard makeCopy() {
+//        System.out.println("Making a copy of: " + this.currentID);
+//        System.out.println("SwitchID: " + this.switchID);
         AbstractCard c = null;
         try {
             if (this.switchClass != null) {
@@ -145,7 +171,6 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
         } catch (Throwable e) {
             System.out.println(e.toString());
         }
-        PlaceholderRelic.subscribe((AbstractSwitchByModeCard)c);
         return c;
     }
 
@@ -250,6 +275,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
                     ((BottledTornado)AbstractDungeon.player.getRelic("Bottled Tornado")).setDescriptionAfterLoading(); }
             }
         }
+
+        this.switch_queued = false;
     }
 
     @Override

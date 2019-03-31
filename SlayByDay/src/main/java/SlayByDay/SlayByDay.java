@@ -305,22 +305,31 @@ public class SlayByDay implements
 
         logger.info("Adding cards");
         // Add the cards
-        BaseMod.addCard(new OrbSkill());
-        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         BaseMod.addCard(new DefaultCommonAttack());
-        BaseMod.addCard(new DefaultAttackWithVariable());
         BaseMod.addCard(new DefaultCommonSkill());
-        BaseMod.addCard(new DefaultCommonPower());
-        BaseMod.addCard(new DefaultUncommonSkill());
-        BaseMod.addCard(new DefaultUncommonAttack());
-        BaseMod.addCard(new DefaultUncommonPower());
-        BaseMod.addCard(new DefaultRareAttack());
-        BaseMod.addCard(new DefaultRareSkill());
-        BaseMod.addCard(new DefaultRarePower());
+//        BaseMod.addCard(new OrbSkill());
+//        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
+//        BaseMod.addCard(new DefaultAttackWithVariable());
+//        BaseMod.addCard(new DefaultCommonPower());
+//        BaseMod.addCard(new DefaultUncommonSkill());
+//        BaseMod.addCard(new DefaultUncommonAttack());
+//        BaseMod.addCard(new DefaultUncommonPower());
+//        BaseMod.addCard(new DefaultRareAttack());
+//        BaseMod.addCard(new DefaultRareSkill());
+//        BaseMod.addCard(new DefaultRarePower());
 
         // Dom's cards
         BaseMod.addCard(new PredictionFeatherShieldSwitch());
         BaseMod.addCard(new DefensiveManeuversOffensiveRushSwitch());
+        BaseMod.addCard(new EvilEyePiercingGazeSwitch());
+        BaseMod.addCard(new MagicDefenseSharpenFeathersSwitch());
+        BaseMod.addCard(new ClawSlashClawSmashSwitch());
+        BaseMod.addCard(new RecollectForgetSwitch());
+        BaseMod.addCard(new HoneLacerateSwitch());
+        BaseMod.addCard(new PunishmentFurySwitch());
+        BaseMod.addCard(new SplashDamagePowerUpSwitch());
+        BaseMod.addCard(new Synchronize());
+        BaseMod.addCard(new TacticalRetreatBlitzSwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());
@@ -386,6 +395,10 @@ public class SlayByDay implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/SlayByDay-Orb-Strings.json");
+
+        // UIStrings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/eng/SlayByDay-UI-Strings.json");
 
         logger.info("Done editing strings");
     }
