@@ -1,32 +1,30 @@
 package SlayByDay.powers;
 
 import SlayByDay.SlayByDay;
+import SlayByDay.relics.IOnSwitch;
+import SlayByDay.relics.PlaceholderRelic;
 import SlayByDay.util.TextureLoader;
-import basemod.BaseMod;
-import basemod.interfaces.PostPotionUseSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static SlayByDay.SlayByDay.makePowerPath;
 
 // Whenever a potion is consumed, deal (amount) damage to all enemies
 
-public class SplashDamagePower extends AbstractPower
-implements PostPotionUseSubscriber {
+public class SynchronizedPower extends AbstractPower
+implements IOnSwitch {
     public AbstractCreature source;
 
-    public static final String POWER_ID = SlayByDay.makeID("SplashDamage");
+    public static final String POWER_ID = SlayByDay.makeID("Synchronized");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -36,12 +34,12 @@ implements PostPotionUseSubscriber {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public SplashDamagePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public SynchronizedPower(final AbstractCreature owner, final AbstractCreature source) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = amount;
+        this.amount = -1;
         this.source = source;
 
         type = PowerType.BUFF;
@@ -51,29 +49,27 @@ implements PostPotionUseSubscriber {
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        BaseMod.subscribe(this);
+        PlaceholderRelic.subscribe(this);
         updateDescription();
     }
 
     @Override
-    public void receivePostPotionUse(AbstractPotion abstractPotion) {
-        if (this.owner != null) {
-            AbstractPower splash_power = this.owner.getPower(SplashDamagePower.POWER_ID);
-            if (splash_power != null) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction((AbstractCreature)null, DamageInfo.createDamageMatrix(splash_power.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.POISON));
-            } else {
-                BaseMod.unsubscribe(this);
-            }
+    public void OnSwitch(boolean Reason_Mode) {
+        if (!this.owner.hasPower(this.ID)) {
+            PlaceholderRelic.unsubscribe(this);
+            return;
+        }
+
+        if (Reason_Mode) {
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, 1));
+        } else {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, 1)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LoseStrengthPower(this.owner, 1)));
         }
     }
 
     @Override
-    public void onRemove() {
-        BaseMod.unsubscribe(this);
-    }
-
-    @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0];
     }
 }

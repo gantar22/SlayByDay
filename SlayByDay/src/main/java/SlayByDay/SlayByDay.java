@@ -328,6 +328,8 @@ public class SlayByDay implements
 //        BaseMod.addCard(new HoneLacerateSwitch());
         BaseMod.addCard(new PunishmentFurySwitch());
         BaseMod.addCard(new SplashDamagePowerUpSwitch());
+        BaseMod.addCard(new Synchronize());
+        BaseMod.addCard(new TacticalRetreatBlitzSwitch());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards

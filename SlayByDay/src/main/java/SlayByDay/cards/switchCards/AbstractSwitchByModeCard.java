@@ -25,7 +25,7 @@ import java.util.Iterator;
 
 
 // Source: https://github.com/Tempus/The-Disciple/blob/master/src/main/java/cards/switchCards/AbstractSelfSwitchCard.java#L259
-public abstract class AbstractSwitchByModeCard extends CustomCard implements IOnSwitch {
+public abstract class AbstractSwitchByModeCard extends CustomCard {
 
     public class switchCard {
         public CardType type;
@@ -101,6 +101,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
     public String switchID;
     public String currentID;
 
+    private boolean switch_queued = false;
+
     public abstract String reasonCardID();
     public abstract String passionCardID();
 
@@ -111,22 +113,27 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
         this.tags.add(TheModal.Enums.MODE_SWITCH_CARD);
     }
 
-    public void OnSwitch(boolean Reason_Mode) {
+    @Override
+    public void update() {
         validateSwitchCardMode();
+        super.update();
     }
 
     // Make sure that this card has switched correctly to whichever mode it's supposed to be in.
     public void validateSwitchCardMode() {
-        System.out.println("Validating switch card mode.");
-        if (AbstractDungeon.currMapNode == null) {
-            System.out.println("AbstractDungeon.currMapNode IS null");
+        if (this.switch_queued) {
             return;
         }
-        System.out.println("AbstractDungeon.currMapNode is NOT null");
+        if (AbstractDungeon.currMapNode == null) {
+            return;
+        }
+
         if (TheModal.Reason_Mode && this.currentID != reasonCardID()) {
             AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+            switch_queued = true;
         } else if (!TheModal.Reason_Mode && this.currentID != passionCardID()) {
             AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+            switch_queued = true;
         }
     }
 
@@ -162,16 +169,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
         } catch (Throwable e) {
             System.out.println(e.toString());
         }
-        PlaceholderRelic.subscribe((AbstractSwitchByModeCard)c);
-        System.out.println("Making copy of an AbstractSwitchByModeCard");
-        validateSwitchCardMode();
         return c;
-    }
-
-    @Override
-    public void finalize() {
-        System.out.println("Unsubscribing from PlaceholderRelic in AbstractSwitchByModeCard");
-        PlaceholderRelic.unsubscribe(this);
     }
 
     public AbstractCard makeStatEquivalentCopy()
@@ -275,6 +273,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
                     ((BottledTornado)AbstractDungeon.player.getRelic("Bottled Tornado")).setDescriptionAfterLoading(); }
             }
         }
+
+        this.switch_queued = false;
     }
 
     @Override
@@ -287,7 +287,6 @@ public abstract class AbstractSwitchByModeCard extends CustomCard implements IOn
             this.rawDescription = this.upgradeDescription;
             initializeDescription();
         }
-        validateSwitchCardMode();
     }
 
     // Card Preview

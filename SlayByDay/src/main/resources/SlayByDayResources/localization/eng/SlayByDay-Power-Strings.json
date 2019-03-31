@@ -11,5 +11,8 @@
 }, "SlayByDay:PowerUp": {
         "NAME": "Power Up",
         "DESCRIPTIONS": ["Whenever you gain strength, gain ", " additional strength."]
+}, "SlayByDay:Synchronized": {
+        "NAME": "Synchronized",
+        "Descriptions": ["When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength."]
 }
 }

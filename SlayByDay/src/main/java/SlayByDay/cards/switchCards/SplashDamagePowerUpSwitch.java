@@ -56,10 +56,10 @@ public class SplashDamagePowerUpSwitch extends AbstractSwitchByModeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "SplashDamage":
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SplashDamagePower(p, p, this.magicNumber)));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SplashDamagePower(p, p, this.magicNumber), this.magicNumber));
                 break;
             case "PowerUp":
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PowerUpPower(p, p, this.magicNumber)));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PowerUpPower(p, p, this.magicNumber), this.magicNumber));
                 break;
         }
     }

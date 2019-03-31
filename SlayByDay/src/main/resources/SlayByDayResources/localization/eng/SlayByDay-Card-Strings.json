@@ -50,6 +50,11 @@
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
   },
+  "SlayByDay:Synchronize": {
+    "NAME": "Synchronize",
+    "DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength.",
+    "UPGRADE_DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength."
+  },
   "FeatherShield": {
     "NAME": "Feather Shield",
     "DESCRIPTION": "Gain !B! block. NL Switches into Prediction.",
@@ -139,5 +144,15 @@
     "NAME": "Power Up",
     "DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage.",
     "UPGRADE_DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage+."
+  },
+  "TacticalRetreat": {
+    "NAME": "Tactical Retreat",
+    "DESCRIPTION": "Gain !B! block. Gain !M! weak. NL Switches into Blitz.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. Gain !M! weak. NL Switches into Blitz+."
+  },
+  "Blitz": {
+    "NAME": "Blitz",
+    "DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat+."
   }
 }
