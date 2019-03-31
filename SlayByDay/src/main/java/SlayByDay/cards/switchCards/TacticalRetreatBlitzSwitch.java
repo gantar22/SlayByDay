@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import java.util.Arrays;
@@ -21,11 +22,11 @@ import java.util.Random;
 public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("TacticalRetreat", "Blitz", 1, 0, 0, 10, 3, 2, 0,
-                    CardType.SKILL, CardTarget.SELF, false, false, true, false),
+            new switchCard("TacticalRetreat", "Blitz", 1, 0, 0, 5, 3, 1, 0,
+                    CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
             new switchCard("Blitz", "TacticalRetreat", 1, 12, 3, 0, 0, 0, 0,
-                    CardType.SKILL, CardTarget.SELF, false, false, true, false) );
+                    CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
         return "TacticalRetreat";
@@ -63,7 +64,9 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
         switch (this.currentID) {
             case "TacticalRetreat":
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WeakPower(p, this.magicNumber, false), this.magicNumber));
+                if (p.hasPower(VulnerablePower.POWER_ID)) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, -this.magicNumber, false), -this.magicNumber));
+                }
                 break;
             case "Blitz":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, false));

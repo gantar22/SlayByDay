@@ -6,11 +6,9 @@ import basemod.BaseMod;
 import basemod.interfaces.PostPotionUseSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -61,6 +59,7 @@ implements PostPotionUseSubscriber {
             AbstractPower splash_power = this.owner.getPower(SplashDamagePower.POWER_ID);
             if (splash_power != null) {
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction((AbstractCreature)null, DamageInfo.createDamageMatrix(splash_power.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.POISON));
+                this.flash();
             } else {
                 BaseMod.unsubscribe(this);
             }

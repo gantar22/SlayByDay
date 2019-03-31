@@ -20,7 +20,7 @@ public class DefaultCommonAttack extends CustomCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      *
-     * Strike Deal 7(9) damage.
+     * Strike Deal 6(9) damage.
      */
 
     // TEXT DECLARATION
@@ -50,8 +50,8 @@ public class DefaultCommonAttack extends CustomCard {
     public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int DAMAGE = 6;
+    private static final int UPGRADE_PLUS_DMG = 3;
 
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and SlayByDay.variable.DefaultCustomVariable

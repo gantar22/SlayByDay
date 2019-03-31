@@ -161,6 +161,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
 
     @Override
     public AbstractCard makeCopy() {
+//        System.out.println("Making a copy of: " + this.currentID);
+//        System.out.println("SwitchID: " + this.switchID);
         AbstractCard c = null;
         try {
             if (this.switchClass != null) {

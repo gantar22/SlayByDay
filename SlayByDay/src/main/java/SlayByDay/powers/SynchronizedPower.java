@@ -62,14 +62,23 @@ implements IOnSwitch {
 
         if (Reason_Mode) {
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, 1));
+            this.flash();
         } else {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, 1)));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LoseStrengthPower(this.owner, 1)));
+            this.flash();
         }
     }
 
     @Override
     public void updateDescription() {
+        if (DESCRIPTIONS == null) {
+            System.out.println("DESCRIPTIONS is null in SynchronizedPower");
+            return;
+        } else if (DESCRIPTIONS[0] == null) {
+            System.out.println("DESCRIPTIONS[0] is null in SynchronizedPower");
+            return;
+        }
         description = DESCRIPTIONS[0];
     }
 }

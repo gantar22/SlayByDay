@@ -305,18 +305,18 @@ public class SlayByDay implements
 
         logger.info("Adding cards");
         // Add the cards
-        BaseMod.addCard(new OrbSkill());
-        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         BaseMod.addCard(new DefaultCommonAttack());
-        BaseMod.addCard(new DefaultAttackWithVariable());
         BaseMod.addCard(new DefaultCommonSkill());
-        BaseMod.addCard(new DefaultCommonPower());
-        BaseMod.addCard(new DefaultUncommonSkill());
-        BaseMod.addCard(new DefaultUncommonAttack());
-        BaseMod.addCard(new DefaultUncommonPower());
-        BaseMod.addCard(new DefaultRareAttack());
-        BaseMod.addCard(new DefaultRareSkill());
-        BaseMod.addCard(new DefaultRarePower());
+//        BaseMod.addCard(new OrbSkill());
+//        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
+//        BaseMod.addCard(new DefaultAttackWithVariable());
+//        BaseMod.addCard(new DefaultCommonPower());
+//        BaseMod.addCard(new DefaultUncommonSkill());
+//        BaseMod.addCard(new DefaultUncommonAttack());
+//        BaseMod.addCard(new DefaultUncommonPower());
+//        BaseMod.addCard(new DefaultRareAttack());
+//        BaseMod.addCard(new DefaultRareSkill());
+//        BaseMod.addCard(new DefaultRarePower());
 
         // Dom's cards
         BaseMod.addCard(new PredictionFeatherShieldSwitch());
@@ -325,7 +325,7 @@ public class SlayByDay implements
         BaseMod.addCard(new MagicDefenseSharpenFeathersSwitch());
         BaseMod.addCard(new ClawSlashClawSmashSwitch());
         BaseMod.addCard(new RecollectForgetSwitch());
-//        BaseMod.addCard(new HoneLacerateSwitch());
+        BaseMod.addCard(new HoneLacerateSwitch());
         BaseMod.addCard(new PunishmentFurySwitch());
         BaseMod.addCard(new SplashDamagePowerUpSwitch());
         BaseMod.addCard(new Synchronize());

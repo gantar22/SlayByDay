@@ -50,6 +50,8 @@
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
   },
+
+  "__Dom's Cards": {},
   "SlayByDay:Synchronize": {
     "NAME": "Synchronize",
     "DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength.",
@@ -147,8 +149,8 @@
   },
   "TacticalRetreat": {
     "NAME": "Tactical Retreat",
-    "DESCRIPTION": "Gain !B! block. Gain !M! weak. NL Switches into Blitz.",
-    "UPGRADE_DESCRIPTION": "Gain !B! block. Gain !M! weak. NL Switches into Blitz+."
+    "DESCRIPTION": "Gain !B! block. Lose !M! vulnerable. NL Switches into Blitz.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. Lose !M! vulnerable. NL Switches into Blitz+."
   },
   "Blitz": {
     "NAME": "Blitz",
