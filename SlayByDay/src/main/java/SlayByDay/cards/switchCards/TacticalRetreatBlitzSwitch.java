@@ -22,10 +22,10 @@ import java.util.Random;
 public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("TacticalRetreat", "Blitz", 1, 0, 0, 5, 3, 1, 0,
+            new switchCard("TacticalRetreat", "Blitz", 1, 0, 0, 0, 5, 3, 1, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
-            new switchCard("Blitz", "TacticalRetreat", 1, 12, 3, 0, 0, 0, 0,
+            new switchCard("Blitz", "TacticalRetreat", 1, 0, 12, 3, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {

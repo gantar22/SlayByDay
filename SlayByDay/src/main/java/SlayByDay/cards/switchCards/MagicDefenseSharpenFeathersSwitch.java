@@ -22,10 +22,10 @@ import java.util.Random;
 public class MagicDefenseSharpenFeathersSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("MagicDefense", "SharpenFeathers", 2, 0, 0, 0, 0, 2, 0,
+            new switchCard("MagicDefense", "SharpenFeathers", 2, 1, 0, 0, 0, 0, 2, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, true, false),
 
-            new switchCard("SharpenFeathers", "MagicDefense", 2, 0, 0, 0, 0, 5, 0,
+            new switchCard("SharpenFeathers", "MagicDefense", 2, 1, 0, 0, 0, 0, 5, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, true, false) );
 
     public String reasonCardID() {
@@ -53,11 +53,11 @@ public class MagicDefenseSharpenFeathersSwitch extends AbstractSwitchByModeCard 
 
     public MagicDefenseSharpenFeathersSwitch() { this(null); }
 
-    @Override
-    public void upgrade() {
-        this.upgradeBaseCost(1);
-        super.upgrade();
-    }
+//    @Override
+//    public void upgrade() {
+//        this.upgradeBaseCost(1);
+//        super.upgrade();
+//    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

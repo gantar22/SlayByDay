@@ -21,10 +21,10 @@ import java.util.Random;
 public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Punishment", "Fury", 2, 2, 1, 0, 0, 0, 0,
+            new switchCard("Punishment", "Fury", 2, 0, 2, 1, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false),
 
-            new switchCard("Fury", "Punishment", 2, 0, 0, 0, 0, 4, 2,
+            new switchCard("Fury", "Punishment", 2, 0, 0, 0, 0, 0, 4, 2,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {

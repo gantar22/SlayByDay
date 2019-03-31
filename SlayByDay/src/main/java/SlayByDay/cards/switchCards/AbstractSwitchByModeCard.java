@@ -30,6 +30,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
     public class switchCard {
         public CardType type;
         public CardTarget target;
+        public int baseCost;
         public int cost;
 
         public boolean isMultiDamage = false;
@@ -44,6 +45,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         public int damageUp = -1;
         public int blockUp = -1;
         public int magicNumberUp = -1;
+        public int costDown = -1;
 
         public String portraitImg;
 
@@ -54,12 +56,13 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         public String cardID;
         public String switchID;
 
-        public switchCard(String CardID, String switchID, Integer cost, Integer damage, Integer damageUp,
+        public switchCard(String CardID, String switchID, Integer cost, Integer costDown, Integer damage, Integer damageUp,
                           Integer block, Integer blockUp, Integer magicNum, Integer magicNumUp,
                           CardType type, CardTarget target, boolean isMultiDamage, boolean isInnate, boolean exhaust, boolean isEthereal)
         {
             this.type = type;
             this.target = target;
+            this.baseCost = cost;
             this.cost = cost;
 
             this.isMultiDamage = isMultiDamage;
@@ -74,6 +77,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             this.damageUp = damageUp;
             this.blockUp = blockUp;
             this.magicNumberUp = magicNumUp;
+            this.costDown = costDown;
 
             this.portraitImg = SlayByDay.makeCardPath(CardID + ".png");
 
@@ -97,6 +101,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
     public int damageUp = 0;
     public int blockUp = 0;
     public int magicNumberUp = 0;
+    public int baseCost = 0;
+    public int costDown = 0;
     public String upgradeDescription = "";
     public String switchID;
     public String currentID;
@@ -161,8 +167,6 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
 
     @Override
     public AbstractCard makeCopy() {
-//        System.out.println("Making a copy of: " + this.currentID);
-//        System.out.println("SwitchID: " + this.switchID);
         AbstractCard c = null;
         try {
             if (this.switchClass != null) {
@@ -190,6 +194,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         card.baseBlock = this.baseBlock;
         card.baseMagicNumber = this.baseMagicNumber;
         card.cost = this.cost;
+        card.baseCost = this.baseCost;
         card.costForTurn = this.costForTurn;
         card.isCostModified = this.isCostModified;
         card.isCostModifiedForTurn = this.isCostModifiedForTurn;
@@ -224,6 +229,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         if (card != null) {
             this.type = card.type;
             this.cost = card.cost;
+            this.baseCost = card.baseCost;
             if (!this.isCostModified) {
                 this.costForTurn = card.cost; }
 
@@ -241,6 +247,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             this.damageUp = card.damageUp;
             this.blockUp = card.blockUp;
             this.magicNumberUp = card.magicNumberUp;
+            this.costDown = card.costDown;
 
             this.loadCardImage(card.portraitImg);
             this.textureImg = card.portraitImg;
@@ -259,6 +266,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
                 upgradeDamage(damageUp);
                 upgradeBlock(blockUp);
                 upgradeMagicNumber(magicNumberUp);
+                upgradeBaseCost(baseCost - costDown);
                 this.rawDescription = card.upgradeDescription;
             }
 
@@ -286,6 +294,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             upgradeDamage(damageUp);
             upgradeBlock(blockUp);
             upgradeMagicNumber(magicNumberUp);
+            upgradeBaseCost(baseCost - costDown);
             this.rawDescription = this.upgradeDescription;
             initializeDescription();
         }
@@ -296,9 +305,10 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
     public void hover() {
         try {
             if (this.switchClass != null && this.cardToPreview == null) {
-                this.cardToPreview = (AbstractSwitchByModeCard)this.switchClass.newInstance();
+//                this.cardToPreview = (AbstractSwitchByModeCard)this.switchClass.newInstance();
+                this.cardToPreview = (AbstractSwitchByModeCard)this.makeStatEquivalentCopy();
                 this.cardToPreview.switchTo(this.switchID);
-                if (this.upgraded) { this.cardToPreview.upgrade(); }
+                if (this.upgraded && !this.cardToPreview.upgraded) { this.cardToPreview.upgrade(); }
             }
         } catch (Throwable e) {
             System.out.println(e.toString());

@@ -15,10 +15,10 @@ import java.util.Random;
 public class SplashDamagePowerUpSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("SplashDamage", "PowerUp", 2, 0, 0, 0, 0, 6, 0,
+            new switchCard("SplashDamage", "PowerUp", 2, 1, 0, 0, 0, 0, 6, 0,
                     CardType.POWER, CardTarget.SELF, false, false, false, false),
 
-            new switchCard("PowerUp", "SplashDamage", 2, 0, 0, 0, 0, 1, 0,
+            new switchCard("PowerUp", "SplashDamage", 2, 1, 0, 0, 0, 0, 1, 0,
                     CardType.POWER, CardTarget.SELF, false, false, false, false) );
 
     public String reasonCardID() {
@@ -45,12 +45,6 @@ public class SplashDamagePowerUpSwitch extends AbstractSwitchByModeCard {
     }
 
     public SplashDamagePowerUpSwitch() { this(null); }
-
-    @Override
-    public void upgrade() {
-        this.upgradeBaseCost(1);
-        super.upgrade();
-    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

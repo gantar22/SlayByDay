@@ -8,8 +8,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import java.util.Arrays;
@@ -19,10 +17,10 @@ import java.util.Random;
 public class ClawSlashClawSmashSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("ClawSlash", "ClawSmash", 1, 5, 1, 0, 0, 2, 1,
+            new switchCard("ClawSlash", "ClawSmash", 1, 0, 5, 1, 0, 0, 2, 1,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false),
 
-            new switchCard("ClawSmash", "ClawSlash", 1, 8, 4, 0, 0, 0, 0,
+            new switchCard("ClawSmash", "ClawSlash", 1, 0, 8, 4, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {

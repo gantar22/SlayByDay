@@ -22,10 +22,10 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
 
     // WARNING - When tweaking these values, make sure equivalent changes are made in constructor as well
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Hone", "Lacerate", 1, 0, 0, 0, 0, 3, 1,
+            new switchCard("Hone", "Lacerate", 1, 0, 0, 0, 0, 0, 3, 1,
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
-            new switchCard("Lacerate", "Hone", 1, 6, 3, 0, 0, 0, 0,
+            new switchCard("Lacerate", "Hone", 1, 0, 6, 3, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
@@ -53,7 +53,6 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
         }
 
         this.damage_counter = 6;
-        System.out.println("CURIOUS: What's the baseDamage here anyway?: " + this.baseDamage);
         this.baseDamage = this.damage_counter;
     }
 
@@ -61,17 +60,15 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
 
     @Override
     public void switchTo(String id) {
-        System.out.println("MY overridden switchTo called");
         super.switchTo(id);
-        System.out.println("Old baseDamage: " + this.baseDamage);
         this.baseDamage = damage_counter;
-        System.out.println("New baseDamage: " + this.baseDamage);
     }
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         HoneLacerateSwitch card = (HoneLacerateSwitch)super.makeStatEquivalentCopy();
         card.damage_counter = this.damage_counter;
+        this.baseDamage = damage_counter;
         return card;
     }
 
