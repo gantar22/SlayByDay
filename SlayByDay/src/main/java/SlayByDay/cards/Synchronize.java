@@ -1,27 +1,30 @@
 package SlayByDay.cards;
 
-import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheModal;
-import SlayByDay.powers.CommonPower;
-import SlayByDay.powers.SynchronizedPower;
-import SlayByDay.relics.IOnSwitch;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import SlayByDay.SlayByDay;
+import SlayByDay.actions.UncommonPowerAction;
+import SlayByDay.characters.TheModal;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
 public class Synchronize extends CustomCard {
 
-    // TEXT DECLARATION
+    /*
+     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
+     *
+     * Weirdness Apply X (+1) keywords to yourself.
+     */
+
+    // TEXT DECLARATION 
 
     public static final String ID = SlayByDay.makeID("Synchronize");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-
     public static final String IMG = makeCardPath("Power.png");
 
     public static final String NAME = cardStrings.NAME;
@@ -30,33 +33,33 @@ public class Synchronize extends CustomCard {
 
     // /TEXT DECLARATION/
 
-
-    // STAT DECLARATION
+    // STAT DECLARATION 	
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
 
-    private static final int COST = 2;
-
-    // Hey want a second magic/damage/block/unique number??? Great!
-    // Go check out DefaultAttackWithVariable and SlayByDay.variable.DefaultCustomVariable
-    // that's how you get your own custom variable that you can use for anything you like.
-    // Feel free to explore other mods to see what variabls they personally have and create your own ones.
+    private static final int COST = -1;
+    private static final int MAGIC = 1;
 
     // /STAT DECLARATION/
 
-
     public Synchronize() {
+
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = MAGIC;
+
     }
-
-
+    
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SynchronizedPower(p, p), -1));
+    public void use(final AbstractPlayer p, final AbstractMonster m) {
+        if (energyOnUse < EnergyPanel.totalCount) {
+            energyOnUse = EnergyPanel.totalCount;
+        }
+        AbstractDungeon.actionManager.addToBottom(new UncommonPowerAction(p, m, magicNumber,
+                upgraded, damageTypeForTurn, freeToPlayOnce, energyOnUse));
     }
 
     //Upgraded stats.

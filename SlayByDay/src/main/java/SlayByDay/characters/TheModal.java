@@ -1,5 +1,6 @@
 package SlayByDay.characters;
 
+import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
@@ -160,8 +161,9 @@ public class TheModal extends CustomPlayer  {
 
         for(int i = 0; i < 6; i++)
             retVal.add(DefaultCommonAttack.ID);
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 5; i++)
             retVal.add(DefaultCommonSkill.ID);
+        retVal.add(new PossessionExpulsionSwitch("Expulsion").cardID);
 
         return retVal;
     }
