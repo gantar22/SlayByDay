@@ -22,10 +22,10 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
     // public static final String ID = SlayByDay.makeID("PossessionExpulsion");
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new AbstractSwitchByModeCard.switchCard("Possession", "Expulsion", 1, 0, 0, 0, 0, 0, 0,
+            new AbstractSwitchByModeCard.switchCard("Possession", "Expulsion", 1, 1, 0, 0, 0, 0, 0, 0,
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
-            new AbstractSwitchByModeCard.switchCard("Expulsion", "Possession", 1, 0, 0, 0, 0, 0, 0,
+            new AbstractSwitchByModeCard.switchCard("Expulsion", "Possession", 1, 1, 0, 0, 0, 0, 0, 0,
                     CardType.SKILL, CardTarget.NONE, false, false, false, false) );
 
     public PossessionExpulsionSwitch(String switchID) {
@@ -49,14 +49,6 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         PlaceholderRelic.Switch_Mode();
-    }
-
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            this.upgradeBaseCost(0);
-        }
     }
 
     public String reasonCardID() {
