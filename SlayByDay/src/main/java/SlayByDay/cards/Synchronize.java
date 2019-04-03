@@ -1,6 +1,8 @@
 package SlayByDay.cards;
 
+import SlayByDay.powers.SynchronizedPower;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -40,7 +42,7 @@ public class Synchronize extends CustomCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
 
-    private static final int COST = -1;
+    private static final int COST = 2;
     private static final int MAGIC = 1;
 
     // /STAT DECLARATION/
@@ -55,11 +57,7 @@ public class Synchronize extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (energyOnUse < EnergyPanel.totalCount) {
-            energyOnUse = EnergyPanel.totalCount;
-        }
-        AbstractDungeon.actionManager.addToBottom(new UncommonPowerAction(p, m, magicNumber,
-                upgraded, damageTypeForTurn, freeToPlayOnce, energyOnUse));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SynchronizedPower(p, p, MAGIC)));
     }
 
     //Upgraded stats.

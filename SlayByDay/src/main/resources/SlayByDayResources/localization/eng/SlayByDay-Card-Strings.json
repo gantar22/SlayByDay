@@ -121,13 +121,13 @@
   },
   "Hone": {
     "NAME": "Hone",
-    "DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget.",
-    "UPGRADE_DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget+."
+    "DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Lacerate.",
+    "UPGRADE_DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Lacerate+."
   },
   "Lacerate": {
     "NAME": "Lacerate",
-    "DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone+."
+    "DESCRIPTION": "Deal !D! damage. NL Switches into Hone.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Switches into Hone+."
   },
   "Punishment": {
     "NAME": "Punishment",

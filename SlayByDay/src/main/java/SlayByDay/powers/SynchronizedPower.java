@@ -34,12 +34,12 @@ implements IOnSwitch {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public SynchronizedPower(final AbstractCreature owner, final AbstractCreature source) {
+    public SynchronizedPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = -1;
+        this.amount = amount;
         this.source = source;
 
         type = PowerType.BUFF;
@@ -61,24 +61,21 @@ implements IOnSwitch {
         }
 
         if (Reason_Mode) {
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, 1));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
             this.flash();
         } else {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, 1)));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LoseStrengthPower(this.owner, 1)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, this.amount), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LoseStrengthPower(this.owner, this.amount), this.amount));
             this.flash();
         }
     }
 
     @Override
     public void updateDescription() {
-        if (DESCRIPTIONS == null) {
-            System.out.println("DESCRIPTIONS is null in SynchronizedPower");
-            return;
-        } else if (DESCRIPTIONS[0] == null) {
-            System.out.println("DESCRIPTIONS[0] is null in SynchronizedPower");
-            return;
+        if (this.amount == 1) {
+            description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + this.amount + DESCRIPTIONS[4] + this.amount + DESCRIPTIONS[5];
+        } else {
+            description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + this.amount + DESCRIPTIONS[4] + this.amount + DESCRIPTIONS[5];
         }
-        description = DESCRIPTIONS[0];
     }
 }

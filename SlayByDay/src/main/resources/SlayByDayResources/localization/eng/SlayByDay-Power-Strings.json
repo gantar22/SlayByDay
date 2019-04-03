@@ -13,7 +13,7 @@
         "DESCRIPTIONS": ["Whenever you gain strength, gain ", " additional strength."]
 }, "SlayByDay:Synchronized": {
         "NAME": "Synchronized",
-        "DESCRIPTIONS": ["When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength."]
+        "DESCRIPTIONS": ["When you swap to Reason mode, draw ", " card.", " cards.", " NL When you swap to Passion mode, gain ", " strength, and at the end of this turn, lose ", " strength."]
 }, "SlayByDay:PlayerFlight": {
         "NAME": "Flight",
         "DESCRIPTIONS": ["Receive 50% less attack damage until your next turn.", "Receive 50% less attack damage for ", " turns."]
