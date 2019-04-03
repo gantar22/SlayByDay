@@ -51,7 +51,9 @@
     "DESCRIPTION": "Channel 1 Default Orb."
   },
 
+
   "__Dom's Cards": {},
+
   "SlayByDay:Synchronize": {
     "NAME": "Synchronize",
     "DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength.",
@@ -114,8 +116,8 @@
   },
   "Forget": {
     "NAME": "Forget",
-    "DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect.",
-    "UPGRADE_DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect+."
+    "DESCRIPTION": "Gain !M! strength and !M! Dexterity. Exhaust a random card in your hand. NL Switches into Recollect.",
+    "UPGRADE_DESCRIPTION": "Gain !M! strength and !M! Dexterity. Exhaust a random card in your hand. NL Switches into Recollect+."
   },
   "Hone": {
     "NAME": "Hone",
@@ -156,6 +158,26 @@
     "NAME": "Blitz",
     "DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat+."
+  },
+  "Bolster": {
+    "NAME": "Bolster",
+    "DESCRIPTION": "Increase this card's block by !M! this combat. NL Switches into Guard.",
+    "UPGRADE_DESCRIPTION": "Increase this card's block by !M! this combat. NL Switches into Guard+."
+  },
+  "Guard": {
+    "NAME": "Guard",
+    "DESCRIPTION": "Gain !B! block. NL Switches into Bolster.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. NL Switches into Bolster+."
+  },
+  "Fly": {
+    "NAME": "Fly",
+    "DESCRIPTION": "Gain flight for one turn. NL Switches into Roost.",
+    "UPGRADE_DESCRIPTION": "Gain flight for one turn. NL Switches into Roost+."
+  },
+  "Roost": {
+    "NAME": "Roost",
+    "DESCRIPTION": "Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.) NL Switches into Fly.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.) NL Switches into Fly+."
   },
 
 

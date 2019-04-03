@@ -330,6 +330,8 @@ public class SlayByDay implements
         BaseMod.addCard(new SplashDamagePowerUpSwitch());
         BaseMod.addCard(new Synchronize());
         BaseMod.addCard(new TacticalRetreatBlitzSwitch());
+        BaseMod.addCard(new BolsterGuardSwitch());
+        BaseMod.addCard(new FlyRoostSwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());

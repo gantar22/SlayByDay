@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
 
+// A work-in-progress just to experiment with relics. Based on a relic from Joey's doc.
+
 public class BallpointPen extends CustomRelic implements OnReceivePowerRelic {
     // ID, images, text.
     public static final String ID = SlayByDay.makeID("BallpointPen");

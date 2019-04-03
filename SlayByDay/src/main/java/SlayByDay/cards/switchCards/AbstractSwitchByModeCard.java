@@ -3,8 +3,6 @@ package SlayByDay.cards.switchCards;
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.SwitchAction;
 import SlayByDay.characters.TheModal;
-import SlayByDay.relics.IOnSwitch;
-import SlayByDay.relics.PlaceholderRelic;
 import basemod.abstracts.CustomCard;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;

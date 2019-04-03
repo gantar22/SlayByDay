@@ -77,6 +77,7 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
         switch (this.currentID) {
             case "Hone":
                 AbstractDungeon.actionManager.addToBottom(new HoneAction(this.uuid, this.magicNumber));
+                break;
             case "Lacerate":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 break;
