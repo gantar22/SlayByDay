@@ -17,12 +17,6 @@ import static SlayByDay.SlayByDay.makeCardPath;
 
 public class Synchronize extends CustomCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Weirdness Apply X (+1) keywords to yourself.
-     */
-
     // TEXT DECLARATION 
 
     public static final String ID = SlayByDay.makeID("Synchronize");
@@ -44,6 +38,7 @@ public class Synchronize extends CustomCard {
 
     private static final int COST = 2;
     private static final int MAGIC = 1;
+    private static final int MAGIC_UP = 1;
 
     // /STAT DECLARATION/
 
@@ -57,13 +52,14 @@ public class Synchronize extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SynchronizedPower(p, p, MAGIC)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SynchronizedPower(p, p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
+            upgradeMagicNumber(MAGIC_UP);
             upgradeName();
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

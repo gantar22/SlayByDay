@@ -56,8 +56,8 @@
 
   "SlayByDay:Synchronize": {
     "NAME": "Synchronize",
-    "DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength.",
-    "UPGRADE_DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength."
+    "DESCRIPTION": "When you swap to Reason mode, draw !M! card. NL When you swap to Passion mode, gain !M! strength, and at the end of this turn, lose !M! strength.",
+    "UPGRADE_DESCRIPTION": "When you swap to Reason mode, draw !M! cards. NL When you swap to Passion mode, gain !M! strength, and at the end of this turn, lose !M! strength."
   },
   "FeatherShield": {
     "NAME": "Feather Shield",
@@ -178,6 +178,16 @@
     "NAME": "Roost",
     "DESCRIPTION": "Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.) NL Switches into Fly.",
     "UPGRADE_DESCRIPTION": "Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.) NL Switches into Fly+."
+  },
+  "Resupply": {
+    "NAME": "Resupply",
+    "DESCRIPTION": "Gain X Refill until end of turn. Exhaust. NL Switches into Resurgence.",
+    "UPGRADE_DESCRIPTION": "Gain X+1 Refill until end of turn. Exhaust. NL Switches into Resurgence+."
+  },
+  "Resurgence": {
+    "NAME": "Resurgence",
+    "DESCRIPTION": "Gain 1 Strength, Dexterity, or Thorns (at random) X times. Exhaust. NL Switches into Resupply.",
+    "UPGRADE_DESCRIPTION": "Gain 1 Strength, Dexterity, or Thorns (at random) X+1 times. Exhaust. NL Switches into Resupply+."
   },
 
 

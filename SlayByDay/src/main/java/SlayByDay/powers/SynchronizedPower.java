@@ -18,8 +18,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static SlayByDay.SlayByDay.makePowerPath;
 
-// Whenever a potion is consumed, deal (amount) damage to all enemies
-
 public class SynchronizedPower extends AbstractPower
 implements IOnSwitch {
     public AbstractCreature source;
@@ -55,7 +53,7 @@ implements IOnSwitch {
 
     @Override
     public void OnSwitch(boolean Reason_Mode) {
-        if (!this.owner.hasPower(this.ID)) {
+        if (this.owner.getPower(this.ID) != this) {
             PlaceholderRelic.unsubscribe(this);
             return;
         }

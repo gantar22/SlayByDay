@@ -15,8 +15,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static SlayByDay.SlayByDay.makePowerPath;
 
-// Whenever a potion is consumed, deal (amount) damage to all enemies
-
 public class FlightPlayerPower extends AbstractPower {
     public AbstractCreature source;
 
