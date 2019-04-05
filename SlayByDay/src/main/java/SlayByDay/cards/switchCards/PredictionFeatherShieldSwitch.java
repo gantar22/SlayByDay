@@ -16,10 +16,10 @@ import java.util.Random;
 public class PredictionFeatherShieldSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new AbstractSwitchByModeCard.switchCard("Prediction", "FeatherShield", 1, 0, 0, 15, 5, 0, 0,
+            new AbstractSwitchByModeCard.switchCard("Prediction", "FeatherShield", 1, 0, 0, 0, 15, 5, 0, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
-            new AbstractSwitchByModeCard.switchCard("FeatherShield", "Prediction", 1, 0, 0, 9, 3, 0, 0,
+            new AbstractSwitchByModeCard.switchCard("FeatherShield", "Prediction", 1, 0, 0, 0, 9, 3, 0, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false) );
 
     public String reasonCardID() {

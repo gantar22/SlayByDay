@@ -22,10 +22,10 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
 
     // WARNING - When tweaking these values, make sure equivalent changes are made in constructor as well
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Hone", "Lacerate", 1, 0, 0, 0, 0, 3, 1,
+            new switchCard("Hone", "Lacerate", 1, 0, 0, 0, 0, 0, 3, 1,
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
-            new switchCard("Lacerate", "Hone", 1, 6, 3, 0, 0, 0, 0,
+            new switchCard("Lacerate", "Hone", 1, 0, 6, 3, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
@@ -53,16 +53,22 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
         }
 
         this.damage_counter = 6;
-        System.out.println("CURIOUS: What's the baseDamage here anyway?: " + this.baseDamage);
         this.baseDamage = this.damage_counter;
     }
 
     public HoneLacerateSwitch() { this(null); }
 
     @Override
+    public void switchTo(String id) {
+        super.switchTo(id);
+        this.baseDamage = damage_counter;
+    }
+
+    @Override
     public AbstractCard makeStatEquivalentCopy() {
         HoneLacerateSwitch card = (HoneLacerateSwitch)super.makeStatEquivalentCopy();
         card.damage_counter = this.damage_counter;
+        this.baseDamage = damage_counter;
         return card;
     }
 
@@ -70,7 +76,8 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "Hone":
-                AbstractDungeon.actionManager.addToBottom(new HoneAction(this.uuid, this.damage_counter, this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new HoneAction(this.uuid, this.magicNumber));
+                break;
             case "Lacerate":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 break;

@@ -17,10 +17,10 @@ import java.util.Random;
 public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new AbstractSwitchByModeCard.switchCard("DefensiveManeuvers", "OffensiveRush", 1, 0, 0, 6, 2, 2, 1,
+            new AbstractSwitchByModeCard.switchCard("DefensiveManeuvers", "OffensiveRush", 1, 0, 0, 0, 6, 2, 2, 1,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
-            new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 3, 0, 0, 0, 4, 1,
+            new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 0, 3, 0, 0, 0, 4, 1,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {

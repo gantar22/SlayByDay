@@ -1,0 +1,68 @@
+package SlayByDay.cards;
+
+import SlayByDay.powers.SynchronizedPower;
+import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import SlayByDay.SlayByDay;
+import SlayByDay.actions.UncommonPowerAction;
+import SlayByDay.characters.TheModal;
+
+import static SlayByDay.SlayByDay.makeCardPath;
+
+public class Synchronize extends CustomCard {
+
+    // TEXT DECLARATION 
+
+    public static final String ID = SlayByDay.makeID("Synchronize");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String IMG = makeCardPath("Power.png");
+
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+
+    // /TEXT DECLARATION/
+
+    // STAT DECLARATION 	
+
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.POWER;
+    public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
+
+    private static final int COST = 2;
+    private static final int MAGIC = 1;
+    private static final int MAGIC_UP = 1;
+
+    // /STAT DECLARATION/
+
+    public Synchronize() {
+
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = MAGIC;
+
+    }
+    
+    // Actions the card should do.
+    @Override
+    public void use(final AbstractPlayer p, final AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SynchronizedPower(p, p, this.magicNumber), this.magicNumber));
+    }
+
+    //Upgraded stats.
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeMagicNumber(MAGIC_UP);
+            upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
+        }
+    }
+}

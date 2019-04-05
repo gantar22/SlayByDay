@@ -50,6 +50,15 @@
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
   },
+
+
+  "__Dom's Cards": {},
+
+  "SlayByDay:Synchronize": {
+    "NAME": "Synchronize",
+    "DESCRIPTION": "When you swap to Reason mode, draw !M! card. NL When you swap to Passion mode, gain !M! strength, and at the end of this turn, lose !M! strength.",
+    "UPGRADE_DESCRIPTION": "When you swap to Reason mode, draw !M! cards. NL When you swap to Passion mode, gain !M! strength, and at the end of this turn, lose !M! strength."
+  },
   "FeatherShield": {
     "NAME": "Feather Shield",
     "DESCRIPTION": "Gain !B! block. NL Switches into Prediction.",
@@ -107,17 +116,91 @@
   },
   "Forget": {
     "NAME": "Forget",
-    "DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect.",
-    "UPGRADE_DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect+."
+    "DESCRIPTION": "Gain !M! strength and !M! Dexterity. Exhaust a random card in your hand. NL Switches into Recollect.",
+    "UPGRADE_DESCRIPTION": "Gain !M! strength and !M! Dexterity. Exhaust a random card in your hand. NL Switches into Recollect+."
   },
   "Hone": {
     "NAME": "Hone",
-    "DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget.",
-    "UPGRADE_DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget+."
+    "DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Lacerate.",
+    "UPGRADE_DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Lacerate+."
   },
   "Lacerate": {
     "NAME": "Lacerate",
-    "DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone+."
+    "DESCRIPTION": "Deal !D! damage. NL Switches into Hone.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Switches into Hone+."
+  },
+  "Punishment": {
+    "NAME": "Punishment",
+    "DESCRIPTION": "Consume all debuffs on target. Deal !D! damage per debuff consumed. NL Switches into Fury.",
+    "UPGRADE_DESCRIPTION": "Consume all debuffs on target. Deal !D! damage per debuff consumed. NL Switches into Fury+."
+  },
+  "Fury": {
+    "NAME": "Fury",
+    "DESCRIPTION": "Lose all strength. Deal !M! damage for each strength lost. NL Switches into Punishment.",
+    "UPGRADE_DESCRIPTION": "Lose all strength. Deal !M! damage for each strength lost. NL Switches into Punishment+."
+  },
+  "SplashDamage": {
+    "NAME": "Splash Damage",
+    "DESCRIPTION": "Whenever a potion is consumed, deal !M! damage to all enemies. NL Switches into Power Up.",
+    "UPGRADE_DESCRIPTION": "Whenever a potion is consumed, deal !M! damage to all enemies. NL Switches into Power Up+."
+  },
+  "PowerUp": {
+    "NAME": "Power Up",
+    "DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage.",
+    "UPGRADE_DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage+."
+  },
+  "TacticalRetreat": {
+    "NAME": "Tactical Retreat",
+    "DESCRIPTION": "Gain !B! block. Lose !M! vulnerable. NL Switches into Blitz.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. Lose !M! vulnerable. NL Switches into Blitz+."
+  },
+  "Blitz": {
+    "NAME": "Blitz",
+    "DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat+."
+  },
+  "Bolster": {
+    "NAME": "Bolster",
+    "DESCRIPTION": "Increase this card's block by !M! this combat. NL Switches into Guard.",
+    "UPGRADE_DESCRIPTION": "Increase this card's block by !M! this combat. NL Switches into Guard+."
+  },
+  "Guard": {
+    "NAME": "Guard",
+    "DESCRIPTION": "Gain !B! block. NL Switches into Bolster.",
+    "UPGRADE_DESCRIPTION": "Gain !B! block. NL Switches into Bolster+."
+  },
+  "Fly": {
+    "NAME": "Fly",
+    "DESCRIPTION": "Gain flight for one turn. NL Switches into Roost.",
+    "UPGRADE_DESCRIPTION": "Gain flight for one turn. NL Switches into Roost+."
+  },
+  "Roost": {
+    "NAME": "Roost",
+    "DESCRIPTION": "Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.) NL Switches into Fly.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.) NL Switches into Fly+."
+  },
+  "Resupply": {
+    "NAME": "Resupply",
+    "DESCRIPTION": "Gain X Refill until end of turn. Exhaust. NL Switches into Resurgence.",
+    "UPGRADE_DESCRIPTION": "Gain X+1 Refill until end of turn. Exhaust. NL Switches into Resurgence+."
+  },
+  "Resurgence": {
+    "NAME": "Resurgence",
+    "DESCRIPTION": "Gain 1 Strength, Dexterity, or Thorns (at random) X times. Exhaust. NL Switches into Resupply.",
+    "UPGRADE_DESCRIPTION": "Gain 1 Strength, Dexterity, or Thorns (at random) X+1 times. Exhaust. NL Switches into Resupply+."
+  },
+
+
+  "__Joey's cards": {},
+
+  "Possession": {
+    "NAME": "Possession",
+    "DESCRIPTION": "Switch into Passion Mode.",
+    "UPGRADE_DESCRIPTION": "Switch into Passion Mode."
+  },
+  "Expulsion": {
+    "NAME": "Expulsion",
+    "DESCRIPTION": "Switch into Reason Mode.",
+    "UPGRADE_DESCRIPTION": "Switch into Reason Mode."
   }
 }

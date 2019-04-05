@@ -2,6 +2,7 @@ package SlayByDay.characters;
 
 import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
+import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.AbstractAnimation;
 import basemod.animations.SpineAnimation;
@@ -191,8 +192,9 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
 
         for(int i = 0; i < 6; i++)
             retVal.add(DefaultCommonAttack.ID);
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 5; i++)
             retVal.add(DefaultCommonSkill.ID);
+        retVal.add(new PossessionExpulsionSwitch("Expulsion").cardID);
 
         return retVal;
     }

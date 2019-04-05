@@ -19,10 +19,10 @@ import java.util.Random;
 public class RecollectForgetSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Recollect", "Forget", 1, 0, 0, 0, 0, 0, 0,
+            new switchCard("Recollect", "Forget", 1, 1, 0, 0, 0, 0, 0, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
-            new switchCard("Forget", "Recollect", 1, 0, 0, 0, 0, 2, 0,
+            new switchCard("Forget", "Recollect", 1, 1, 0, 0, 0, 0, 2, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false) );
 
     public String reasonCardID() {
@@ -49,12 +49,6 @@ public class RecollectForgetSwitch extends AbstractSwitchByModeCard {
     }
 
     public RecollectForgetSwitch() { this(null); }
-
-    @Override
-    public void upgrade() {
-        this.upgradeBaseCost(0);
-        super.upgrade();
-    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
