@@ -1,10 +1,23 @@
 package SlayByDay.characters;
 
+import SlayByDay.relics.IOnSwitch;
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
+import basemod.animations.AbstractAnimation;
+import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import com.brashmonkey.spriter.Animation;
+import com.brashmonkey.spriter.Data;
+import com.brashmonkey.spriter.LibGdx.LibGdxDrawer;
+import com.brashmonkey.spriter.LibGdx.LibGdxLoader;
+import com.brashmonkey.spriter.PlayerTweener;
+import com.brashmonkey.spriter.SCMLReader;
 import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -17,6 +30,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +38,8 @@ import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
 import SlayByDay.relics.PlaceholderRelic;
+import basemod.interfaces.PostInitializeSubscriber;
+import basemod.BaseMod;
 
 import java.util.ArrayList;
 
@@ -34,8 +50,14 @@ import static SlayByDay.characters.TheModal.Enums.COLOR_M_PURPLE;
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in SlayByDay-character-Strings.json in the resources
 
-public class TheModal extends CustomPlayer  {
+public class TheModal extends CustomPlayer implements PostInitializeSubscriber  {
     public static final Logger logger = LogManager.getLogger(SlayByDay.class.getName());
+
+    @Override
+    public void receivePostInitialize() {
+        System.out.println("received post initialize");
+
+    }
 
     // =============== CHARACTER ENUMERATORS =================
     // These are enums for your Characters color (both general color and for the card library) as well as
@@ -47,12 +69,14 @@ public class TheModal extends CustomPlayer  {
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_MODAL;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
+        @SpireEnum(name = "MEDIUM_PURPLE_COLOR") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_M_PURPLE;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "MEDIUM_PURPLE_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
         @SpireEnum
         public static AbstractCard.CardTags MODE_SWITCH_CARD;
+        @SpireEnum
+        public static AbstractPower.PowerType PACT;
     }
 
     // =============== CHARACTER ENUMERATORS  =================
@@ -100,13 +124,20 @@ public class TheModal extends CustomPlayer  {
     // =============== CHARACTER CLASS START =================
 
     public static boolean Reason_Mode = true;
+    public static SpriterAnimation reason_anim = new SpriterAnimation(
+            "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml");
+    public static SpriterAnimation passion_anim = new SpriterAnimation(
+            "SlayByDayResources/images/char/defaultCharacter/Spriter/Passion_Anim.scml");
+
+
 
     public TheModal(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
-                new SpriterAnimation(
-                        "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml"));
+               reason_anim);
 
+        BaseMod.subscribe(this);
+        System.out.println("Constructor called");
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
@@ -177,6 +208,12 @@ public class TheModal extends CustomPlayer  {
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        PlaceholderRelic.subscribe(new IOnSwitch() {
+            @Override
+            public void OnSwitch(boolean Reason_Mode) {
+                switch_mode(Reason_Mode);
+            }
+        });
 
         return retVal;
     }
@@ -187,6 +224,16 @@ public class TheModal extends CustomPlayer  {
         CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false); // Screen Effect
+    }
+
+    public void switch_mode(boolean reason_Mode)
+    {
+        if(reason_Mode)
+        {
+            animation = reason_anim;
+        } else {
+            animation = passion_anim;
+        }
     }
 
     // character Select on-button-press sound effect

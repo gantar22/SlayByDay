@@ -1,51 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r9">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="main_TheModal_R.png" width="512" height="512" pivot_x="0.522523" pivot_y="0.236486"/>
+        <file id="1" name="kisspng-for-honor-shamanism-spirit-dungeon-runners-runnersnews-on-feedyeti-com-5b6ab78ad969d1.2465718915337204588905.png" width="1160" height="1200" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="entity_000">
         <obj_info name="bone_000" type="bone" w="224.217" h="10"/>
+        <obj_info name="bone_001" type="bone" w="191.434" h="10"/>
         <animation id="0" name="ReasonIdle" length="1000" interval="100">
             <mainline>
                 <key id="0">
-                    <bone_ref id="0" timeline="1" key="0"/>
-                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <bone_ref id="0" timeline="2" key="0"/>
+                    <object_ref id="0" parent="0" timeline="1" key="0" z_index="0"/>
                 </key>
-                <key id="1" time="300">
-                    <bone_ref id="0" timeline="1" key="1"/>
-                    <object_ref id="0" parent="0" timeline="0" key="3" z_index="0"/>
+                <key id="1" time="295">
+                    <bone_ref id="0" timeline="2" key="1"/>
+                    <object_ref id="0" parent="0" timeline="1" key="0" z_index="0"/>
                 </key>
-                <key id="2" time="608">
-                    <bone_ref id="0" timeline="1" key="2"/>
-                    <object_ref id="0" parent="0" timeline="0" key="4" z_index="0"/>
+                <key id="2" time="597">
+                    <bone_ref id="0" timeline="2" key="2"/>
+                    <object_ref id="0" parent="0" timeline="1" key="0" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="main_TheModal_R">
-                <key id="0" spin="-1">
-                    <object folder="0" file="0" x="113.49332" y="4.156188" angle="270.469627"/>
-                </key>
-                <key id="1" spin="-1">
-                    <object folder="0" file="0" y="53.846154"/>
-                </key>
-                <key id="2" time="300" spin="-1">
-                    <object folder="0" file="0" x="10.885438" y="53.633381" angle="354.50514"/>
-                </key>
-                <key id="3" time="300" spin="0">
-                    <object folder="0" file="0" x="113.49332" y="4.156188" angle="270.469627"/>
-                </key>
-                <key id="4" time="608" spin="0">
-                    <object folder="0" file="0" x="113.49332" y="4.156188" angle="270.469627"/>
+            <timeline id="0" obj="0" name="bone_000" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="4.225806" y="-1.677419" angle="89.530373"/>
                 </key>
             </timeline>
-            <timeline id="1" obj="0" name="bone_000" object_type="bone">
-                <key id="0" spin="-1">
-                    <bone x="3.225806" y="-59.677419" angle="89.530373"/>
+            <timeline id="1" name="kisspng-for-honor-shamanism-spirit-dungeon-runners-runnersnews-on-feedyeti-com-5b6ab78ad969d1">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="403.28168" y="26.63895" angle="270.537973" scale_x="0.353139" scale_y="0.045218"/>
                 </key>
-                <key id="1" time="300">
-                    <bone x="3.225806" y="-59.677419" angle="84.035513"/>
+            </timeline>
+            <timeline id="2" obj="1" name="bone_001" object_type="bone">
+                <key id="0">
+                    <bone x="-2.857143" y="9.285714" angle="88.943976" scale_x="0.949945" scale_y="7.41877"/>
                 </key>
-                <key id="2" time="608" spin="-1">
-                    <bone x="3.225806" y="-59.677419" angle="106.113418"/>
+                <key id="1" time="295" spin="-1">
+                    <bone x="-2.857143" y="9.285714" angle="98.163845" scale_x="0.949945" scale_y="7.41877"/>
+                </key>
+                <key id="2" time="597">
+                    <bone x="-2.857143" y="9.285714" angle="74.23863" scale_x="0.949945" scale_y="7.41877"/>
                 </key>
             </timeline>
         </animation>
