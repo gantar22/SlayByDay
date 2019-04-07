@@ -2,7 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.SwitchAction;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import basemod.abstracts.CustomCard;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -114,7 +114,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
 
         this.switchClass = previewCard;
-        this.tags.add(TheModal.Enums.MODE_SWITCH_CARD);
+        this.tags.add(TheMedium.Enums.MODE_SWITCH_CARD);
     }
 
     @Override
@@ -132,10 +132,10 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             return;
         }
 
-        if (TheModal.Reason_Mode && this.currentID != reasonCardID()) {
+        if (TheMedium.Reason_Mode && this.currentID != reasonCardID()) {
             AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
             switch_queued = true;
-        } else if (!TheModal.Reason_Mode && this.currentID != passionCardID()) {
+        } else if (!TheMedium.Reason_Mode && this.currentID != passionCardID()) {
             AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
             switch_queued = true;
         }

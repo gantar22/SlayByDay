@@ -1,20 +1,14 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import java.util.List;
 import java.util.Arrays;
 import java.util.Random;
 
 import SlayByDay.relics.PlaceholderRelic;
-import static SlayByDay.SlayByDay.makeCardPath;
 
 public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
 
@@ -30,7 +24,7 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
 
     public PossessionExpulsionSwitch(String switchID) {
         super("SlayByDay:PossessionExpulsionSwitch", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.BASIC, CardTarget.NONE, PossessionExpulsionSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.BASIC, CardTarget.NONE, PossessionExpulsionSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

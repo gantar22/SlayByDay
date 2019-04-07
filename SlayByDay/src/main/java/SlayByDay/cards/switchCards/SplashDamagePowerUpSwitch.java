@@ -1,6 +1,6 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import SlayByDay.powers.PowerUpPower;
 import SlayByDay.powers.SplashDamagePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -30,7 +30,7 @@ public class SplashDamagePowerUpSwitch extends AbstractSwitchByModeCard {
 
     public SplashDamagePowerUpSwitch(String switchID) {
         super("SlayByDay:SplashDamagePowerUp", "None", null, 0, "None", CardType.POWER,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.UNCOMMON, CardTarget.SELF, SplashDamagePowerUpSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.UNCOMMON, CardTarget.SELF, SplashDamagePowerUpSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

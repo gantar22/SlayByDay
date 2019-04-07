@@ -1,17 +1,14 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.PunishmentAction;
-import SlayByDay.characters.TheModal;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import java.util.Arrays;
@@ -36,7 +33,7 @@ public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
 
     public PunishmentFurySwitch(String switchID) {
         super("SlayByDay:PunishmentFury", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, PunishmentFurySwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, PunishmentFurySwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

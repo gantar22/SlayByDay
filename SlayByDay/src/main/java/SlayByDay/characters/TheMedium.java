@@ -4,21 +4,10 @@ import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
 import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.AbstractAnimation;
-import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.brashmonkey.spriter.Animation;
-import com.brashmonkey.spriter.Data;
-import com.brashmonkey.spriter.LibGdx.LibGdxDrawer;
-import com.brashmonkey.spriter.LibGdx.LibGdxLoader;
-import com.brashmonkey.spriter.PlayerTweener;
-import com.brashmonkey.spriter.SCMLReader;
 import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -40,18 +29,17 @@ import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
 import SlayByDay.relics.PlaceholderRelic;
 import basemod.interfaces.PostInitializeSubscriber;
-import basemod.BaseMod;
 
 import java.util.ArrayList;
 
 import static SlayByDay.SlayByDay.*;
-import static SlayByDay.characters.TheModal.Enums.COLOR_M_PURPLE;
+import static SlayByDay.characters.TheMedium.Enums.COLOR_M_PURPLE;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in SlayByDay-character-Strings.json in the resources
 
-public class TheModal extends CustomPlayer implements PostInitializeSubscriber  {
+public class TheMedium extends CustomPlayer implements PostInitializeSubscriber  {
     public static final Logger logger = LogManager.getLogger(SlayByDay.class.getName());
 
     @Override
@@ -69,7 +57,7 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
 
     public static class Enums {
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_MODAL;
+        public static AbstractPlayer.PlayerClass THE_MEDIUM;
         @SpireEnum(name = "MEDIUM_PURPLE_COLOR") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_M_PURPLE;
         @SpireEnum(name = "MEDIUM_PURPLE_COLOR") @SuppressWarnings("unused")
@@ -97,7 +85,7 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
 
     // =============== STRINGS =================
 
-    private static final String ID = makeID("ModalCharacter");
+    private static final String ID = makeID("MediumCharacter");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -132,7 +120,7 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
 
 
 
-    public TheModal(String name, PlayerClass setClass) {
+    public TheMedium(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
                reason_anim);
@@ -144,9 +132,9 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in SlayByDay.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
-                THE_MODAL_SHOULDER_1, // campfire pose
-                THE_MODAL_SHOULDER_2, // another campfire pose
-                THE_MODAL_CORPSE, // dead corpse
+                THE_MEDIUM_SHOULDER_1, // campfire pose
+                THE_MEDIUM_SHOULDER_2, // another campfire pose
+                THE_MEDIUM_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -155,8 +143,8 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_MODAL_SKELETON_ATLAS,
-                THE_MODAL_SKELETON_JSON,
+                THE_MEDIUM_SKELETON_ATLAS,
+                THE_MEDIUM_SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -260,7 +248,7 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return SlayByDay.MODAL_PURPLE;
+        return SlayByDay.MEDIUM_PURPLE;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -291,20 +279,20 @@ public class TheModal extends CustomPlayer implements PostInitializeSubscriber  
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheModal(name, chosenClass);
+        return new TheMedium(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return SlayByDay.MODAL_PURPLE;
+        return SlayByDay.MEDIUM_PURPLE;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return SlayByDay.MODAL_PURPLE;
+        return SlayByDay.MEDIUM_PURPLE;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

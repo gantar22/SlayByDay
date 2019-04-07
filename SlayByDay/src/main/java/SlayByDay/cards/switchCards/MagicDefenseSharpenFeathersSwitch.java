@@ -1,19 +1,12 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +30,7 @@ public class MagicDefenseSharpenFeathersSwitch extends AbstractSwitchByModeCard 
 
     public MagicDefenseSharpenFeathersSwitch(String switchID) {
         super("SlayByDay:MagicDefenseSharpenFeathers", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.UNCOMMON, CardTarget.NONE, MagicDefenseSharpenFeathersSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.UNCOMMON, CardTarget.NONE, MagicDefenseSharpenFeathersSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

@@ -1,6 +1,6 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -32,7 +32,7 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
 
     public DefensiveManeuversOffensiveRushSwitch(String switchID) {
         super("SlayByDay:DefensiveManeuversOffensiveRush", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.BASIC, AbstractCard.CardTarget.NONE, DefensiveManeuversOffensiveRushSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.BASIC, AbstractCard.CardTarget.NONE, DefensiveManeuversOffensiveRushSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

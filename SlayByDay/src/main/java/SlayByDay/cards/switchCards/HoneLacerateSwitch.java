@@ -1,18 +1,14 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.HoneAction;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +35,7 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
 
     public HoneLacerateSwitch(String switchID) {
         super("SlayByDay:HoneLacerate", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, HoneLacerateSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, HoneLacerateSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

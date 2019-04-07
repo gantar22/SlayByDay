@@ -2,7 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.ResupplyAction;
 import SlayByDay.actions.ResurgenceAction;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -30,7 +30,7 @@ public class ResupplyResurgenceSwitch extends AbstractSwitchByModeCard {
 
     public ResupplyResurgenceSwitch(String switchID) {
         super("SlayByDay:ResupplyResurgence", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, ResupplyResurgenceSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, ResupplyResurgenceSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

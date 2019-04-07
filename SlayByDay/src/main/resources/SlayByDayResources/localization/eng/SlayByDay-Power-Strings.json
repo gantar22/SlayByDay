@@ -19,6 +19,6 @@
         "DESCRIPTIONS": ["Receive 50% less attack damage until your next turn.", "Receive 50% less attack damage for ", " turns."]
 }, "SlayByDay:Refill": {
         "NAME": "Refill",
-        "DESCRIPTIONS": ["When you use a potion, consume a stack of refill and gain a random potion. Expires at the end of your turn."]
+        "DESCRIPTIONS": ["When you use a potion, brew a random potion. Expires at the end of your turn."]
 }
 }

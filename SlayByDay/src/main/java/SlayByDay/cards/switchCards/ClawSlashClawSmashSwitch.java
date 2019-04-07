@@ -1,6 +1,6 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -32,7 +32,7 @@ public class ClawSlashClawSmashSwitch extends AbstractSwitchByModeCard {
 
     public ClawSlashClawSmashSwitch(String switchID) {
         super("SlayByDay:ClawSlashClawSmash", "None", null, 0, "None", CardType.ATTACK,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, ClawSlashClawSmashSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, ClawSlashClawSmashSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;

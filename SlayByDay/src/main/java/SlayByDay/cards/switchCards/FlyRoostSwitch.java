@@ -1,6 +1,6 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import SlayByDay.powers.FlightPlayerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -32,7 +32,7 @@ public class FlyRoostSwitch extends AbstractSwitchByModeCard {
 
     public FlyRoostSwitch(String switchID) {
         super("SlayByDay:FlyRoost", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, FlyRoostSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, FlyRoostSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;
@@ -49,7 +49,7 @@ public class FlyRoostSwitch extends AbstractSwitchByModeCard {
     public FlyRoostSwitch() { this(null); }
 
     public void applyPowers() {
-        if (!TheModal.Reason_Mode && AbstractDungeon.player.hasPower(DexterityPower.POWER_ID)) {
+        if (!TheMedium.Reason_Mode && AbstractDungeon.player.hasPower(DexterityPower.POWER_ID)) {
             this.baseDamage = AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount + this.magicNumber;
         }
         super.applyPowers();

@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.UncommonPowerAction;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
@@ -38,7 +38,7 @@ public class DefaultUncommonPower extends CustomCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
+    public static final CardColor COLOR = TheMedium.Enums.COLOR_M_PURPLE;
 
     private static final int COST = -1;
     private static final int MAGIC = 1;

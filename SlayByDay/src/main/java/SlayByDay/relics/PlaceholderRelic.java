@@ -1,11 +1,9 @@
 package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import SlayByDay.util.TextureLoader;
-import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
-import basemod.interfaces.OnCardUseSubscriber;
 import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.BetterOnLoseHpRelic;
@@ -23,7 +21,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
@@ -91,7 +88,7 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
     @Override
     public void onPlayerEndTurn()
     {
-        if(!TheModal.Reason_Mode)
+        if(!TheMedium.Reason_Mode)
         {
             addCounter(0);
         }
@@ -105,14 +102,14 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
             return;
         }
         setCounter(this.counter + i);
-        if(TheModal.Reason_Mode)
+        if(TheMedium.Reason_Mode)
         {
             if(this.counter > REASON_STARTING_COUNTER)
             {
                 this.counter = REASON_STARTING_COUNTER;
             }
         }
-        if(!TheModal.Reason_Mode)
+        if(!TheMedium.Reason_Mode)
         {
             if(this.counter > PASSION_STARTING_COUNTER)
             {
@@ -163,23 +160,23 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
     public void swap()
     {
         flash();
-        if(TheModal.Reason_Mode)
+        if(TheMedium.Reason_Mode)
         {
-            TheModal.Reason_Mode = false;
+            TheMedium.Reason_Mode = false;
             setCounter(PASSION_STARTING_COUNTER);
             System.out.println(this.counter);
             System.out.println("switch to passion");
         } else {
-            TheModal.Reason_Mode = true;
+            TheMedium.Reason_Mode = true;
             setCounter(REASON_STARTING_COUNTER);
             System.out.println("switch to reason");
         }
 
         for(int i = 0; i < switchers.size(); i++)
         {
-            switchers.get(i).OnSwitch(TheModal.Reason_Mode);
+            switchers.get(i).OnSwitch(TheMedium.Reason_Mode);
         }
-        apply_stats_on_switch(TheModal.Reason_Mode);
+        apply_stats_on_switch(TheMedium.Reason_Mode);
     }
 
     // Description
@@ -196,7 +193,7 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
             AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                 @Override
                 public void update() {
-                    if(i > 0 && !TheModal.Reason_Mode)
+                    if(i > 0 && !TheMedium.Reason_Mode)
                     {
                         flash();
                         addCounter(1);
@@ -213,7 +210,7 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
     {
         if(needs_initialization) swap();
         setCounter(persistant_counter);
-        if(TheModal.Reason_Mode)
+        if(TheMedium.Reason_Mode)
         {
             AbstractPower my_retain = new RetainCardPower(AbstractDungeon.player,1);
             my_retain.ID = my_retain_id;
@@ -252,18 +249,18 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
         int dif = 0;
         if(m  == null) return;
         System.out.println(m.currentBlock);
-        if(c.damage > m.currentBlock && !TheModal.Reason_Mode)
+        if(c.damage > m.currentBlock && !TheMedium.Reason_Mode)
         {
             flash();
             dif -= 2;
         }
-        if(TheModal.Reason_Mode)
+        if(TheMedium.Reason_Mode)
         {
-            if(c.type == AbstractCard.CardType.ATTACK && TheModal.Reason_Mode)
+            if(c.type == AbstractCard.CardType.ATTACK && TheMedium.Reason_Mode)
             {
                 dif -= 2;
                 flash();
-            } else if(c.type == AbstractCard.CardType.SKILL && TheModal.Reason_Mode)
+            } else if(c.type == AbstractCard.CardType.SKILL && TheMedium.Reason_Mode)
             {
                 flash();
                 dif += 1;
@@ -274,7 +271,7 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
 
     @Override
     public basic_relic_data onSave() {
-        return new basic_relic_data(TheModal.Reason_Mode);
+        return new basic_relic_data(TheMedium.Reason_Mode);
     }
 
     @Override
@@ -290,10 +287,10 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
         switchers.add(new IOnSwitch() {
             @Override
             public void OnSwitch(boolean Reason_Mode) {
-                TheModal.class.cast(AbstractDungeon.player).switch_mode(Reason_Mode);
+                TheMedium.class.cast(AbstractDungeon.player).switch_mode(Reason_Mode);
             }
         });
-        if(TheModal.Reason_Mode != basic_relic_data.reason_mode)
+        if(TheMedium.Reason_Mode != basic_relic_data.reason_mode)
         {
             int c = this.counter;
             needs_initialization = true;

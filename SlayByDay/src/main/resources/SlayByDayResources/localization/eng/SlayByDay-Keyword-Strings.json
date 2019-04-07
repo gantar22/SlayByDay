@@ -19,5 +19,25 @@
       "multikeyword"
     ],
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
+    "NAMES": [
+      "human",
+      "human form"
+    ],
+    "DESCRIPTION": "While in human form, you have +1 retain."
+  },
+  {
+    "NAMES": [
+      "spirit",
+      "spirit form"
+    ],
+    "DESCRIPTION": "While in spirit form, you have +2 strength and +2 dexterity, but your attacks are targeted randomly."
+  },
+  {
+    "NAMES": [
+      "refill"
+    ],
+    "DESCRIPTION": "When you use a potion, brew a random potion. Expires at the end of your turn."
   }
 ]

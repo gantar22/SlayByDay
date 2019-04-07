@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
@@ -47,7 +47,7 @@ public class DefaultCommonAttack extends CustomCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
+    public static final CardColor COLOR = TheMedium.Enums.COLOR_M_PURPLE;
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;

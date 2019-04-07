@@ -20,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.cards.*;
 import SlayByDay.cards.switchCards.*;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import SlayByDay.events.IdentityCrisisEvent;
 import SlayByDay.potions.PlaceholderPotion;
 import SlayByDay.relics.BottledPlaceholderRelic;
@@ -74,7 +74,7 @@ public class SlayByDay implements
 
     // Colors (RGB)
     // Character Color
-    public static final Color MODAL_PURPLE = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color MEDIUM_PURPLE = CardHelper.getColor(64.0f, 70.0f, 70.0f);
 
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -97,16 +97,16 @@ public class SlayByDay implements
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "SlayByDayResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "SlayByDayResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_MODAL_SHOULDER_1 = "SlayByDayResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_MODAL_SHOULDER_2 = "SlayByDayResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_MODAL_CORPSE = "SlayByDayResources/images/char/defaultCharacter/corpse.png";
+    public static final String THE_MEDIUM_SHOULDER_1 = "SlayByDayResources/images/char/defaultCharacter/shoulder.png";
+    public static final String THE_MEDIUM_SHOULDER_2 = "SlayByDayResources/images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_MEDIUM_CORPSE = "SlayByDayResources/images/char/defaultCharacter/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "SlayByDayResources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_MODAL_SKELETON_ATLAS = "SlayByDayResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_MODAL_SKELETON_JSON = "SlayByDayResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_MEDIUM_SKELETON_ATLAS = "SlayByDayResources/images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_MEDIUM_SKELETON_JSON = "SlayByDayResources/images/char/defaultCharacter/skeleton.json";
 
     // =============== MAKE IMAGE PATHS =================
 
@@ -149,10 +149,10 @@ public class SlayByDay implements
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + TheModal.Enums.COLOR_M_PURPLE.toString());
+        logger.info("Creating the color " + TheMedium.Enums.COLOR_M_PURPLE.toString());
 
-        BaseMod.addColor(TheModal.Enums.COLOR_M_PURPLE, MODAL_PURPLE, MODAL_PURPLE, MODAL_PURPLE,
-                MODAL_PURPLE, MODAL_PURPLE, MODAL_PURPLE, MODAL_PURPLE,
+        BaseMod.addColor(TheMedium.Enums.COLOR_M_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE,
+                MEDIUM_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -207,13 +207,13 @@ public class SlayByDay implements
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + TheModal.Enums.THE_MODAL.toString());
+        logger.info("Beginning to edit characters. " + "Add " + TheMedium.Enums.THE_MEDIUM.toString());
 
-        BaseMod.addCharacter(new TheModal("the Default", TheModal.Enums.THE_MODAL),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheModal.Enums.THE_MODAL);
+        BaseMod.addCharacter(new TheMedium("the Default", TheMedium.Enums.THE_MEDIUM),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheMedium.Enums.THE_MEDIUM);
 
         receiveEditPotions();
-        logger.info("Added " + TheModal.Enums.THE_MODAL.toString());
+        logger.info("Added " + TheMedium.Enums.THE_MEDIUM.toString());
     }
 
     // =============== /LOAD THE CHARACTER/ =================
@@ -258,9 +258,9 @@ public class SlayByDay implements
         logger.info("Beginning to edit potions");
 
         // Class Specific Potion. If you want your potion to not be class-specific,
-        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_MODAL".
+        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_MEDIUM".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheModal.Enums.THE_MODAL);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheMedium.Enums.THE_MEDIUM);
 
         logger.info("Done editing potions");
     }
@@ -275,9 +275,9 @@ public class SlayByDay implements
         logger.info("Adding relics");
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheModal.Enums.COLOR_M_PURPLE);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheModal.Enums.COLOR_M_PURPLE);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheModal.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheMedium.Enums.COLOR_M_PURPLE);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

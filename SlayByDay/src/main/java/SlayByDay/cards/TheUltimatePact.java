@@ -1,26 +1,17 @@
 package SlayByDay.cards;
 
-import SlayByDay.actions.SwitchAction;
-import SlayByDay.characters.TheModal;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import basemod.abstracts.CustomCard;
-
-import java.util.List;
-import java.util.Arrays;
-import java.util.Random;
 
 public class TheUltimatePact extends CustomCard {
 
     public TheUltimatePact() {
         super( "SlayByDay:TheUltimatePact", "The Ultimate Pact", null, 0,"None", CardType.POWER,
-            TheModal.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.SELF);
+            TheMedium.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

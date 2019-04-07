@@ -1,7 +1,7 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.BolsterAction;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,7 +32,7 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
 
     public BolsterGuardSwitch(String switchID) {
         super("SlayByDay:BolsterGuard", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, BolsterGuardSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, BolsterGuardSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;
