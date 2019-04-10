@@ -15,11 +15,11 @@ import java.util.Random;
 public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Bolster", "Guard", 1, 0, 0, 0, 0, 0, 2, 1,
+            new switchCard("Bolster", "Guard", 0, 0, 0, 0, 0, 0, 2, 1,
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
-            new switchCard("Guard", "Bolster", 1, 0, 0, 0, 5, 3, 0, 0,
-                    CardType.SKILL, CardTarget.SELF, false, false, false, false) );
+            new switchCard("Guard", "Bolster", 0, 0, 0, 0, 5, 3, 0, 0,
+                    CardType.SKILL, CardTarget.SELF, false, false, true, false) );
 
     public String reasonCardID() {
         return "Bolster";

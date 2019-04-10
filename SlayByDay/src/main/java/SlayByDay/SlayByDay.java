@@ -1,5 +1,7 @@
 package SlayByDay;
 
+import SlayByDay.powers.interfaces.OnSwitchPower;
+import SlayByDay.relics.*;
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
@@ -12,9 +14,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,10 +28,6 @@ import SlayByDay.cards.switchCards.*;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.events.IdentityCrisisEvent;
 import SlayByDay.potions.PlaceholderPotion;
-import SlayByDay.relics.BottledPlaceholderRelic;
-import SlayByDay.relics.DefaultClickableRelic;
-import SlayByDay.relics.PlaceholderRelic;
-import SlayByDay.relics.PlaceholderRelic2;
 import SlayByDay.util.TextureLoader;
 import SlayByDay.variables.DefaultCustomVariable;
 import SlayByDay.variables.DefaultSecondMagicNumber;
@@ -59,7 +60,8 @@ public class SlayByDay implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        IOnSwitch {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(SlayByDay.class.getName());
@@ -285,6 +287,9 @@ public class SlayByDay implements
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         logger.info("Done adding relics!");
+
+        // Subscribe to relic based listeners
+        PlaceholderRelic.subscribe(this);
     }
 
     // ================ /ADD RELICS/ ===================
@@ -432,6 +437,28 @@ public class SlayByDay implements
     }
 
     // ================ /LOAD THE KEYWORDS/ ===================    
+
+
+    // ================ LISTEN FOR ONSWITCH ===================
+
+    @Override
+    public void OnSwitch(boolean Reason_Mode) {
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p instanceof OnSwitchPower) {
+                ((OnSwitchPower) p).onSwitch(Reason_Mode);
+            }
+        }
+
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            for (AbstractPower p : monster.powers) {
+                if (p instanceof OnSwitchPower) {
+                    ((OnSwitchPower) p).onSwitch(Reason_Mode);
+                }
+            }
+        }
+    }
+
+    // ================ /LISTEN FOR ONSWITCH/ ===================
 
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.
