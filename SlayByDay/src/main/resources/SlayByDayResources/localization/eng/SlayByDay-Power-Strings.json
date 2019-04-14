@@ -20,5 +20,11 @@
 }, "SlayByDay:Refill": {
         "NAME": "Refill",
         "DESCRIPTIONS": ["When you use a potion, brew a random potion. Expires at the end of your turn."]
+}, "SlayByDay:Infinity": {
+        "NAME": "Infinity",
+        "DESCRIPTIONS": ["After ", " more turns, when you play a card, draw a card.", " more turn, when you play a card, draw a card.", "When you play a card, draw a card."]
+}, "SlayByDay:Finality": {
+        "NAME": "Finality",
+        "DESCRIPTIONS": ["In ", " turns, die irreversibly.", " turn, die irreversibly."]
 }
 }

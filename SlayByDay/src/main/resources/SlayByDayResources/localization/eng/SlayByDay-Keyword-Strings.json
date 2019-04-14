@@ -39,5 +39,17 @@
       "refill"
     ],
     "DESCRIPTION": "When you use a potion, brew a random potion. Expires at the end of your turn."
+  },
+  {
+    "NAMES": [
+      "price"
+    ],
+    "DESCRIPTION": "Payment required to gain the favor."
+  },
+  {
+    "NAMES": [
+      "favor"
+    ],
+    "DESCRIPTION": "A reward bestowed at a price."
   }
 ]

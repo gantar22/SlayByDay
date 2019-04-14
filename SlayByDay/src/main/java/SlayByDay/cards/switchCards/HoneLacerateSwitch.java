@@ -18,10 +18,10 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
 
     // WARNING - When tweaking these values, make sure equivalent changes are made in constructor as well
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Hone", "Lacerate", 0, 0, 0, 0, 0, 0, 3, 1,
+            new switchCard("Hone", "Lacerate", 1, 0, 0, 0, 0, 0, 3, 1,
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
-            new switchCard("Lacerate", "Hone", 0, 0, 6, 3, 0, 0, 0, 0,
+            new switchCard("Lacerate", "Hone", 1, 0, 6, 3, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, true, false) );
 
     public String reasonCardID() {
@@ -66,6 +66,11 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
         card.damage_counter = this.damage_counter;
         this.baseDamage = damage_counter;
         return card;
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        AbstractDungeon.actionManager.addToTop(new HoneAction(this.uuid, this.magicNumber));
     }
 
     @Override

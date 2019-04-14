@@ -121,7 +121,7 @@
   },
   "Hone": {
     "NAME": "Hone",
-    "DESCRIPTION": "Human. NL Increase this card's damage by !M! this combat.",
+    "DESCRIPTION": "Human. NL When you draw this card, increase its damage by !M! this combat. NL Increase this card's damage by !M! this combat.",
     "UPGRADE_DESCRIPTION": "Human. NL Increase this card's damage by !M! this combat."
   },
   "Lacerate": {
@@ -161,7 +161,7 @@
   },
   "Bolster": {
     "NAME": "Bolster",
-    "DESCRIPTION": "Human. NL Increase this card's block by !M! this combat.",
+    "DESCRIPTION": "Human. NL When you draw this card, increase its block by !M! this combat. NL Increase this card's block by !M! this combat.",
     "UPGRADE_DESCRIPTION": "Human. NL Increase this card's block by !M! this combat."
   },
   "Guard": {
@@ -188,6 +188,16 @@
     "NAME": "Resurgence",
     "DESCRIPTION": "Spirit. NL Gain 1 Strength, Dexterity, or Thorns (at random) X times. Exhaust.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Gain 1 Strength, Dexterity, or Thorns (at random) X+1 times. Exhaust."
+  },
+  "Infinity": {
+    "NAME": "Infinity",
+    "DESCRIPTION": "Human. NL Price: Wait 4 turns. NL Favor: When you play a card, draw a card.",
+    "UPGRADE_DESCRIPTION": "Human. NL Price: Wait 4 turns. NL Favor: When you play a card, draw a card."
+  },
+  "Finality": {
+    "NAME": "Finality",
+    "DESCRIPTION": "Spirit. NL Favor: Gain 4 Intangible. NL Price: Die in 4 turns.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Favor: Gain 4 Intangible. NL Price: In 4 turns, die irreversibly."
   },
 
 

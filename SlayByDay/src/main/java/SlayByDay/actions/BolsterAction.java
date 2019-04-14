@@ -30,6 +30,8 @@ public class BolsterAction extends AbstractGameAction {
             if (c.baseBlock < 0) {
                 c.baseBlock = 0;
             }
+            c.applyPowers();
+            c.flash();
         }
 
         this.isDone = true;
