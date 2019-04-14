@@ -1,5 +1,6 @@
 package SlayByDay;
 
+import SlayByDay.powers.interfaces.OnPostPotionUsePower;
 import SlayByDay.powers.interfaces.OnSwitchPower;
 import SlayByDay.relics.*;
 import basemod.BaseMod;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -61,6 +63,7 @@ public class SlayByDay implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
+        PostPotionUseSubscriber,
         IOnSwitch {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
@@ -338,6 +341,7 @@ public class SlayByDay implements
         BaseMod.addCard(new BolsterGuardSwitch());
         BaseMod.addCard(new FlyRoostSwitch());
         BaseMod.addCard(new ResupplyResurgenceSwitch());
+        BaseMod.addCard(new InfinityFinalitySwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());
@@ -439,7 +443,7 @@ public class SlayByDay implements
     // ================ /LOAD THE KEYWORDS/ ===================    
 
 
-    // ================ LISTEN FOR ONSWITCH ===================
+    // ================ EXTRANEOUS LISTENERS ===================
 
     @Override
     public void OnSwitch(boolean Reason_Mode) {
@@ -458,7 +462,24 @@ public class SlayByDay implements
         }
     }
 
-    // ================ /LISTEN FOR ONSWITCH/ ===================
+    @Override
+    public void receivePostPotionUse(AbstractPotion abstractPotion) {
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p instanceof OnPostPotionUsePower) {
+                ((OnPostPotionUsePower) p).onPostPotionUse(abstractPotion);
+            }
+        }
+
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            for (AbstractPower p : monster.powers) {
+                if (p instanceof OnPostPotionUsePower) {
+                    ((OnPostPotionUsePower) p).onPostPotionUse(abstractPotion);
+                }
+            }
+        }
+    }
+
+    // ================ /EXTRANEOUS LISTENERS/ ===================
 
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.
