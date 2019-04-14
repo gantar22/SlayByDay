@@ -27,9 +27,11 @@ import static SlayByDay.SlayByDay.makeRelicPath;
 
 class basic_relic_data {
     boolean reason_mode;
-    public basic_relic_data(boolean b)
+    int counter;
+    public basic_relic_data(boolean b, int c)
     {
         reason_mode = b;
+        counter = c;
     }
 }
 
@@ -56,6 +58,7 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
     private static final String my_retain_id = "my_retain";
     private static int persistant_counter = REASON_STARTING_COUNTER;
     private static boolean needs_initialization = false;
+    private basic_relic_data old_data;
 
     public PlaceholderRelic() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
@@ -208,8 +211,14 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
     @Override
     public void atBattleStart()
     {
-        if(needs_initialization) swap();
-        setCounter(persistant_counter);
+        if(needs_initialization)
+        {
+            if(TheMedium.Reason_Mode != old_data.reason_mode)
+                swap();
+            setCounter(old_data.counter);
+        } else {
+            setCounter(persistant_counter);
+        }
         if(TheMedium.Reason_Mode)
         {
             AbstractPower my_retain = new RetainCardPower(AbstractDungeon.player,1);
@@ -271,11 +280,12 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
 
     @Override
     public basic_relic_data onSave() {
-        return new basic_relic_data(TheMedium.Reason_Mode);
+        persistant_counter = REASON_STARTING_COUNTER;
+        return new basic_relic_data(TheMedium.Reason_Mode,this.counter);
     }
 
     @Override
-    public void onLoad(basic_relic_data basic_relic_data) {
+    public void onLoad(basic_relic_data my_basic_relic_data) {
        // switchers = new ArrayList<>(Arrays.asList(basic_relic_data.list));
         //save the mode and check it somewhere else to assign it
         //register some indication that you ought to swap at your first chance
@@ -290,12 +300,8 @@ public class PlaceholderRelic extends CustomRelic implements BetterOnLoseHpRelic
                 TheMedium.class.cast(AbstractDungeon.player).switch_mode(Reason_Mode);
             }
         });
-        if(TheMedium.Reason_Mode != basic_relic_data.reason_mode)
-        {
-            int c = this.counter;
-            needs_initialization = true;
-            setCounter(c);
-        }
+        old_data = new basic_relic_data(my_basic_relic_data.reason_mode,my_basic_relic_data.counter);
+        needs_initialization = true;
     }
 }
 
