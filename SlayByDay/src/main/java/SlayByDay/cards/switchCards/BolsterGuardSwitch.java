@@ -44,6 +44,9 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
 
         this.block_counter = 6;
         this.baseBlock = this.block_counter;

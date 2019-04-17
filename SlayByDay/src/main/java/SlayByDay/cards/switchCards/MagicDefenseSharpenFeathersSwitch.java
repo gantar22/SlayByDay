@@ -42,6 +42,9 @@ public class MagicDefenseSharpenFeathersSwitch extends AbstractSwitchByModeCard 
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public MagicDefenseSharpenFeathersSwitch() { this(null); }

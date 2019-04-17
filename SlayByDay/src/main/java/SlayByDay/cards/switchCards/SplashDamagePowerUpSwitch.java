@@ -42,6 +42,9 @@ public class SplashDamagePowerUpSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public SplashDamagePowerUpSwitch() { this(null); }

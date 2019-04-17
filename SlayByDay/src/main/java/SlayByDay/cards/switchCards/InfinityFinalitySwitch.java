@@ -43,6 +43,9 @@ public class InfinityFinalitySwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public InfinityFinalitySwitch() { this(null); }

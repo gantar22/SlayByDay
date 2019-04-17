@@ -47,6 +47,9 @@ public class EvilEyePiercingGazeSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public EvilEyePiercingGazeSwitch() { this(null); }

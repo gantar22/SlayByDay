@@ -47,6 +47,9 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
 
         this.damage_counter = 6;
         this.baseDamage = this.damage_counter;

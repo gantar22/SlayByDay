@@ -119,12 +119,12 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
 
     @Override
     public void update() {
-        validateSwitchCardMode();
+        validateSwitchCardMode(false);
         super.update();
     }
 
     // Make sure that this card has switched correctly to whichever mode it's supposed to be in.
-    public void validateSwitchCardMode() {
+    public void validateSwitchCardMode(boolean instant) {
         if (this.switch_queued) {
             return;
         }
@@ -132,12 +132,14 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             return;
         }
 
-        if (TheMedium.Reason_Mode && this.currentID != reasonCardID()) {
-            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
-            switch_queued = true;
-        } else if (!TheMedium.Reason_Mode && this.currentID != passionCardID()) {
-            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
-            switch_queued = true;
+        if ((TheMedium.Reason_Mode && this.currentID != reasonCardID()) || (!TheMedium.Reason_Mode && this.currentID != passionCardID())) {
+            if (instant) {
+                switchCardInDeck();
+                switchTo(switchID);
+            } else {
+                AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+                switch_queued = true;
+            }
         }
     }
 
@@ -261,10 +263,18 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
 
             if (this.upgraded) {
                 upgradeName();
-                upgradeDamage(damageUp);
-                upgradeBlock(blockUp);
-                upgradeMagicNumber(magicNumberUp);
-                upgradeBaseCost(baseCost - costDown);
+                if (damageUp != 0) {
+                    upgradeDamage(damageUp);
+                }
+                if (blockUp != 0) {
+                    upgradeBlock(blockUp);
+                }
+                if (magicNumberUp != 0) {
+                    upgradeMagicNumber(magicNumberUp);
+                }
+                if (costDown != 0) {
+                    upgradeBaseCost(baseCost - costDown);
+                }
                 this.rawDescription = card.upgradeDescription;
             }
 
@@ -283,16 +293,27 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         }
 
         this.switch_queued = false;
+        if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            this.applyPowers();
+        }
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(damageUp);
-            upgradeBlock(blockUp);
-            upgradeMagicNumber(magicNumberUp);
-            upgradeBaseCost(baseCost - costDown);
+            if (damageUp != 0) {
+                upgradeDamage(damageUp);
+            }
+            if (blockUp != 0) {
+                upgradeBlock(blockUp);
+            }
+            if (magicNumberUp != 0) {
+                upgradeMagicNumber(magicNumberUp);
+            }
+            if (costDown != 0) {
+                upgradeBaseCost(baseCost - costDown);
+            }
             this.rawDescription = this.upgradeDescription;
             initializeDescription();
         }

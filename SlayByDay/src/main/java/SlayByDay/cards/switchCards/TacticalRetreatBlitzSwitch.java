@@ -46,6 +46,9 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public TacticalRetreatBlitzSwitch() { this(null); }
