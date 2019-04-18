@@ -227,11 +227,21 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         switchCard card = this.findSwitch(id);
 
         if (card != null) {
+            // Determine cost reductions before everything gets changed
+            int current_base_cost = this.upgraded ? this.baseCost - this.costDown : this.baseCost;
+
+            boolean cost_modified = this.isCostModified;
+            boolean cost_for_combat_is_0 = cost_modified && this.cost == 0;
+            int cost_change_for_combat = this.cost - current_base_cost;
+
+            boolean cost_modified_for_turn = this.isCostModifiedForTurn;
+            boolean cost_for_turn_is_0 = cost_modified_for_turn && this.costForTurn == 0;
+            int cost_change_for_turn = this.costForTurn - this.cost;
+
+            // Set all card properties
             this.type = card.type;
             this.cost = card.cost;
             this.baseCost = card.baseCost;
-            if (!this.isCostModified) {
-                this.costForTurn = card.cost; }
 
             this.target = card.target;
 
@@ -279,8 +289,20 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             }
 
             initializeTitle();
-            initializeDescription();
             resetAttributes();
+
+            // Set cost in case it was reduced
+            if (cost_for_combat_is_0) {
+                modifyCostForCombat(-this.cost);
+            } else if (cost_for_turn_is_0) {
+                modifyCostForTurn(-this.costForTurn);
+            } else if (cost_modified) {
+                modifyCostForCombat(cost_change_for_combat);
+            } else if (cost_modified_for_turn) {
+                modifyCostForTurn(cost_change_for_turn);
+            }
+
+            initializeDescription();
 
             if (AbstractDungeon.player != null) {
                 if (AbstractDungeon.player.hasRelic("Bottled Flame")) {

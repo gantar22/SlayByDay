@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -65,7 +66,11 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
             case "TacticalRetreat":
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
                 if (p.hasPower(VulnerablePower.POWER_ID)) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, -this.magicNumber, false), -this.magicNumber));
+                    if (p.getPower(VulnerablePower.POWER_ID).amount > this.magicNumber) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, -this.magicNumber, false), -this.magicNumber));
+                    } else {
+                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
+                    }
                 }
                 break;
             case "Blitz":
