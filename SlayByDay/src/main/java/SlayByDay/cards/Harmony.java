@@ -1,6 +1,6 @@
 package SlayByDay.cards;
 
-import SlayByDay.powers.SynchronizedPower;
+import SlayByDay.powers.HarmonizedPower;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,13 +13,13 @@ import SlayByDay.characters.TheMedium;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
-public class Synchronize extends CustomCard {
+public class Harmony extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = SlayByDay.makeID("Synchronize");
+    public static final String ID = SlayByDay.makeID("Harmony");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String IMG = makeCardPath("Harmony.png");
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -40,7 +40,7 @@ public class Synchronize extends CustomCard {
 
     // /STAT DECLARATION/
 
-    public Synchronize() {
+    public Harmony() {
 
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
@@ -50,7 +50,7 @@ public class Synchronize extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SynchronizedPower(p, p, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new HarmonizedPower(p, p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.

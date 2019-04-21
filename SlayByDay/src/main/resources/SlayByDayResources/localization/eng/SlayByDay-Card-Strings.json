@@ -54,10 +54,15 @@
 
   "__Dom's Cards": {},
 
-  "SlayByDay:Synchronize": {
-    "NAME": "Synchronize",
+  "SlayByDay:Harmony": {
+    "NAME": "Harmony",
     "DESCRIPTION": "When you swap to Human form, draw !M! card. NL When you swap to Spirit form, gain !M! strength, and at the end of this turn, lose !M! strength.",
     "UPGRADE_DESCRIPTION": "When you swap to Human form, draw !M! cards. NL When you swap to Spirit form, gain !M! strength, and at the end of this turn, lose !M! strength."
+  },
+  "SlayByDay:OwlsHowl": {
+    "NAME": "Owl's Howl",
+    "DESCRIPTION": "Enemies become stunned for 1 turn. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Enemies become stunned for 1 turn."
   },
   "Prediction": {
     "NAME": "Prediction",
@@ -198,6 +203,26 @@
     "NAME": "Finality",
     "DESCRIPTION": "Spirit. NL Favor: Gain 4 Intangible. NL Price: Die in 4 turns.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Favor: Gain 4 Intangible. NL Price: In 4 turns, die irreversibly."
+  },
+  "Tranquilize": {
+    "NAME": "Tranquilize",
+    "DESCRIPTION": "Human. NL Deal !D! damage. Apply !M! weak.",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage. Apply !M! weak."
+  },
+  "PreyOnTheWeak": {
+    "NAME": "Prey on the Weak",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. Deals twice as much damage if the enemy has weak.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. Deals twice as much damage if the enemy has weak."
+  },
+  "DailyCommune": {
+    "NAME": "Daily Commune",
+    "DESCRIPTION": "Human. NL When you draw this card, gain !B! block. Put a card from your hand, and this card, on top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, gain !B! block. Put a card from your hand, and this card, on top of your draw pile."
+  },
+  "Bide": {
+    "NAME": "Bide",
+    "DESCRIPTION": "Spirit. NL Gain !B! block. Gain !M! strength.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block. Gain !M! strength."
   },
 
 

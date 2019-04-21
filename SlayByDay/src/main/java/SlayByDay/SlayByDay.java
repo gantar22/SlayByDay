@@ -336,12 +336,15 @@ public class SlayByDay implements
         BaseMod.addCard(new HoneLacerateSwitch());
         BaseMod.addCard(new PunishmentFurySwitch());
         BaseMod.addCard(new SplashDamagePowerUpSwitch());
-        BaseMod.addCard(new Synchronize());
+        BaseMod.addCard(new Harmony());
         BaseMod.addCard(new TacticalRetreatBlitzSwitch());
         BaseMod.addCard(new BolsterGuardSwitch());
         BaseMod.addCard(new FlyRoostSwitch());
         BaseMod.addCard(new ResupplyResurgenceSwitch());
         BaseMod.addCard(new InfinityFinalitySwitch());
+        BaseMod.addCard(new OwlsHowl());
+        BaseMod.addCard(new TranquilizePreyOnTheWeakSwitch());
+        BaseMod.addCard(new DailyCommuneBideSwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());
