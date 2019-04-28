@@ -1,5 +1,8 @@
 package SlayByDay.characters;
 
+import SlayByDay.cards.switchCards.DefensiveManeuversOffensiveRushSwitch;
+import SlayByDay.relics.IOnSwitch;
+import basemod.BaseMod;
 import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
@@ -18,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -25,21 +29,31 @@ import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
 import SlayByDay.relics.PlaceholderRelic;
+<<<<<<< HEAD:SlayByDay/src/main/java/SlayByDay/characters/TheModal.java
 //import SlayByDay.relics.MarkOfTheOther;
 import SlayByDay.relics.SpiritualCharm;
 import SlayByDay.relics.SpiritualCrystal;
+=======
+import basemod.interfaces.PostInitializeSubscriber;
+>>>>>>> af9eb03cb2f9b4ade71282838b84eb1a0829cff8:SlayByDay/src/main/java/SlayByDay/characters/TheMedium.java
 
 import java.util.ArrayList;
 
 import static SlayByDay.SlayByDay.*;
-import static SlayByDay.characters.TheModal.Enums.COLOR_M_PURPLE;
+import static SlayByDay.characters.TheMedium.Enums.COLOR_M_PURPLE;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in SlayByDay-character-Strings.json in the resources
 
-public class TheModal extends CustomPlayer  {
+public class TheMedium extends CustomPlayer implements PostInitializeSubscriber  {
     public static final Logger logger = LogManager.getLogger(SlayByDay.class.getName());
+
+    @Override
+    public void receivePostInitialize() {
+        System.out.println("received post initialize");
+
+    }
 
     // =============== CHARACTER ENUMERATORS =================
     // These are enums for your Characters color (both general color and for the card library) as well as
@@ -50,13 +64,15 @@ public class TheModal extends CustomPlayer  {
 
     public static class Enums {
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_MODAL;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
+        public static AbstractPlayer.PlayerClass THE_MEDIUM;
+        @SpireEnum(name = "MEDIUM_PURPLE_COLOR") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_M_PURPLE;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "MEDIUM_PURPLE_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
         @SpireEnum
         public static AbstractCard.CardTags MODE_SWITCH_CARD;
+        @SpireEnum
+        public static AbstractPower.PowerType PACT;
     }
 
     // =============== CHARACTER ENUMERATORS  =================
@@ -76,7 +92,7 @@ public class TheModal extends CustomPlayer  {
 
     // =============== STRINGS =================
 
-    private static final String ID = makeID("ModalCharacter");
+    private static final String ID = makeID("MediumCharacter");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -104,21 +120,28 @@ public class TheModal extends CustomPlayer  {
     // =============== CHARACTER CLASS START =================
 
     public static boolean Reason_Mode = true;
+    public static SpriterAnimation reason_anim = new SpriterAnimation(
+            "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml");
+    public static SpriterAnimation passion_anim = new SpriterAnimation(
+            "SlayByDayResources/images/char/defaultCharacter/Spriter/Passion_Anim.scml");
 
-    public TheModal(String name, PlayerClass setClass) {
+
+
+    public TheMedium(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
-                new SpriterAnimation(
-                        "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml"));
+               reason_anim);
 
+        BaseMod.subscribe(this);
+        System.out.println("Constructor called");
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in SlayByDay.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
-                THE_MODAL_SHOULDER_1, // campfire pose
-                THE_MODAL_SHOULDER_2, // another campfire pose
-                THE_MODAL_CORPSE, // dead corpse
+                THE_MEDIUM_SHOULDER_1, // campfire pose
+                THE_MEDIUM_SHOULDER_2, // another campfire pose
+                THE_MEDIUM_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -127,8 +150,8 @@ public class TheModal extends CustomPlayer  {
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_MODAL_SKELETON_ATLAS,
-                THE_MODAL_SKELETON_JSON,
+                THE_MEDIUM_SKELETON_ATLAS,
+                THE_MEDIUM_SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -162,11 +185,16 @@ public class TheModal extends CustomPlayer  {
 
         logger.info("Begin loading starter Deck Strings");
 
+<<<<<<< HEAD:SlayByDay/src/main/java/SlayByDay/characters/TheModal.java
         for(int i = 0; i < 1; i++)
+=======
+        for(int i = 0; i < 5; i++)
+>>>>>>> af9eb03cb2f9b4ade71282838b84eb1a0829cff8:SlayByDay/src/main/java/SlayByDay/characters/TheMedium.java
             retVal.add(DefaultCommonAttack.ID);
         for(int i = 0; i < 0; i++)
             retVal.add(DefaultCommonSkill.ID);
-        retVal.add(new PossessionExpulsionSwitch("Expulsion").cardID);
+        retVal.add(new PossessionExpulsionSwitch().cardID);
+        retVal.add(new DefensiveManeuversOffensiveRushSwitch().cardID);
 
         return retVal;
     }
@@ -184,8 +212,17 @@ public class TheModal extends CustomPlayer  {
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+<<<<<<< HEAD:SlayByDay/src/main/java/SlayByDay/characters/TheModal.java
         // UnlockTracker.markRelicAsSeen(MarkOfTheOther.ID);
         UnlockTracker.markRelicAsSeen(SpiritualCharm.ID);
+=======
+        PlaceholderRelic.subscribe(new IOnSwitch() {
+            @Override
+            public void OnSwitch(boolean Reason_Mode) {
+                switch_mode(Reason_Mode);
+            }
+        });
+>>>>>>> af9eb03cb2f9b4ade71282838b84eb1a0829cff8:SlayByDay/src/main/java/SlayByDay/characters/TheMedium.java
 
         return retVal;
     }
@@ -196,6 +233,16 @@ public class TheModal extends CustomPlayer  {
         CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false); // Screen Effect
+    }
+
+    public void switch_mode(boolean reason_Mode)
+    {
+        if(reason_Mode)
+        {
+            animation = reason_anim;
+        } else {
+            animation = passion_anim;
+        }
     }
 
     // character Select on-button-press sound effect
@@ -220,7 +267,7 @@ public class TheModal extends CustomPlayer  {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return SlayByDay.MODAL_PURPLE;
+        return SlayByDay.MEDIUM_PURPLE;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -251,20 +298,20 @@ public class TheModal extends CustomPlayer  {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheModal(name, chosenClass);
+        return new TheMedium(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return SlayByDay.MODAL_PURPLE;
+        return SlayByDay.MEDIUM_PURPLE;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return SlayByDay.MODAL_PURPLE;
+        return SlayByDay.MEDIUM_PURPLE;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

@@ -1,31 +1,25 @@
 package SlayByDay.cards;
 
+import SlayByDay.powers.HarmonizedPower;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import SlayByDay.SlayByDay;
-import SlayByDay.actions.UncommonPowerAction;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
-public class Synchronize extends CustomCard {
-
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Weirdness Apply X (+1) keywords to yourself.
-     */
+public class Harmony extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = SlayByDay.makeID("Synchronize");
+    public static final String ID = SlayByDay.makeID("Harmony");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String IMG = makeCardPath("Harmony.png");
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -38,14 +32,15 @@ public class Synchronize extends CustomCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheModal.Enums.COLOR_M_PURPLE;
+    public static final CardColor COLOR = TheMedium.Enums.COLOR_M_PURPLE;
 
-    private static final int COST = -1;
+    private static final int COST = 2;
     private static final int MAGIC = 1;
+    private static final int MAGIC_UP = 1;
 
     // /STAT DECLARATION/
 
-    public Synchronize() {
+    public Harmony() {
 
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
@@ -55,17 +50,14 @@ public class Synchronize extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (energyOnUse < EnergyPanel.totalCount) {
-            energyOnUse = EnergyPanel.totalCount;
-        }
-        AbstractDungeon.actionManager.addToBottom(new UncommonPowerAction(p, m, magicNumber,
-                upgraded, damageTypeForTurn, freeToPlayOnce, energyOnUse));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new HarmonizedPower(p, p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
+            upgradeMagicNumber(MAGIC_UP);
             upgradeName();
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

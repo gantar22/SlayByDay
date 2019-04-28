@@ -1,17 +1,14 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.PunishmentAction;
-import SlayByDay.characters.TheModal;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import java.util.Arrays;
@@ -21,10 +18,10 @@ import java.util.Random;
 public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Punishment", "Fury", 2, 2, 1, 0, 0, 0, 0,
+            new switchCard("Punishment", "Fury", 2, 0, 2, 1, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false),
 
-            new switchCard("Fury", "Punishment", 2, 0, 0, 0, 0, 4, 2,
+            new switchCard("Fury", "Punishment", 2, 0, 0, 0, 0, 0, 4, 2,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
@@ -35,8 +32,8 @@ public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
     }
 
     public PunishmentFurySwitch(String switchID) {
-        super("SlayByDay:PunishmentFury", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, PunishmentFurySwitch.class);
+        super("SlayByDay:PunishmentFury", "None", null, 0, "None", CardType.ATTACK,
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, PunishmentFurySwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;
@@ -47,6 +44,9 @@ public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
             this.switchTo(this.currentID);
         } else {
             this.switchTo(switchID);
+        }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
         }
     }
 

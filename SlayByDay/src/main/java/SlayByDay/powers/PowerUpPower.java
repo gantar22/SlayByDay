@@ -2,7 +2,6 @@ package SlayByDay.powers;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.util.TextureLoader;
-import basemod.interfaces.PostPotionUseSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
@@ -21,7 +20,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static SlayByDay.SlayByDay.makePowerPath;
 
-// Whenever a potion is consumed, deal (amount) damage to all enemies
+// Whenever you gain strength, gain 1 additional strength
 
 @SpireInitializer
 public class PowerUpPower extends AbstractPower implements OnReceivePowerPower {

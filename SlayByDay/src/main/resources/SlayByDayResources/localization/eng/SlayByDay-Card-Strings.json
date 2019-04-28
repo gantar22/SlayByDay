@@ -1,7 +1,7 @@
 {
   "SlayByDay:DefaultCommonAttack": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! Damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
+    "DESCRIPTION": "Deal !D! Damage."
   },
   "SlayByDay:DefaultCommonSkill": {
     "NAME": "Defend",
@@ -51,111 +51,178 @@
     "DESCRIPTION": "Channel 1 Default Orb."
   },
 
+
   "__Dom's Cards": {},
-  "SlayByDay:Synchronize": {
-    "NAME": "Synchronize",
-    "DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength.",
-    "UPGRADE_DESCRIPTION": "When you swap to Reason mode, draw a card. NL When you swap to Passion mode, gain 1 strength, and at the end of this turn, lose 1 strength."
+
+  "SlayByDay:Harmony": {
+    "NAME": "Harmony",
+    "DESCRIPTION": "When you swap to Human form, draw !M! card. NL When you swap to Spirit form, gain !M! strength, and at the end of this turn, lose !M! strength.",
+    "UPGRADE_DESCRIPTION": "When you swap to Human form, draw !M! cards. NL When you swap to Spirit form, gain !M! strength, and at the end of this turn, lose !M! strength."
   },
-  "FeatherShield": {
-    "NAME": "Feather Shield",
-    "DESCRIPTION": "Gain !B! block. NL Switches into Prediction.",
-    "UPGRADE_DESCRIPTION": "Gain !B! block. NL Switches into Prediction+."
+  "SlayByDay:OwlsHowl": {
+    "NAME": "Owl's Howl",
+    "DESCRIPTION": "Enemies become stunned for 1 turn. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Enemies become stunned for 1 turn."
   },
   "Prediction": {
     "NAME": "Prediction",
-    "DESCRIPTION": "Next turn, gain !B! block. NL Switches into Feather Shield.",
-    "UPGRADE_DESCRIPTION": "Next turn, gain !B! block. NL Switches into Feather Shield+."
+    "DESCRIPTION": "Human. NL Next turn, gain !B! block.",
+    "UPGRADE_DESCRIPTION": "Human. NL Next turn, gain !B! block."
+  },
+  "FeatherShield": {
+    "NAME": "Feather Shield",
+    "DESCRIPTION": "Spirit. NL Gain !B! block.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block."
   },
   "DefensiveManeuvers": {
     "NAME": "Defensive Maneuvers",
-    "DESCRIPTION": "Gain !B! block. Next turn, draw !M! additional cards. NL Switches into Offensive Rush.",
-    "UPGRADE_DESCRIPTION": "Gain !B! block. Next turn, draw !M! additional cards. NL Switches into Offensive Rush+."
+    "DESCRIPTION": "Human. NL Gain !B! block. Next turn, draw !M! additional cards.",
+    "UPGRADE_DESCRIPTION": "Human. NL Gain !B! block. Next turn, draw !M! additional cards."
   },
   "OffensiveRush": {
     "NAME": "Offensive Rush",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Switches into Defensive Maneuvers.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL Switches into Defensive Maneuvers+."
+    "DESCRIPTION": "Spirit. NL Deal !D! damage !M! times.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage !M! times."
   },
   "EvilEye": {
     "NAME": "Evil Eye",
-    "DESCRIPTION": "Apply !M! weak and vulnerable. NL Switches into Piercing Gaze.",
-    "UPGRADE_DESCRIPTION": "Apply !M! weak and vulnerable. NL Switches into Piercing Gaze+."
+    "DESCRIPTION": "Human. NL Apply !M! weak and vulnerable.",
+    "UPGRADE_DESCRIPTION": "Human. NL Apply !M! weak and vulnerable."
   },
   "PiercingGaze": {
     "NAME": "Piercing Gaze",
-    "DESCRIPTION": "Deal !D! damage to all enemies. NL Switches into Evil Eye.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage to all enemies. NL Switches into Evil Eye+."
+    "DESCRIPTION": "Spirit. NL Deal !D! damage to all enemies.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage to all enemies."
   },
   "MagicDefense": {
     "NAME": "Anti-Hex Amulet",
-    "DESCRIPTION": "Gain !M! artifact. Exhaust. NL Switches into Sharpen Feathers.",
-    "UPGRADE_DESCRIPTION": "Gain !M! artifact. Exhaust. NL Switches into Sharpen Feathers+."
+    "DESCRIPTION": "Human. NL Gain !M! artifact. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Human. NL Gain !M! artifact. Exhaust."
   },
   "SharpenFeathers": {
     "NAME": "Sharpen Feathers",
-    "DESCRIPTION": "Gain !M! thorns. Exhaust. NL Switches into Anti-Hex Amulet.",
-    "UPGRADE_DESCRIPTION": "Gain !M! thorns. Exhaust. NL Switches into Anti-Hex Amulet+."
+    "DESCRIPTION": "Spirit. NL Gain !M! thorns. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !M! thorns. Exhaust."
   },
   "ClawSlash": {
     "NAME": "Claw Slash",
-    "DESCRIPTION": "Deal !D! damage and apply !M! vulnerable. NL Switches into Claw Bash.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage and apply !M! vulnerable. NL Switches into Claw Bash+."
+    "DESCRIPTION": "Human. NL Deal !D! damage and apply !M! vulnerable.",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage and apply !M! vulnerable."
   },
   "ClawSmash": {
     "NAME": "Claw Bash",
-    "DESCRIPTION": "Deal !D! damage. NL Switches into Claw Slash.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Switches into Claw Slash+."
+    "DESCRIPTION": "Spirit. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage."
   },
   "Recollect": {
     "NAME": "Recollect",
-    "DESCRIPTION": "Put a card from your exhaust pile into your draw pile. NL Switches into Forget.",
-    "UPGRADE_DESCRIPTION": "Put a card from your exhaust pile into your draw pile. NL Switches into Forget+."
+    "DESCRIPTION": "Human. NL Put a card from your exhaust pile into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL Put a card from your exhaust pile into your draw pile."
   },
   "Forget": {
     "NAME": "Forget",
-    "DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect.",
-    "UPGRADE_DESCRIPTION": "Gain !M! strength and !M! dexterity. Exhaust a random card in your hand. NL Switches into Recollect+."
+    "DESCRIPTION": "Spirit. NL Gain !M! strength and !M! Dexterity. Exhaust a random card in your hand.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !M! strength and !M! Dexterity. Exhaust a random card in your hand."
   },
   "Hone": {
     "NAME": "Hone",
-    "DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget.",
-    "UPGRADE_DESCRIPTION": "Increase this card's damage by !M! this combat. NL Switches into Forget+."
+    "DESCRIPTION": "Human. NL When you draw this card, increase its damage by !M! this combat. NL Increase this card's damage by !M! this combat.",
+    "UPGRADE_DESCRIPTION": "Human. NL Increase this card's damage by !M! this combat."
   },
   "Lacerate": {
-    "NAME": "Lacerate",
-    "DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Exhaust a random card in your hand. NL Switches into Hone+."
+    "NAME": "Rend",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. Exhaust."
   },
   "Punishment": {
     "NAME": "Punishment",
-    "DESCRIPTION": "Consume all debuffs on target. Deal !D! damage per debuff consumed. NL Switches into Fury.",
-    "UPGRADE_DESCRIPTION": "Consume all debuffs on target. Deal !D! damage per debuff consumed. NL Switches into Fury+."
+    "DESCRIPTION": "Human. NL Consume all debuffs on target. Deal !D! damage per debuff consumed.",
+    "UPGRADE_DESCRIPTION": "Human. NL Consume all debuffs on target. Deal !D! damage per debuff consumed."
   },
   "Fury": {
     "NAME": "Fury",
-    "DESCRIPTION": "Lose all strength. Deal !M! damage for each strength lost. NL Switches into Punishment.",
-    "UPGRADE_DESCRIPTION": "Lose all strength. Deal !M! damage for each strength lost. NL Switches into Punishment+."
+    "DESCRIPTION": "Spirit. NL Lose all strength. Deal !M! damage for each strength lost.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Lose all strength. Deal !M! damage for each strength lost."
   },
   "SplashDamage": {
     "NAME": "Splash Damage",
-    "DESCRIPTION": "Whenever a potion is consumed, deal !M! damage to all enemies. NL Switches into Power Up.",
-    "UPGRADE_DESCRIPTION": "Whenever a potion is consumed, deal !M! damage to all enemies. NL Switches into Power Up+."
+    "DESCRIPTION": "Human. NL Whenever a potion is consumed, deal !M! damage to all enemies.",
+    "UPGRADE_DESCRIPTION": "Human. NL Whenever a potion is consumed, deal !M! damage to all enemies."
   },
   "PowerUp": {
     "NAME": "Power Up",
-    "DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage.",
-    "UPGRADE_DESCRIPTION": "Whenever you gain strength, gain !M! additional strength. NL Switches into Splash Damage+."
+    "DESCRIPTION": "Spirit. NL Whenever you gain strength, gain !M! additional strength.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Whenever you gain strength, gain !M! additional strength."
   },
   "TacticalRetreat": {
     "NAME": "Tactical Retreat",
-    "DESCRIPTION": "Gain !B! block. Lose !M! vulnerable. NL Switches into Blitz.",
-    "UPGRADE_DESCRIPTION": "Gain !B! block. Lose !M! vulnerable. NL Switches into Blitz+."
+    "DESCRIPTION": "Human. NL Gain !B! block. Lose !M! vulnerable.",
+    "UPGRADE_DESCRIPTION": "Human. NL Gain !B! block. Lose !M! vulnerable."
   },
   "Blitz": {
     "NAME": "Blitz",
-    "DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Lose all your block. NL Switches into Tactical Retreat+."
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. Lose all your block.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. Lose all your block."
+  },
+  "Bolster": {
+    "NAME": "Bolster",
+    "DESCRIPTION": "Human. NL When you draw this card, increase its block by !M! this combat. NL Increase this card's block by !M! this combat.",
+    "UPGRADE_DESCRIPTION": "Human. NL Increase this card's block by !M! this combat."
+  },
+  "Guard": {
+    "NAME": "Guard",
+    "DESCRIPTION": "Spirit. NL Gain !B! block. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block. Exhaust."
+  },
+  "Fly": {
+    "NAME": "Fly",
+    "DESCRIPTION": "Human. NL Gain flight for one turn.",
+    "UPGRADE_DESCRIPTION": "Human. NL Gain flight for one turn."
+  },
+  "Roost": {
+    "NAME": "Roost",
+    "DESCRIPTION": "Spirit. NL Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.)",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !M! Dexterity. Deal damage equal to your Dexterity. (Deals !D! damage.)"
+  },
+  "Resupply": {
+    "NAME": "Resupply",
+    "DESCRIPTION": "Human. NL Gain X Refill until end of turn. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Human. NL Gain X+1 Refill until end of turn. Exhaust."
+  },
+  "Resurgence": {
+    "NAME": "Resurgence",
+    "DESCRIPTION": "Spirit. NL Gain 1 Strength, Dexterity, or Thorns (at random) X times. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain 1 Strength, Dexterity, or Thorns (at random) X+1 times. Exhaust."
+  },
+  "Infinity": {
+    "NAME": "Infinity",
+    "DESCRIPTION": "Human. NL Price: Wait 4 turns. NL Favor: When you play a card, draw a card.",
+    "UPGRADE_DESCRIPTION": "Human. NL Price: Wait 4 turns. NL Favor: When you play a card, draw a card."
+  },
+  "Finality": {
+    "NAME": "Finality",
+    "DESCRIPTION": "Spirit. NL Favor: Gain 4 Intangible. NL Price: Die in 4 turns.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Favor: Gain 4 Intangible. NL Price: In 4 turns, die irreversibly."
+  },
+  "Tranquilize": {
+    "NAME": "Tranquilize",
+    "DESCRIPTION": "Human. NL Deal !D! damage. Apply !M! weak.",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage. Apply !M! weak."
+  },
+  "PreyOnTheWeak": {
+    "NAME": "Prey on the Weak",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. Deals twice as much damage if the enemy has weak.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. Deals twice as much damage if the enemy has weak."
+  },
+  "DailyCommune": {
+    "NAME": "Daily Commune",
+    "DESCRIPTION": "Human. NL When you draw this card, gain !B! block. Put a card from your hand, and this card, on top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, gain !B! block. Put a card from your hand, and this card, on top of your draw pile."
+  },
+  "Bide": {
+    "NAME": "Bide",
+    "DESCRIPTION": "Spirit. NL Gain !B! block. Gain !M! strength.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block. Gain !M! strength."
   },
 
 
@@ -163,12 +230,12 @@
 
   "Possession": {
     "NAME": "Possession",
-    "DESCRIPTION": "Switch into Passion Mode.",
-    "UPGRADE_DESCRIPTION": "Switch into Passion Mode."
+    "DESCRIPTION": "Human. NL Switch into Spirit form.",
+    "UPGRADE_DESCRIPTION": "Human. NL Switch into Spirit form."
   },
   "Expulsion": {
     "NAME": "Expulsion",
-    "DESCRIPTION": "Switch into Reason Mode.",
-    "UPGRADE_DESCRIPTION": "Switch into Reason Mode."
+    "DESCRIPTION": "Spirit. NL Switch into Human form.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Switch into Human form."
   }
 }

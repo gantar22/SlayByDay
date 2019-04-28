@@ -1,19 +1,17 @@
 package SlayByDay.cards.switchCards;
 
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,10 +20,10 @@ import java.util.Random;
 public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("TacticalRetreat", "Blitz", 1, 0, 0, 5, 3, 1, 0,
+            new switchCard("TacticalRetreat", "Blitz", 1, 0, 0, 0, 5, 3, 1, 0,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
-            new switchCard("Blitz", "TacticalRetreat", 1, 12, 3, 0, 0, 0, 0,
+            new switchCard("Blitz", "TacticalRetreat", 1, 0, 12, 3, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
@@ -37,7 +35,7 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
 
     public TacticalRetreatBlitzSwitch(String switchID) {
         super("SlayByDay:TacticalRetreatBlitz", "None", null, 0, "None", CardType.SKILL,
-                TheModal.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, TacticalRetreatBlitzSwitch.class);
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.NONE, TacticalRetreatBlitzSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;
@@ -48,6 +46,9 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
             this.switchTo(this.currentID);
         } else {
             this.switchTo(switchID);
+        }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
         }
     }
 
@@ -65,7 +66,11 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
             case "TacticalRetreat":
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
                 if (p.hasPower(VulnerablePower.POWER_ID)) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, -this.magicNumber, false), -this.magicNumber));
+                    if (p.getPower(VulnerablePower.POWER_ID).amount > this.magicNumber) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, -this.magicNumber, false), -this.magicNumber));
+                    } else {
+                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, VulnerablePower.POWER_ID));
+                    }
                 }
                 break;
             case "Blitz":

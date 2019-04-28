@@ -2,9 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.SwitchAction;
-import SlayByDay.characters.TheModal;
-import SlayByDay.relics.IOnSwitch;
-import SlayByDay.relics.PlaceholderRelic;
+import SlayByDay.characters.TheMedium;
 import basemod.abstracts.CustomCard;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,6 +28,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
     public class switchCard {
         public CardType type;
         public CardTarget target;
+        public int baseCost;
         public int cost;
 
         public boolean isMultiDamage = false;
@@ -44,6 +43,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         public int damageUp = -1;
         public int blockUp = -1;
         public int magicNumberUp = -1;
+        public int costDown = -1;
 
         public String portraitImg;
 
@@ -54,12 +54,13 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         public String cardID;
         public String switchID;
 
-        public switchCard(String CardID, String switchID, Integer cost, Integer damage, Integer damageUp,
+        public switchCard(String CardID, String switchID, Integer cost, Integer costDown, Integer damage, Integer damageUp,
                           Integer block, Integer blockUp, Integer magicNum, Integer magicNumUp,
                           CardType type, CardTarget target, boolean isMultiDamage, boolean isInnate, boolean exhaust, boolean isEthereal)
         {
             this.type = type;
             this.target = target;
+            this.baseCost = cost;
             this.cost = cost;
 
             this.isMultiDamage = isMultiDamage;
@@ -74,6 +75,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             this.damageUp = damageUp;
             this.blockUp = blockUp;
             this.magicNumberUp = magicNumUp;
+            this.costDown = costDown;
 
             this.portraitImg = SlayByDay.makeCardPath(CardID + ".png");
 
@@ -97,6 +99,8 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
     public int damageUp = 0;
     public int blockUp = 0;
     public int magicNumberUp = 0;
+    public int baseCost = 0;
+    public int costDown = 0;
     public String upgradeDescription = "";
     public String switchID;
     public String currentID;
@@ -110,17 +114,17 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
 
         this.switchClass = previewCard;
-        this.tags.add(TheModal.Enums.MODE_SWITCH_CARD);
+        this.tags.add(TheMedium.Enums.MODE_SWITCH_CARD);
     }
 
     @Override
     public void update() {
-        validateSwitchCardMode();
+        validateSwitchCardMode(false);
         super.update();
     }
 
     // Make sure that this card has switched correctly to whichever mode it's supposed to be in.
-    public void validateSwitchCardMode() {
+    public void validateSwitchCardMode(boolean instant) {
         if (this.switch_queued) {
             return;
         }
@@ -128,12 +132,14 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             return;
         }
 
-        if (TheModal.Reason_Mode && this.currentID != reasonCardID()) {
-            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
-            switch_queued = true;
-        } else if (!TheModal.Reason_Mode && this.currentID != passionCardID()) {
-            AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
-            switch_queued = true;
+        if ((TheMedium.Reason_Mode && this.currentID != reasonCardID()) || (!TheMedium.Reason_Mode && this.currentID != passionCardID())) {
+            if (instant) {
+                switchCardInDeck();
+                switchTo(switchID);
+            } else {
+                AbstractDungeon.actionManager.addToBottom(new SwitchAction(this));
+                switch_queued = true;
+            }
         }
     }
 
@@ -161,8 +167,6 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
 
     @Override
     public AbstractCard makeCopy() {
-//        System.out.println("Making a copy of: " + this.currentID);
-//        System.out.println("SwitchID: " + this.switchID);
         AbstractCard c = null;
         try {
             if (this.switchClass != null) {
@@ -190,6 +194,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         card.baseBlock = this.baseBlock;
         card.baseMagicNumber = this.baseMagicNumber;
         card.cost = this.cost;
+        card.baseCost = this.baseCost;
         card.costForTurn = this.costForTurn;
         card.isCostModified = this.isCostModified;
         card.isCostModifiedForTurn = this.isCostModifiedForTurn;
@@ -222,10 +227,21 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         switchCard card = this.findSwitch(id);
 
         if (card != null) {
+            // Determine cost reductions before everything gets changed
+            int current_base_cost = this.upgraded ? this.baseCost - this.costDown : this.baseCost;
+
+            boolean cost_modified = this.isCostModified;
+            boolean cost_for_combat_is_0 = cost_modified && this.cost == 0;
+            int cost_change_for_combat = this.cost - current_base_cost;
+
+            boolean cost_modified_for_turn = this.isCostModifiedForTurn;
+            boolean cost_for_turn_is_0 = cost_modified_for_turn && this.costForTurn == 0;
+            int cost_change_for_turn = this.costForTurn - this.cost;
+
+            // Set all card properties
             this.type = card.type;
             this.cost = card.cost;
-            if (!this.isCostModified) {
-                this.costForTurn = card.cost; }
+            this.baseCost = card.baseCost;
 
             this.target = card.target;
 
@@ -241,6 +257,7 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
             this.damageUp = card.damageUp;
             this.blockUp = card.blockUp;
             this.magicNumberUp = card.magicNumberUp;
+            this.costDown = card.costDown;
 
             this.loadCardImage(card.portraitImg);
             this.textureImg = card.portraitImg;
@@ -256,15 +273,36 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
 
             if (this.upgraded) {
                 upgradeName();
-                upgradeDamage(damageUp);
-                upgradeBlock(blockUp);
-                upgradeMagicNumber(magicNumberUp);
+                if (damageUp != 0) {
+                    upgradeDamage(damageUp);
+                }
+                if (blockUp != 0) {
+                    upgradeBlock(blockUp);
+                }
+                if (magicNumberUp != 0) {
+                    upgradeMagicNumber(magicNumberUp);
+                }
+                if (costDown != 0) {
+                    upgradeBaseCost(baseCost - costDown);
+                }
                 this.rawDescription = card.upgradeDescription;
             }
 
             initializeTitle();
-            initializeDescription();
             resetAttributes();
+
+            // Set cost in case it was reduced
+            if (cost_for_combat_is_0) {
+                modifyCostForCombat(-this.cost);
+            } else if (cost_for_turn_is_0) {
+                modifyCostForTurn(-this.costForTurn);
+            } else if (cost_modified) {
+                modifyCostForCombat(cost_change_for_combat);
+            } else if (cost_modified_for_turn) {
+                modifyCostForTurn(cost_change_for_turn);
+            }
+
+            initializeDescription();
 
             if (AbstractDungeon.player != null) {
                 if (AbstractDungeon.player.hasRelic("Bottled Flame")) {
@@ -277,15 +315,27 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         }
 
         this.switch_queued = false;
+        if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            this.applyPowers();
+        }
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(damageUp);
-            upgradeBlock(blockUp);
-            upgradeMagicNumber(magicNumberUp);
+            if (damageUp != 0) {
+                upgradeDamage(damageUp);
+            }
+            if (blockUp != 0) {
+                upgradeBlock(blockUp);
+            }
+            if (magicNumberUp != 0) {
+                upgradeMagicNumber(magicNumberUp);
+            }
+            if (costDown != 0) {
+                upgradeBaseCost(baseCost - costDown);
+            }
             this.rawDescription = this.upgradeDescription;
             initializeDescription();
         }
@@ -296,9 +346,10 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
     public void hover() {
         try {
             if (this.switchClass != null && this.cardToPreview == null) {
-                this.cardToPreview = (AbstractSwitchByModeCard)this.switchClass.newInstance();
+//                this.cardToPreview = (AbstractSwitchByModeCard)this.switchClass.newInstance();
+                this.cardToPreview = (AbstractSwitchByModeCard)this.makeStatEquivalentCopy();
                 this.cardToPreview.switchTo(this.switchID);
-                if (this.upgraded) { this.cardToPreview.upgrade(); }
+                if (this.upgraded && !this.cardToPreview.upgraded) { this.cardToPreview.upgrade(); }
             }
         } catch (Throwable e) {
             System.out.println(e.toString());
