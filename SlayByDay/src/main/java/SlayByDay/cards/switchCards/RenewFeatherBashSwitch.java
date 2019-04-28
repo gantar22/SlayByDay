@@ -1,38 +1,38 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.characters.TheMedium;
+import SlayByDay.patches.cards.BackToDeckOnPlayPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeCard {
+public class RenewFeatherBashSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new AbstractSwitchByModeCard.switchCard("DefensiveManeuvers", "OffensiveRush", 1, 0, 0, 0, 7, 0, 1, 1,
+            new switchCard("Renew", "FeatherBash", 1, 0, 0, 0, 0, 0, 2, 1,
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
-            new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 0, 2, 0, 0, 0, 3, 1,
+            new switchCard("FeatherBash", "Renew", 1, 0, 2, 0, 2, 0, 2, 1,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
-        return "DefensiveManeuvers";
+        return "Renew";
     }
     public String passionCardID() {
-        return "OffensiveRush";
+        return "FeatherBash";
     }
 
-    public DefensiveManeuversOffensiveRushSwitch(String switchID) {
-        super("SlayByDay:DefensiveManeuversOffensiveRush", "None", null, 0, "None", CardType.SKILL,
-                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.BASIC, AbstractCard.CardTarget.NONE, DefensiveManeuversOffensiveRushSwitch.class);
+    public RenewFeatherBashSwitch(String switchID) {
+        super("SlayByDay:RenewFeatherBash", "None", null, 0, "None", CardType.SKILL,
+                TheMedium.Enums.COLOR_M_PURPLE, CardRarity.UNCOMMON, CardTarget.NONE, RenewFeatherBashSwitch.class);
 
         if (switchID == null) {
             switchID = switchListInherit.get(new Random().nextInt(switchListInherit.size())).cardID;
@@ -49,22 +49,31 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
         }
     }
 
-    public DefensiveManeuversOffensiveRushSwitch() { this(null); }
+    @Override
+    public void triggerWhenDrawn() {
+        this.flash();
+        AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
+    }
+
+    public RenewFeatherBashSwitch() { this(null); }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
-            case "DefensiveManeuvers":
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
+            case "Renew":
+                BackToDeckOnPlayPatch.toBePutBackInDeck.set(this, true);
+                BackToDeckOnPlayPatch.inRandomSpot.set(this, true);
                 break;
-            case "OffensiveRush":
+            case "FeatherBash":
+                for (int i=0; i < this.magicNumber; i++) {
+                    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+                }
+
                 // This uses the same action that Pummel uses. We could also write our own, near identical, action for this instead.
-                for (int i=0; i < magicNumber; i++) {
+                for (int i=0; i < this.magicNumber; i++) {
                     AbstractDungeon.actionManager.addToBottom(new PummelDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
                 }
 
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 break;
         }
     }

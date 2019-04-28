@@ -19,10 +19,10 @@ import java.util.Random;
 public class TranquilizePreyOnTheWeakSwitch extends AbstractSwitchByModeCard {
 
     public List<switchCard> switchListInherit = Arrays.asList(
-            new switchCard("Tranquilize", "PreyOnTheWeak", 2, 0, 3, 0, 0, 0, 3, 2,
+            new switchCard("Tranquilize", "PreyOnTheWeak", 1, 0, 3, 0, 0, 0, 3, 2,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false),
 
-            new switchCard("PreyOnTheWeak", "Tranquilize", 2, 0, 9, 3, 0, 0, 0, 0,
+            new switchCard("PreyOnTheWeak", "Tranquilize", 1, 0, 9, 3, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {

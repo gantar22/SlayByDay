@@ -1,7 +1,12 @@
 {
   "RecollectAction": {
     "TEXT": [
-      "Select a Card to Return to your Deck"
+      "Select a Card to Return to your Draw Pile"
+    ]
+  },
+  "ReinvestAction": {
+    "TEXT": [
+      "Shuffle into your Draw Pile"
     ]
   }
 }

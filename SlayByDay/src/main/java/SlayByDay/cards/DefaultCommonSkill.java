@@ -27,7 +27,7 @@ public class DefaultCommonSkill extends CustomCard {
     public static final String ID = SlayByDay.makeID("DefaultCommonSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("Defend.png");
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
