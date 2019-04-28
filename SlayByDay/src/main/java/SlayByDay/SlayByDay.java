@@ -1,6 +1,12 @@
 package SlayByDay;
 
+
 import SlayByDay.relics.Anima;
+
+import SlayByDay.powers.interfaces.OnPostPotionUsePower;
+import SlayByDay.powers.interfaces.OnSwitchPower;
+import SlayByDay.relics.*;
+
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
@@ -13,9 +19,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,9 +34,17 @@ import SlayByDay.cards.switchCards.*;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.events.IdentityCrisisEvent;
 import SlayByDay.potions.PlaceholderPotion;
+
+// Given custom relics
 import SlayByDay.relics.BottledPlaceholderRelic;
 import SlayByDay.relics.DefaultClickableRelic;
 import SlayByDay.relics.PlaceholderRelic2;
+
+// Custom Relics (Joey)
+//import SlayByDay.relics.MarkOfTheOther;
+import SlayByDay.relics.SpiritualCharm;
+import SlayByDay.relics.SpiritualCrystal;
+
 import SlayByDay.util.TextureLoader;
 import SlayByDay.variables.DefaultCustomVariable;
 import SlayByDay.variables.DefaultSecondMagicNumber;
@@ -59,7 +77,9 @@ public class SlayByDay implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        PostPotionUseSubscriber,
+        IOnSwitch {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(SlayByDay.class.getName());
@@ -279,12 +299,23 @@ public class SlayByDay implements
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheMedium.Enums.COLOR_M_PURPLE);
 
+        /*
+         * CUSTOM RELICS START HERE
+         */
+        // BaseMod.addRelicToCustomPool(new MarkOfTheOther(), TheModal.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new SpiritualCharm(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new SpiritualCrystal(), TheMedium.Enums.COLOR_M_PURPLE);
+
+
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         logger.info("Done adding relics!");
+
+        // Subscribe to relic based listeners
+        Anima.subscribe(this);
     }
 
     // ================ /ADD RELICS/ ===================
@@ -328,11 +359,15 @@ public class SlayByDay implements
         BaseMod.addCard(new HoneLacerateSwitch());
         BaseMod.addCard(new PunishmentFurySwitch());
         BaseMod.addCard(new SplashDamagePowerUpSwitch());
-        BaseMod.addCard(new Synchronize());
+        BaseMod.addCard(new Harmony());
         BaseMod.addCard(new TacticalRetreatBlitzSwitch());
         BaseMod.addCard(new BolsterGuardSwitch());
         BaseMod.addCard(new FlyRoostSwitch());
         BaseMod.addCard(new ResupplyResurgenceSwitch());
+        BaseMod.addCard(new InfinityFinalitySwitch());
+        BaseMod.addCard(new OwlsHowl());
+        BaseMod.addCard(new TranquilizePreyOnTheWeakSwitch());
+        BaseMod.addCard(new DailyCommuneBideSwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());
@@ -435,6 +470,45 @@ public class SlayByDay implements
     }
 
     // ================ /LOAD THE KEYWORDS/ ===================    
+
+
+    // ================ EXTRANEOUS LISTENERS ===================
+
+    @Override
+    public void OnSwitch(boolean Reason_Mode) {
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p instanceof OnSwitchPower) {
+                ((OnSwitchPower) p).onSwitch(Reason_Mode);
+            }
+        }
+
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            for (AbstractPower p : monster.powers) {
+                if (p instanceof OnSwitchPower) {
+                    ((OnSwitchPower) p).onSwitch(Reason_Mode);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void receivePostPotionUse(AbstractPotion abstractPotion) {
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p instanceof OnPostPotionUsePower) {
+                ((OnPostPotionUsePower) p).onPostPotionUse(abstractPotion);
+            }
+        }
+
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            for (AbstractPower p : monster.powers) {
+                if (p instanceof OnPostPotionUsePower) {
+                    ((OnPostPotionUsePower) p).onPostPotionUse(abstractPotion);
+                }
+            }
+        }
+    }
+
+    // ================ /EXTRANEOUS LISTENERS/ ===================
 
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.

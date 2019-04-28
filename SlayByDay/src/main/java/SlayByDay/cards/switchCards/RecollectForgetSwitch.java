@@ -44,6 +44,9 @@ public class RecollectForgetSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public RecollectForgetSwitch() { this(null); }

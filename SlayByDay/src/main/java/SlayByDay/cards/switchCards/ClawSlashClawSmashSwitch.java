@@ -44,6 +44,9 @@ public class ClawSlashClawSmashSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public ClawSlashClawSmashSwitch() { this(null); }

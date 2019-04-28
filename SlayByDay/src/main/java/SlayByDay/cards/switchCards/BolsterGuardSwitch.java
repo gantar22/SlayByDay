@@ -19,7 +19,7 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
             new switchCard("Guard", "Bolster", 1, 0, 0, 0, 5, 3, 0, 0,
-                    CardType.SKILL, CardTarget.SELF, false, false, false, false) );
+                    CardType.SKILL, CardTarget.SELF, false, false, true, false) );
 
     public String reasonCardID() {
         return "Bolster";
@@ -44,6 +44,9 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
 
         this.block_counter = 6;
         this.baseBlock = this.block_counter;
@@ -63,6 +66,11 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
         card.block_counter = this.block_counter;
         this.baseBlock = block_counter;
         return card;
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        AbstractDungeon.actionManager.addToTop(new BolsterAction(this.uuid, this.magicNumber));
     }
 
     @Override

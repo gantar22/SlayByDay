@@ -17,8 +17,8 @@
 },"SlayByDay:DevilishLuck": {
         "NAME": "Devilish Luck",
         "DESCRIPTIONS": ["Each time you play play a card, you have a ", "% chance to play it again"]
-}, "SlayByDay:Synchronized": {
-        "NAME": "Synchronized",
+}, "SlayByDay:Harmonized": {
+        "NAME": "Harmonized",
         "DESCRIPTIONS": ["When you swap to Reason mode, draw ", " card.", " cards.", " NL When you swap to Passion mode, gain ", " strength, and at the end of this turn, lose ", " strength."]
 }, "SlayByDay:PlayerFlight": {
         "NAME": "Flight",
@@ -26,5 +26,11 @@
 }, "SlayByDay:Refill": {
         "NAME": "Refill",
         "DESCRIPTIONS": ["When you use a potion, brew a random potion. Expires at the end of your turn."]
+}, "SlayByDay:Infinity": {
+        "NAME": "Infinity",
+        "DESCRIPTIONS": ["After ", " more turns, when you play a card, draw a card.", " more turn, when you play a card, draw a card.", "When you play a card, draw a card."]
+}, "SlayByDay:Finality": {
+        "NAME": "Finality",
+        "DESCRIPTIONS": ["In ", " turns, die irreversibly.", " turn, die irreversibly."]
 }
 }

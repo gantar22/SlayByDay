@@ -1,6 +1,7 @@
 package SlayByDay.characters;
 
 import SlayByDay.relics.Anima;
+import SlayByDay.cards.switchCards.DefensiveManeuversOffensiveRushSwitch;
 import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
 import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
@@ -28,6 +29,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
+//import SlayByDay.relics.MarkOfTheOther;
+import SlayByDay.relics.SpiritualCharm;
+import SlayByDay.relics.SpiritualCrystal;
 import basemod.interfaces.PostInitializeSubscriber;
 
 import java.util.ArrayList;
@@ -178,11 +182,12 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
 
         logger.info("Begin loading starter Deck Strings");
 
-        for(int i = 0; i < 6; i++)
-            retVal.add(DefaultCommonAttack.ID);
         for(int i = 0; i < 5; i++)
+            retVal.add(DefaultCommonAttack.ID);
+        for(int i = 0; i < 0; i++)
             retVal.add(DefaultCommonSkill.ID);
-        retVal.add(new PossessionExpulsionSwitch("Expulsion").cardID);
+        retVal.add(new PossessionExpulsionSwitch().cardID);
+        retVal.add(new DefensiveManeuversOffensiveRushSwitch().cardID);
 
         return retVal;
     }
@@ -194,10 +199,15 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
         retVal.add(Anima.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
+        // retVal.add(MarkOfTheOther.ID);
+        retVal.add(SpiritualCharm.ID);
 
         UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+
+        UnlockTracker.markRelicAsSeen(SpiritualCharm.ID);
+
         Anima.subscribe(new IOnSwitch() {
             @Override
             public void OnSwitch(boolean Reason_Mode) {

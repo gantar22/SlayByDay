@@ -32,7 +32,7 @@ public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
     }
 
     public PunishmentFurySwitch(String switchID) {
-        super("SlayByDay:PunishmentFury", "None", null, 0, "None", CardType.SKILL,
+        super("SlayByDay:PunishmentFury", "None", null, 0, "None", CardType.ATTACK,
                 TheMedium.Enums.COLOR_M_PURPLE, CardRarity.RARE, CardTarget.NONE, PunishmentFurySwitch.class);
 
         if (switchID == null) {
@@ -44,6 +44,9 @@ public class PunishmentFurySwitch extends AbstractSwitchByModeCard {
             this.switchTo(this.currentID);
         } else {
             this.switchTo(switchID);
+        }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
         }
     }
 

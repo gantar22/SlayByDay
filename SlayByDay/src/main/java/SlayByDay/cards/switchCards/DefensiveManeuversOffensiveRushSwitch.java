@@ -44,6 +44,9 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public DefensiveManeuversOffensiveRushSwitch() { this(null); }

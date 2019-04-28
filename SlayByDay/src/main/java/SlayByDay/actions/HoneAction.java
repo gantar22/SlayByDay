@@ -36,6 +36,8 @@ public class HoneAction extends AbstractGameAction {
             if (c.baseDamage < 0) {
                 c.baseDamage = 0;
             }
+            c.applyPowers();
+            c.flash();
         }
 
         this.isDone = true;

@@ -37,5 +37,27 @@
     "DESCRIPTIONS": [
       "All buffs and debuffs applied to you have +1 stack."
     ]
+  },
+
+  "SlayByDay:MarkOfTheOther": {
+    "NAME": "Mark of the Other",
+    "FLAVOR": "Your other half sees through the same eyes as you.",
+    "DESCRIPTIONS": [
+      "Applies +1 Strength if in Human Form. Applies +1 Dexterity if in Spirit Form."
+    ]
+  },
+  "SlayByDay:SpiritualCharm": {
+    "NAME": "Spiritual Charm",
+    "FLAVOR": "The spirit stirs within you.",
+    "DESCRIPTIONS": [
+      "The first time you switch forms each combat, gain 1 energy."
+    ]
+  },
+  "SlayByDay:SpiritualCrystal": {
+    "NAME": "Spiritual Crystal",
+    "FLAVOR": "The spirit rages within you.",
+    "DESCRIPTIONS": [
+      "The first time you switch forms each turn, gain 1 energy."
+    ]
   }
 }

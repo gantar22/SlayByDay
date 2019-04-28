@@ -1,6 +1,7 @@
 package SlayByDay.powers;
 
 import SlayByDay.SlayByDay;
+import SlayByDay.powers.interfaces.OnPostPotionUsePower;
 import SlayByDay.util.TextureLoader;
 import basemod.BaseMod;
 import basemod.interfaces.PostPotionUseSubscriber;
@@ -20,8 +21,7 @@ import static SlayByDay.SlayByDay.makePowerPath;
 
 // Whenever a potion is consumed, deal (amount) damage to all enemies
 
-public class SplashDamagePower extends AbstractPower
-implements PostPotionUseSubscriber {
+public class SplashDamagePower extends AbstractPower implements OnPostPotionUsePower {
     public AbstractCreature source;
 
     public static final String POWER_ID = SlayByDay.makeID("SplashDamage");
@@ -49,26 +49,13 @@ implements PostPotionUseSubscriber {
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        BaseMod.subscribe(this);
         updateDescription();
     }
 
     @Override
-    public void receivePostPotionUse(AbstractPotion abstractPotion) {
-        if (this.owner != null) {
-            AbstractPower splash_power = this.owner.getPower(SplashDamagePower.POWER_ID);
-            if (splash_power != null) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction((AbstractCreature)null, DamageInfo.createDamageMatrix(splash_power.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.POISON));
-                this.flash();
-            } else {
-                BaseMod.unsubscribe(this);
-            }
-        }
-    }
-
-    @Override
-    public void onRemove() {
-        BaseMod.unsubscribe(this);
+    public void onPostPotionUse(AbstractPotion abstractPotion) {
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction((AbstractCreature)null, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.POISON));
+        this.flash();
     }
 
     @Override

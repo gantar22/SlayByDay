@@ -42,6 +42,9 @@ public class PredictionFeatherShieldSwitch extends AbstractSwitchByModeCard {
         } else {
             this.switchTo(switchID);
         }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
+        }
     }
 
     public PredictionFeatherShieldSwitch() { this(null); }

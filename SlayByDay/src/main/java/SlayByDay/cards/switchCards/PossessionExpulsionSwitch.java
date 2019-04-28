@@ -3,6 +3,7 @@ package SlayByDay.cards.switchCards;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.relics.Anima;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.List;
@@ -34,6 +35,9 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
             this.switchTo(this.currentID);
         } else {
             this.switchTo(switchID);
+        }
+        if (AbstractDungeon.isPlayerInDungeon()) {
+            this.validateSwitchCardMode(true);
         }
     }
 
