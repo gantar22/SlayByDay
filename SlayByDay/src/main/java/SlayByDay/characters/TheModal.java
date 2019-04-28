@@ -25,6 +25,9 @@ import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
 import SlayByDay.relics.PlaceholderRelic;
+//import SlayByDay.relics.MarkOfTheOther;
+import SlayByDay.relics.SpiritualCharm;
+import SlayByDay.relics.SpiritualCrystal;
 
 import java.util.ArrayList;
 
@@ -159,9 +162,9 @@ public class TheModal extends CustomPlayer  {
 
         logger.info("Begin loading starter Deck Strings");
 
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 1; i++)
             retVal.add(DefaultCommonAttack.ID);
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 0; i++)
             retVal.add(DefaultCommonSkill.ID);
         retVal.add(new PossessionExpulsionSwitch("Expulsion").cardID);
 
@@ -175,10 +178,14 @@ public class TheModal extends CustomPlayer  {
         retVal.add(PlaceholderRelic.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
+        // retVal.add(MarkOfTheOther.ID);
+        retVal.add(SpiritualCharm.ID);
 
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        // UnlockTracker.markRelicAsSeen(MarkOfTheOther.ID);
+        UnlockTracker.markRelicAsSeen(SpiritualCharm.ID);
 
         return retVal;
     }

@@ -23,10 +23,18 @@ import SlayByDay.cards.switchCards.*;
 import SlayByDay.characters.TheModal;
 import SlayByDay.events.IdentityCrisisEvent;
 import SlayByDay.potions.PlaceholderPotion;
+
+// Given custom relics
 import SlayByDay.relics.BottledPlaceholderRelic;
 import SlayByDay.relics.DefaultClickableRelic;
 import SlayByDay.relics.PlaceholderRelic;
 import SlayByDay.relics.PlaceholderRelic2;
+
+// Custom Relics (Joey)
+//import SlayByDay.relics.MarkOfTheOther;
+import SlayByDay.relics.SpiritualCharm;
+import SlayByDay.relics.SpiritualCrystal;
+
 import SlayByDay.util.TextureLoader;
 import SlayByDay.variables.DefaultCustomVariable;
 import SlayByDay.variables.DefaultSecondMagicNumber;
@@ -278,6 +286,14 @@ public class SlayByDay implements
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheModal.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheModal.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheModal.Enums.COLOR_M_PURPLE);
+
+        /*
+         * CUSTOM RELICS START HERE
+         */
+        // BaseMod.addRelicToCustomPool(new MarkOfTheOther(), TheModal.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new SpiritualCharm(), TheModal.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new SpiritualCrystal(), TheModal.Enums.COLOR_M_PURPLE);
+
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
