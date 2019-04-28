@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.RetainCardPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import org.lwjgl.Sys;
 
 import java.util.ArrayList;
 
@@ -258,6 +259,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
 
+        System.out.println("playing: " + c.name + " at " + (m != null ? m.name : "null"));
         int dif = 0;
         if(m  == null) return;
         System.out.println(m.currentBlock);
