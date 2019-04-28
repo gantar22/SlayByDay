@@ -1,7 +1,7 @@
 package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import SlayByDay.util.TextureLoader;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
@@ -43,7 +43,7 @@ public class SpiritualCrystal extends CustomRelic {
     public SpiritualCrystal() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
         instance = this;
-        mode = TheModal.Reason_Mode;
+        mode = TheMedium.Reason_Mode;
     }
 
     @Override
@@ -54,13 +54,13 @@ public class SpiritualCrystal extends CustomRelic {
     @Override
     public void atTurnStart() {
         switched = false;
-        mode = TheModal.Reason_Mode;
+        mode = TheMedium.Reason_Mode;
     }
 
     // public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
     public void update() {
         super.update();
-        if (!switched && mode != TheModal.Reason_Mode) {
+        if (!switched && mode != TheMedium.Reason_Mode) {
             switched = true;
             AbstractDungeon.player.gainEnergy(1);
         }

@@ -1,7 +1,7 @@
 package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
-import SlayByDay.characters.TheModal;
+import SlayByDay.characters.TheMedium;
 import SlayByDay.util.TextureLoader;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
@@ -47,7 +47,7 @@ public class MarkOfTheOther extends CustomRelic {
 
     @Override
     public void atBattleStartPreDraw() {
-        if (TheModal.Reason_Mode) {
+        if (TheMedium.Reason_Mode) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,
                     AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1)));
         } else {
