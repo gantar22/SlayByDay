@@ -76,7 +76,7 @@
   },
   "DefensiveManeuvers": {
     "NAME": "Defensive Maneuvers",
-    "DESCRIPTION": "Human. NL Gain !B! block. Next turn, draw !M! additional cards.",
+    "DESCRIPTION": "Human. NL Gain !B! block. Next turn, draw !M! additional card.",
     "UPGRADE_DESCRIPTION": "Human. NL Gain !B! block. Next turn, draw !M! additional cards."
   },
   "OffensiveRush": {
@@ -127,7 +127,7 @@
   "Hone": {
     "NAME": "Hone",
     "DESCRIPTION": "Human. NL When you draw this card, increase its damage by !M! this combat. NL Increase this card's damage by !M! this combat.",
-    "UPGRADE_DESCRIPTION": "Human. NL Increase this card's damage by !M! this combat."
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, increase its damage by !M! this combat. NL Increase this card's damage by !M! this combat."
   },
   "Lacerate": {
     "NAME": "Rend",
@@ -167,7 +167,7 @@
   "Bolster": {
     "NAME": "Bolster",
     "DESCRIPTION": "Human. NL When you draw this card, increase its block by !M! this combat. NL Increase this card's block by !M! this combat.",
-    "UPGRADE_DESCRIPTION": "Human. NL Increase this card's block by !M! this combat."
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, increase its block by !M! this combat. NL Increase this card's block by !M! this combat."
   },
   "Guard": {
     "NAME": "Guard",
@@ -223,6 +223,26 @@
     "NAME": "Bide",
     "DESCRIPTION": "Spirit. NL Gain !B! block. Gain !M! strength.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block. Gain !M! strength."
+  },
+  "Reinvest": {
+    "NAME": "Reinvest",
+    "DESCRIPTION": "Human. NL Draw !M! card. Shuffle !M! card into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL Draw !M! cards. Shuffle !M! cards into your draw pile."
+  },
+  "SuddenStrike": {
+    "NAME": "Sudden Strike",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. Lose !M! strength.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. Lose !M! strength."
+  },
+  "Renew": {
+    "NAME": "Renew",
+    "DESCRIPTION": "Human. NL When you draw this card, draw !M! additional cards. Shuffle this card into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, draw !M! additional cards. Shuffle this card into your draw pile."
+  },
+  "FeatherBash": {
+    "NAME": "Feather Bash",
+    "DESCRIPTION": "Spirit. NL Gain !B! block twice. Deal !D! damage twice.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block thrice. Deal !D! damage thrice."
   },
 
 

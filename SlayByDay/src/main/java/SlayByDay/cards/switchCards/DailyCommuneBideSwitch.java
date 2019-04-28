@@ -2,17 +2,12 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.DailyCommuneAction;
 import SlayByDay.characters.TheMedium;
-import SlayByDay.relics.PlaceholderRelic;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import SlayByDay.patches.cards.BackToDeckOnPlayPatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ReboundPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import java.util.Arrays;
@@ -27,7 +22,7 @@ public class DailyCommuneBideSwitch extends AbstractSwitchByModeCard {
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
             new switchCard("Bide", "DailyCommune", 1, 0, 0, 0, 2, 2, 1, 0,
-                    CardType.SKILL, CardTarget.SELF, false, false, true, false) );
+                    CardType.SKILL, CardTarget.SELF, false, false, false, false) );
 
     public String reasonCardID() {
         return "DailyCommune";
@@ -35,8 +30,6 @@ public class DailyCommuneBideSwitch extends AbstractSwitchByModeCard {
     public String passionCardID() {
       return "Bide";
     }
-
-    public boolean played = false;
 
     public DailyCommuneBideSwitch(String switchID) {
         super("SlayByDay:DailyCommuneBide", "None", null, 0, "None", CardType.SKILL,
@@ -59,15 +52,6 @@ public class DailyCommuneBideSwitch extends AbstractSwitchByModeCard {
 
     public DailyCommuneBideSwitch() { this(null); }
 
-
-    @Override
-    public void onMoveToDiscard() {
-        if (TheMedium.Reason_Mode && this.currentID == "DailyCommune" && played) {
-            played = false;
-            AbstractDungeon.player.discardPile.moveToDeck(this, false);
-        }
-    }
-
     @Override
     public void triggerWhenDrawn() {
         if (TheMedium.Reason_Mode) {
@@ -81,7 +65,7 @@ public class DailyCommuneBideSwitch extends AbstractSwitchByModeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "DailyCommune":
-                played = true;
+                BackToDeckOnPlayPatch.toBePutBackInDeck.set(this, true);
                 AbstractDungeon.actionManager.addToBottom(new DailyCommuneAction());
                 break;
             case "Bide":
