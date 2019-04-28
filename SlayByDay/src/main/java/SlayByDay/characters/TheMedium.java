@@ -1,5 +1,6 @@
 package SlayByDay.characters;
 
+import SlayByDay.relics.Anima;
 import SlayByDay.cards.switchCards.DefensiveManeuversOffensiveRushSwitch;
 import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
@@ -28,14 +29,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
-import SlayByDay.relics.PlaceholderRelic;
-<<<<<<< HEAD:SlayByDay/src/main/java/SlayByDay/characters/TheModal.java
 //import SlayByDay.relics.MarkOfTheOther;
 import SlayByDay.relics.SpiritualCharm;
 import SlayByDay.relics.SpiritualCrystal;
-=======
 import basemod.interfaces.PostInitializeSubscriber;
->>>>>>> af9eb03cb2f9b4ade71282838b84eb1a0829cff8:SlayByDay/src/main/java/SlayByDay/characters/TheMedium.java
 
 import java.util.ArrayList;
 
@@ -185,11 +182,7 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
 
         logger.info("Begin loading starter Deck Strings");
 
-<<<<<<< HEAD:SlayByDay/src/main/java/SlayByDay/characters/TheModal.java
-        for(int i = 0; i < 1; i++)
-=======
         for(int i = 0; i < 5; i++)
->>>>>>> af9eb03cb2f9b4ade71282838b84eb1a0829cff8:SlayByDay/src/main/java/SlayByDay/characters/TheMedium.java
             retVal.add(DefaultCommonAttack.ID);
         for(int i = 0; i < 0; i++)
             retVal.add(DefaultCommonSkill.ID);
@@ -203,26 +196,24 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
+        retVal.add(Anima.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
         // retVal.add(MarkOfTheOther.ID);
         retVal.add(SpiritualCharm.ID);
 
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
-<<<<<<< HEAD:SlayByDay/src/main/java/SlayByDay/characters/TheModal.java
-        // UnlockTracker.markRelicAsSeen(MarkOfTheOther.ID);
+
         UnlockTracker.markRelicAsSeen(SpiritualCharm.ID);
-=======
-        PlaceholderRelic.subscribe(new IOnSwitch() {
+
+        Anima.subscribe(new IOnSwitch() {
             @Override
             public void OnSwitch(boolean Reason_Mode) {
                 switch_mode(Reason_Mode);
             }
         });
->>>>>>> af9eb03cb2f9b4ade71282838b84eb1a0829cff8:SlayByDay/src/main/java/SlayByDay/characters/TheMedium.java
 
         return retVal;
     }

@@ -11,6 +11,12 @@
 }, "SlayByDay:PowerUp": {
         "NAME": "Power Up",
         "DESCRIPTIONS": ["Whenever you gain strength, gain ", " additional strength."]
+},"SlayByDay:Precision": {
+        "NAME": "Precision",
+        "DESCRIPTIONS": ["The effectiveness of Vulnerable and Weak you apply are increased by ", "%"]
+},"SlayByDay:DevilishLuck": {
+        "NAME": "Devilish Luck",
+        "DESCRIPTIONS": ["Each time you play play a card, you have a ", "% chance to play it again"]
 }, "SlayByDay:Harmonized": {
         "NAME": "Harmonized",
         "DESCRIPTIONS": ["When you swap to Reason mode, draw ", " card.", " cards.", " NL When you swap to Passion mode, gain ", " strength, and at the end of this turn, lose ", " strength."]

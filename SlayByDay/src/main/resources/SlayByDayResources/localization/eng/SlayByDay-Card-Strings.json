@@ -257,5 +257,21 @@
     "NAME": "Expulsion",
     "DESCRIPTION": "Spirit. NL Switch into Human form.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Switch into Human form."
+  },
+
+
+  "__Carter's card": {},
+
+  "Precision": {
+    "NAME": "Precision",
+    "DESCRIPTION": "Human. NL Vulnerable and Weak are 10% more effective against enemies.",
+    "UPGRADE_DESCRIPTION": "Human. NL Vulnerable and Weak are 20% more effective against enemies."
+  },
+
+    "DevilishLuck": {
+    "NAME": "Devilish Luck",
+    "DESCRIPTION": "Spirit. NL Each card you play has a 10% chance to be played again.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Each card you play has a 20% chance to be played again."
   }
+
 }

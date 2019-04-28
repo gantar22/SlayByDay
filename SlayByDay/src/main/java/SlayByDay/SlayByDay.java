@@ -1,8 +1,12 @@
 package SlayByDay;
 
+
+import SlayByDay.relics.Anima;
+
 import SlayByDay.powers.interfaces.OnPostPotionUsePower;
 import SlayByDay.powers.interfaces.OnSwitchPower;
 import SlayByDay.relics.*;
+
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
@@ -34,7 +38,6 @@ import SlayByDay.potions.PlaceholderPotion;
 // Given custom relics
 import SlayByDay.relics.BottledPlaceholderRelic;
 import SlayByDay.relics.DefaultClickableRelic;
-import SlayByDay.relics.PlaceholderRelic;
 import SlayByDay.relics.PlaceholderRelic2;
 
 // Custom Relics (Joey)
@@ -292,7 +295,7 @@ public class SlayByDay implements
         logger.info("Adding relics");
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new Anima(), TheMedium.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheMedium.Enums.COLOR_M_PURPLE);
 
@@ -312,7 +315,7 @@ public class SlayByDay implements
         logger.info("Done adding relics!");
 
         // Subscribe to relic based listeners
-        PlaceholderRelic.subscribe(this);
+        Anima.subscribe(this);
     }
 
     // ================ /ADD RELICS/ ===================
@@ -370,6 +373,9 @@ public class SlayByDay implements
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());
+
+        //Carter's card
+        BaseMod.addCard(new PrecisionDevilishLuckSwitch());
 
 
         logger.info("Making sure the cards are unlocked.");
