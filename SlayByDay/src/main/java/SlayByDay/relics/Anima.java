@@ -261,13 +261,23 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
 
         System.out.println("playing: " + c.name + " at " + (m != null ? m.name : "null"));
         int dif = 0;
-        if(m  == null) return;
-        System.out.println(m.currentBlock);
-        if(c.damage > m.currentBlock && !TheMedium.Reason_Mode)
+        if(m  == null)
         {
-            flash();
-            dif -= 2;
+            for(int i = 0; i < AbstractDungeon.getMonsters().monsters.size();i++)
+            {
+                if(c.damage > AbstractDungeon.getMonsters().monsters.get(i).currentBlock && !TheMedium.Reason_Mode) {
+                    flash();
+                    dif -= 2;
+                }
+            }
+        } else {
+            if(c.damage > m.currentBlock && !TheMedium.Reason_Mode)
+            {
+                flash();
+                dif -= 2;
+            }
         }
+
         if(TheMedium.Reason_Mode)
         {
             if(c.type == AbstractCard.CardType.ATTACK && TheMedium.Reason_Mode)
