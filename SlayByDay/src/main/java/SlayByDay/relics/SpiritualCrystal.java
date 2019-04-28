@@ -22,7 +22,7 @@ import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-import SlayByDay.relics.PlaceholderRelic;
+import SlayByDay.relics.Anima;
 
 import java.util.ArrayList;
 

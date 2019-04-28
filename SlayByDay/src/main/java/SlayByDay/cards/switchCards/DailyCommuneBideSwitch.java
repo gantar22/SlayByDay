@@ -2,7 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.actions.DailyCommuneAction;
 import SlayByDay.characters.TheMedium;
-import SlayByDay.relics.PlaceholderRelic;
+import SlayByDay.relics.Anima;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
