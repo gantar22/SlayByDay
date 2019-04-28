@@ -1,14 +1,13 @@
 package SlayByDay.cards.switchCards;
 
 import SlayByDay.characters.TheMedium;
+import SlayByDay.relics.Anima;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.List;
 import java.util.Arrays;
 import java.util.Random;
-
-import SlayByDay.relics.PlaceholderRelic;
 
 public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
 
@@ -42,7 +41,7 @@ public class PossessionExpulsionSwitch extends AbstractSwitchByModeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        PlaceholderRelic.Switch_Mode();
+        Anima.Switch_Mode();
     }
 
     public String reasonCardID() {

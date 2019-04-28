@@ -1,28 +1,30 @@
 package SlayByDay.powers;
 
 import SlayByDay.SlayByDay;
-import SlayByDay.relics.Anima;
-import SlayByDay.relics.IOnSwitch;
 import SlayByDay.util.TextureLoader;
+import basemod.BaseMod;
+import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.evacipated.cardcrawl.mod.stslib.patches.relicInterfaces.OnAfterUseCardPatch;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static SlayByDay.SlayByDay.makePowerPath;
 
-public class SynchronizedPower extends AbstractPower
-implements IOnSwitch {
+
+public class PrecisionPower extends AbstractPower {
     public AbstractCreature source;
 
-    public static final String POWER_ID = SlayByDay.makeID("Synchronized");
+    public static final String POWER_ID = SlayByDay.makeID("Precision");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -32,7 +34,8 @@ implements IOnSwitch {
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public SynchronizedPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+
+    public PrecisionPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -47,33 +50,15 @@ implements IOnSwitch {
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        Anima.subscribe(this);
         updateDescription();
     }
 
-    @Override
-    public void OnSwitch(boolean Reason_Mode) {
-        if (this.owner.getPower(this.ID) != this) {
-            Anima.unsubscribe(this);
-            return;
-        }
 
-        if (Reason_Mode) {
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
-            this.flash();
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, this.amount), this.amount));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LoseStrengthPower(this.owner, this.amount), this.amount));
-            this.flash();
-        }
-    }
-
+    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
-        if (this.amount == 1) {
-            description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + this.amount + DESCRIPTIONS[4] + this.amount + DESCRIPTIONS[5];
-        } else {
-            description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + this.amount + DESCRIPTIONS[4] + this.amount + DESCRIPTIONS[5];
-        }
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
+
+
 }

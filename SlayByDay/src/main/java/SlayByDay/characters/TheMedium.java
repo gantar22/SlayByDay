@@ -1,5 +1,6 @@
 package SlayByDay.characters;
 
+import SlayByDay.relics.Anima;
 import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
 import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
@@ -27,7 +28,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
-import SlayByDay.relics.PlaceholderRelic;
 import basemod.interfaces.PostInitializeSubscriber;
 
 import java.util.ArrayList;
@@ -191,14 +191,14 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
+        retVal.add(Anima.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
 
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
-        PlaceholderRelic.subscribe(new IOnSwitch() {
+        Anima.subscribe(new IOnSwitch() {
             @Override
             public void OnSwitch(boolean Reason_Mode) {
                 switch_mode(Reason_Mode);

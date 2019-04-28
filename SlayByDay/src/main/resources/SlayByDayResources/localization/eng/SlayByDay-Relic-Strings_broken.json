@@ -1,9 +1,9 @@
 {
-  "SlayByDay:Anima": {
-    "NAME": "Dual Nature",
-    "FLAVOR": "Two for the price of everything.",
+  "SlayByDay:PlaceholderRelic": {
+    "NAME": "Placeholder Energy Relic",
+    "FLAVOR": "The snake is a friend.",
     "DESCRIPTIONS": [
-      "When the counter hits 0, switch forms. NL In human form, the counter ticks down by 2 when you play an attack and up by one when you play a skill. In spirit form, the counter ticks down by 2 when dealing unblocked damage and up by one when taking it."
+      "Gain #b1 [E] ."
     ]
   },
   "SlayByDay:PlaceholderRelic2": {
