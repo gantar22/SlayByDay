@@ -184,7 +184,7 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
 
         for(int i = 0; i < 5; i++)
             retVal.add(DefaultCommonAttack.ID);
-        for(int i = 0; i < 0; i++)
+        for(int i = 0; i < 5; i++)
             retVal.add(DefaultCommonSkill.ID);
         retVal.add(new PossessionExpulsionSwitch().cardID);
         retVal.add(new DefensiveManeuversOffensiveRushSwitch().cardID);
