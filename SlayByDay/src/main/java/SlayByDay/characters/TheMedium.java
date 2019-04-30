@@ -1,5 +1,6 @@
 package SlayByDay.characters;
 
+import SlayByDay.relics.Anima;
 import SlayByDay.cards.switchCards.DefensiveManeuversOffensiveRushSwitch;
 import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
@@ -28,7 +29,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
-import SlayByDay.relics.PlaceholderRelic;
 
 //import SlayByDay.relics.MarkOfTheOther;
 import SlayByDay.relics.SpiritualCharm;
@@ -197,18 +197,19 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
+        retVal.add(Anima.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
         // retVal.add(MarkOfTheOther.ID);
         retVal.add(SpiritualCharm.ID);
 
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
         // UnlockTracker.markRelicAsSeen(MarkOfTheOther.ID);
         UnlockTracker.markRelicAsSeen(SpiritualCharm.ID);
-        PlaceholderRelic.subscribe(new IOnSwitch() {
+
+        Anima.subscribe(new IOnSwitch() {
             @Override
             public void OnSwitch(boolean Reason_Mode) {
                 switch_mode(Reason_Mode);
