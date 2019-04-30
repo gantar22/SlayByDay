@@ -368,6 +368,7 @@ public class SlayByDay implements
 
         //Carter's card
         BaseMod.addCard(new PrecisionDevilishLuckSwitch());
+        BaseMod.addCard(new InsultInjurySwitch());
 
 
         logger.info("Making sure the cards are unlocked.");

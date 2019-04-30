@@ -2,6 +2,7 @@ package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.characters.TheMedium;
+import SlayByDay.powers.InsultPower;
 import SlayByDay.powers.LosePassionOnDamage;
 import SlayByDay.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
@@ -193,6 +194,8 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     }
 
 
+
+
     @Override
     public int betterOnLoseHp(DamageInfo damageInfo, int i) {
         if(AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
@@ -263,6 +266,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         System.out.println("playing: " + c.name + " at " + (m != null ? m.name : "null"));
+
         int dif = 0;
 
             System.out.println("Card: " + c.name + " is doing " + c.damage + " damage.");

@@ -74,7 +74,7 @@ public class DevilishLuckPower extends AbstractPower {
     }*/
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        int r = (new Random()).nextInt(100);
+        int r = AbstractDungeon.cardRng.random(100);
         System.out.println("Devil number is " + r + " and amount is " + amount);
 
         if (r < amount && !card.purgeOnUse) {

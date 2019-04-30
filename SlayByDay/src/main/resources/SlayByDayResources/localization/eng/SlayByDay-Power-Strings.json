@@ -35,5 +35,8 @@
 }, "SlayByDay:LosePassionOnDamage": {
         "NAME": "Tick down on damage",
         "DESCRIPTIONS": ["Tick the counter down by 2 when you deal damage."]
+}, "SlayByDay:InsultPower": {
+        "NAME": "Insult",
+        "DESCRIPTIONS": ["You have played "," debuff this turn.", " debuffs this turn.","You haven't played any debuffs this turn."]
 }
 }

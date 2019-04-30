@@ -272,6 +272,14 @@
     "NAME": "Devilish Luck",
     "DESCRIPTION": "Spirit. NL Each card you play has a 10% chance to be played again.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Each card you play has a 20% chance to be played again."
+  }, "Insult": {
+    "NAME": "Insult",
+    "DESCRIPTION": "Human. NL Deal !D! damage for each skill you have played this turn",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage for for each skill you have played this turn"
+  }, "Injury": {
+    "NAME": "Injury",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card."
   }
 
 }

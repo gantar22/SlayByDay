@@ -196,11 +196,13 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
+
+
+        retVal.add(SpiritualCharm.ID);
         retVal.add(Anima.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
         // retVal.add(MarkOfTheOther.ID);
-        retVal.add(SpiritualCharm.ID);
 
         UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
