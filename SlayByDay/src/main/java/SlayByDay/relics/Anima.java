@@ -56,8 +56,8 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
 
 
     public static ArrayList<IOnSwitch> switchers;
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("mediumstarterRelic1.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("mediumstarterRelic1.png"));
     private static final String my_retain_id = "my_retain";
     private static int persistant_counter = REASON_STARTING_COUNTER;
     private static boolean needs_initialization = false;

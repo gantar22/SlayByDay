@@ -34,8 +34,8 @@ public class SpiritualCharm extends CustomRelic {
     public static final String ID = "SlayByDay:SpiritualCharm";
     public static SpiritualCharm instance;
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SpiritualCharm.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("SpiritualCharm.png"));
 
     private boolean switched;
     private boolean mode;
@@ -61,6 +61,7 @@ public class SpiritualCharm extends CustomRelic {
     public void update() {
         super.update();
         if (!switched && mode != TheMedium.Reason_Mode) {
+            this.flash();
             switched = true;
             AbstractDungeon.player.gainEnergy(1);
         }
