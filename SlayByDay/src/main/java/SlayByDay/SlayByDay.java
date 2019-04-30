@@ -36,9 +36,9 @@ import SlayByDay.events.IdentityCrisisEvent;
 import SlayByDay.potions.PlaceholderPotion;
 
 // Given custom relics
-import SlayByDay.relics.BottledPlaceholderRelic;
-import SlayByDay.relics.DefaultClickableRelic;
-import SlayByDay.relics.PlaceholderRelic2;
+//import SlayByDay.relics.BottledPlaceholderRelic;
+//import SlayByDay.relics.DefaultClickableRelic;
+//import SlayByDay.relics.PlaceholderRelic2;
 
 // Custom Relics (Joey)
 //import SlayByDay.relics.MarkOfTheOther;
@@ -52,15 +52,7 @@ import SlayByDay.variables.DefaultSecondMagicNumber;
 import java.nio.charset.StandardCharsets;
 
 
-//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
-// Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Scroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces).
-// In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault". You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories (Be careful.).
-// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
-// After you sorta get the hang of how to make cards, check out the card template which will make your life easier
-
 /*
- * With that out of the way:
  * Welcome to this mildly over-commented Slay the Spire modding base.
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
  * cards, relics), this is a good starting point.
@@ -86,9 +78,9 @@ public class SlayByDay implements
     private static String modID;
 
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "SlayByDay";
-    private static final String AUTHOR = "CMU Game Creation Society"; // And pretty soon - You!
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String MODNAME = "The Medium";
+    private static final String AUTHOR = "CMU Game Creation Society";
+    private static final String DESCRIPTION = "A mod themed around human and spirit duality.";
 
     // =============== INPUT TEXTURE LOCATION =================
 
@@ -102,17 +94,17 @@ public class SlayByDay implements
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "SlayByDayResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "SlayByDayResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "SlayByDayResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_MEDIUM_PURPLE = "SlayByDayResources/images/512/cardBG_attack.png";
+    private static final String SKILL_MEDIUM_PURPLE = "SlayByDayResources/images/512/cardBG_skill.png";
+    private static final String POWER_MEDIUM_PURPLE = "SlayByDayResources/images/512/cardBG_power.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "SlayByDayResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "SlayByDayResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_MEDIUM_PURPLE = "SlayByDayResources/images/512/card_medium_purple_orb.png";
+    private static final String CARD_ENERGY_ORB = "SlayByDayResources/images/512/card_small_purple_orb.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "SlayByDayResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "SlayByDayResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "SlayByDayResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "SlayByDayResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_MEDIUM_PURPLE_PORTRAIT = "SlayByDayResources/images/1024/cardBG_attack.png";
+    private static final String SKILL_MEDIUM_PURPLE_PORTRAIT = "SlayByDayResources/images/1024/cardBG_skill.png";
+    private static final String POWER_MEDIUM_PURPLE_PORTRAIT = "SlayByDayResources/images/1024/cardBG_power.png";
+    private static final String ENERGY_ORB_MEDIUM_PURPLE_PORTRAIT = "SlayByDayResources/images/1024/card_medium_purple_orb.png";
 
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "SlayByDayResources/images/charSelect/DefaultCharacterButton.png";
@@ -173,9 +165,9 @@ public class SlayByDay implements
 
         BaseMod.addColor(TheMedium.Enums.COLOR_M_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE,
                 MEDIUM_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE, MEDIUM_PURPLE,
-                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
-                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
+                ATTACK_MEDIUM_PURPLE, SKILL_MEDIUM_PURPLE, POWER_MEDIUM_PURPLE, ENERGY_ORB_MEDIUM_PURPLE,
+                ATTACK_MEDIUM_PURPLE_PORTRAIT, SKILL_MEDIUM_PURPLE_PORTRAIT, POWER_MEDIUM_PURPLE_PORTRAIT,
+                ENERGY_ORB_MEDIUM_PURPLE_PORTRAIT, CARD_ENERGY_ORB);
 
         logger.info("Done creating the color");
     }
@@ -229,7 +221,7 @@ public class SlayByDay implements
     public void receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + TheMedium.Enums.THE_MEDIUM.toString());
 
-        BaseMod.addCharacter(new TheMedium("the Default", TheMedium.Enums.THE_MEDIUM),
+        BaseMod.addCharacter(new TheMedium("the Medium", TheMedium.Enums.THE_MEDIUM),
                 THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheMedium.Enums.THE_MEDIUM);
 
         receiveEditPotions();
@@ -296,8 +288,8 @@ public class SlayByDay implements
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new Anima(), TheMedium.Enums.COLOR_M_PURPLE);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheMedium.Enums.COLOR_M_PURPLE);
+//        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheMedium.Enums.COLOR_M_PURPLE);
+//        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheMedium.Enums.COLOR_M_PURPLE);
 
         /*
          * CUSTOM RELICS START HERE
@@ -382,18 +374,18 @@ public class SlayByDay implements
         // Unlock the cards
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
-        UnlockTracker.unlockCard(OrbSkill.ID);
-        UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
-        UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
         UnlockTracker.unlockCard(DefaultCommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultCommonPower.ID);
-        UnlockTracker.unlockCard(DefaultUncommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultUncommonAttack.ID);
-        UnlockTracker.unlockCard(DefaultUncommonPower.ID);
-        UnlockTracker.unlockCard(DefaultRareAttack.ID);
-        UnlockTracker.unlockCard(DefaultRareSkill.ID);
-        UnlockTracker.unlockCard(DefaultRarePower.ID);
+//        UnlockTracker.unlockCard(OrbSkill.ID);
+//        UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
+//        UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
+//        UnlockTracker.unlockCard(DefaultCommonPower.ID);
+//        UnlockTracker.unlockCard(DefaultUncommonSkill.ID);
+//        UnlockTracker.unlockCard(DefaultUncommonAttack.ID);
+//        UnlockTracker.unlockCard(DefaultUncommonPower.ID);
+//        UnlockTracker.unlockCard(DefaultRareAttack.ID);
+//        UnlockTracker.unlockCard(DefaultRareSkill.ID);
+//        UnlockTracker.unlockCard(DefaultRarePower.ID);
 
         logger.info("Done adding cards!");
     }

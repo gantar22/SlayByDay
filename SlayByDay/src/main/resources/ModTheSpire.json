@@ -1,8 +1,8 @@
 {
   "modid": "SlayByDay",
-  "name": "SlayByDay",
+  "name": "The Medium",
   "author_list": ["CMU Game Creation Society"],
-  "description": "CARTER'S MOD (description goes here).",
+  "description": "A mod themed around human and spirit duality.",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
