@@ -32,5 +32,8 @@
 }, "SlayByDay:Finality": {
         "NAME": "Finality",
         "DESCRIPTIONS": ["In ", " turns, die irreversibly.", " turn, die irreversibly."]
+}, "SlayByDay:LosePassionOnDamage": {
+        "NAME": "Tick down on damage",
+        "DESCRIPTIONS": ["Tick the counter down by 2 when you deal damage."]
 }
 }

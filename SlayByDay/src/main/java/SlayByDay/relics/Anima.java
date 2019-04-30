@@ -2,6 +2,7 @@ package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.characters.TheMedium;
+import SlayByDay.powers.LosePassionOnDamage;
 import SlayByDay.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -99,7 +101,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
         }
     }
 
-    void addCounter(int i)
+    public void addCounter(int i)
     {
         if(this.counter + i <= 0)
         {
@@ -136,9 +138,11 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
         if(!reason_mode)
         {
             apply_passion_stats(PASSION_STAT_GAIN);
+
         } else
         {
             apply_passion_stats(-PASSION_STAT_GAIN);
+
         }
 
         if(reason_mode)
@@ -258,25 +262,11 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
 
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
-
         System.out.println("playing: " + c.name + " at " + (m != null ? m.name : "null"));
         int dif = 0;
-        if(m  == null)
-        {
-            for(int i = 0; i < AbstractDungeon.getMonsters().monsters.size();i++)
-            {
-                if(c.damage > AbstractDungeon.getMonsters().monsters.get(i).currentBlock && !TheMedium.Reason_Mode) {
-                    flash();
-                    dif -= 2;
-                }
-            }
-        } else {
-            if(c.damage > m.currentBlock && !TheMedium.Reason_Mode)
-            {
-                flash();
-                dif -= 2;
-            }
-        }
+
+            System.out.println("Card: " + c.name + " is doing " + c.damage + " damage.");
+
 
         if(TheMedium.Reason_Mode)
         {
@@ -290,8 +280,39 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
                 dif += 1;
             }
         }
-        addCounter(dif);
+        int delta_counter = dif;
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if(delta_counter != 0)
+                {
+                    flash();
+                    addCounter(delta_counter);
+                }
+                isDone = true;
+            }
+        });
+
     }
+
+
+
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if(!TheMedium.Reason_Mode && info.type == DamageInfo.DamageType.NORMAL)
+                {
+                    Anima.instance.flash();
+                    if(target != null && target.isPlayer) System.out.println("lol");
+                    Anima.instance.addCounter(-2);
+                }
+                isDone = true;
+            }
+        });
+
+    }
+
 
     @Override
     public basic_relic_data onSave() {
