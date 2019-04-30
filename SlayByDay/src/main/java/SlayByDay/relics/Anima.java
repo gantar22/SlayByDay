@@ -1,6 +1,7 @@
 package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
+import SlayByDay.cards.switchCards.InsultInjurySwitch;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.powers.InsultPower;
 import SlayByDay.powers.LosePassionOnDamage;
@@ -54,6 +55,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     public static final int PASSION_STAT_GAIN = 1;
     public static final String ID = SlayByDay.makeID("Anima");
     public static Anima instance;
+    public boolean started_turn = false;
 
 
     public static ArrayList<IOnSwitch> switchers;
@@ -77,7 +79,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     // Flash at the start of Battle.
     @Override
     public void atBattleStartPreDraw() {
-
+        started_turn = true;
     }
 
     // Do nothing
@@ -185,6 +187,11 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
             switchers.get(i).OnSwitch(TheMedium.Reason_Mode);
         }
         apply_stats_on_switch(TheMedium.Reason_Mode);
+
+        if(AbstractDungeon.player.hand.findCardById("SlayByDay:InsultInjury") != null && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        }
     }
 
     // Description
@@ -194,7 +201,14 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     }
 
 
+    @Override
+    public void onCardDraw(AbstractCard drawnCard) {
 
+        if(drawnCard.cardID == "SlayByDay:InsultInjury" && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID) && started_turn)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        }
+    }
 
     @Override
     public int betterOnLoseHp(DamageInfo damageInfo, int i) {
@@ -247,6 +261,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     public void onVictory()
     {
         persistant_counter = this.counter;
+        started_turn = false;
     }
 
     void apply_passion_stats(int amount)

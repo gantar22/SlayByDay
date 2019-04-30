@@ -9,12 +9,14 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.PummelDamageAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import org.lwjgl.Sys;
 
 import java.util.Arrays;
 import java.util.List;
@@ -57,12 +59,19 @@ public class InsultInjurySwitch extends AbstractSwitchByModeCard {
 
     public InsultInjurySwitch() { this(null); }
 
+    @Override
+    public void onSwitch()
+    {
+        //if(this.currentID == "Insult" && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
+            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+    }
+
 
     @Override
     public void triggerWhenDrawn()
     {
-        if(!AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        //if(!AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
+            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
     }
 
     @Override
@@ -72,11 +81,13 @@ public class InsultInjurySwitch extends AbstractSwitchByModeCard {
                 for (int i=0; i < AbstractDungeon.player.getPower(InsultPower.POWER_ID).amount; i++) {
                     AbstractDungeon.actionManager.addToBottom(new PummelDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
                 }            break;
-            case "ClawSmash":
+            case "Injury":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m,new DamageInfo(p,this.damage,this.damageTypeForTurn)));
-                if(AbstractDungeon.cardRandomRng.random(100) > magicNumberUp)
+                int r = AbstractDungeon.cardRandomRng.random(100);
+                System.out.println("injury repeat chance: " + r + " and magic n: " + this.magicNumber);
+                if(r > this.magicNumber)
                 {
-                    AbstractDungeon.actionManager.addToBottom(new UseCardAction(new InsultInjurySwitch(),m));
+                    AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(new InsultInjurySwitch(), m, 0));
                 }
                 break;
         }
