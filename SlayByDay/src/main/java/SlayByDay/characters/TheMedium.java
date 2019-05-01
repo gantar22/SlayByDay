@@ -8,10 +8,12 @@ import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -94,6 +96,8 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
+    private static SkeletonData skdata;
+    private static TextureAtlas atlas;
 
     // =============== /STRINGS/ =================
 
@@ -118,19 +122,15 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     // =============== CHARACTER CLASS START =================
 
     public static boolean Reason_Mode = true;
-    public static SpriterAnimation reason_anim = new SpriterAnimation(
-            "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml");
-    public static SpineAnimation passion_anim = new SpineAnimation(
-            "SlayByDayResources/images/char/defaultCharacter/Passione/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/Passione/skeleton.json",1);
 
-    public static SpineAnimation raison_anim = new SpineAnimation("SlayByDayResources/images/char/defaultCharacter/Raisin/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/Raisin/skeleton.json",1);
+    public static SpineAnimation anim = new SpineAnimation("SlayByDayResources/images/char/defaultCharacter/CombinedAnim/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/CombinedAnim/skeleton.json",.9f);
 
 
 
     public TheMedium(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
-               raison_anim);
+               anim);
 
         BaseMod.subscribe(this);
 
@@ -149,14 +149,13 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_MEDIUM_SKELETON_ATLAS_P,
-                THE_MEDIUM_SKELETON_JSON_P,
-                1.0f);
-        loadAnimation(
-                THE_MEDIUM_SKELETON_ATLAS_R,
-                THE_MEDIUM_SKELETON_JSON_R,
-                1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
+                anim.atlasUrl,
+                anim.skeletonUrl,
+                anim.scale);
+        atlas = new TextureAtlas(Gdx.files.internal(anim.atlasUrl));
+        skdata = new SkeletonJson(this.atlas).readSkeletonData(Gdx.files.internal(anim.skeletonUrl));
+
+        AnimationState.TrackEntry e = state.setAnimation(0, "IdleR", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
 
@@ -239,13 +238,26 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     {
         if(reason_Mode)
         {
-            animation = raison_anim;
+            reset_anim();
+            AnimationState.TrackEntry e = state.setAnimation(0, "IdleR", true);
+            e.setTime(e.getEndTime() * MathUtils.random());
         } else {
-            animation = passion_anim;
+
+            reset_anim();
+            AnimationState.TrackEntry e = state.setAnimation(0, "IdleP", true);
+            e.setTime(e.getEndTime() * MathUtils.random());
+
         }
-        AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
     }
+
+    void reset_anim()
+    {
+        this.skeleton = new Skeleton(skdata);
+        this.skeleton.setColor(Color.WHITE);
+        this.stateData = new AnimationStateData(skdata);
+        this.state = new AnimationState(this.stateData);
+    }
+
 
     // character Select on-button-press sound effect
     @Override
