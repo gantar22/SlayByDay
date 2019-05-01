@@ -31,7 +31,7 @@ public class SpreadInfectionDoubleSweepSwitch extends AbstractSwitchByModeCard {
             new switchCard("SpreadInfection", "DoubleSweep", 1,0 , 4, 2, 0, 0, 0, 0,
                     CardType.ATTACK, CardTarget.ENEMY, false, false, false, false),
 
-            new switchCard("DoubleSweep", "SpreadInfection", 1, 0, 6, 0, 0, 0,  -2, 1,
+            new switchCard("DoubleSweep", "SpreadInfection", 1, 0, 6, 0, 0, 0,  1,  1,
                 CardType.ATTACK, CardTarget.ALL_ENEMY, true, false, false, false) );
 
     public String reasonCardID() {
@@ -42,7 +42,7 @@ public class SpreadInfectionDoubleSweepSwitch extends AbstractSwitchByModeCard {
     }
 
     public SpreadInfectionDoubleSweepSwitch(String switchID) {
-        super("SlayByDay:SpreadInfectionDoubleSweep", "None", null, 0, "None", CardType.POWER,
+        super("SlayByDay:SpreadInfectionDoubleSweep", "None", null, 0, "None", CardType.ATTACK,
                 TheMedium.Enums.COLOR_M_PURPLE, CardRarity.COMMON, CardTarget.ENEMY, SpreadInfectionDoubleSweepSwitch.class);
 
         if (switchID == null) {
@@ -104,7 +104,7 @@ public class SpreadInfectionDoubleSweepSwitch extends AbstractSwitchByModeCard {
                 Arrays.fill(damages, this.damage);
                 for(int i = 0; i < 2;i++)
                     AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p,damages, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,this.magicNumber)));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,-this.magicNumber)));
                 break;
         }
     }

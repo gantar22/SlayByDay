@@ -288,6 +288,14 @@
     "NAME": "Double Sweep",
     "DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex."
+  }, "SkimOver": {
+    "NAME": "Skim Over",
+    "DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card.",
+    "UPGRADE_DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card."
+  }, "SacrificialCasting": {
+    "NAME": "Sacrificial Casting",
+    "DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile."
   }
 
 }

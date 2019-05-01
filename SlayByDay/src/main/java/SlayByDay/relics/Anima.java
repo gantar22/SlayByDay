@@ -63,7 +63,6 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("mediumstarterRelic1.png"));
     private static final String my_retain_id = "my_retain";
     private static int persistant_counter = REASON_STARTING_COUNTER;
-    private static boolean needs_initialization = false;
     private basic_relic_data old_data;
 
     public Anima() {
@@ -232,7 +231,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     @Override
     public void atBattleStart()
     {
-        if(needs_initialization)
+        if(old_data != null)
         {
             if(TheMedium.Reason_Mode != old_data.reason_mode)
                 swap();
@@ -240,8 +239,8 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
                 swap();
                 swap();
             }
-
             setCounter(old_data.counter);
+            old_data = null;
         } else {
             setCounter(persistant_counter);
             if(TheMedium.Reason_Mode)
@@ -251,8 +250,10 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
                 AbstractDungeon.actionManager.addToBottom(
                         new ApplyPowerAction( AbstractDungeon.player,AbstractDungeon.player,my_retain)
                 );
+                System.out.println("HI ADRIAN! LKA");
             } else {
                 apply_passion_stats(PASSION_STAT_GAIN);
+                System.out.println("HI ADRIAN! FGH");
             }
         }
     }
@@ -343,6 +344,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
        // switchers = new ArrayList<>(Arrays.asList(basic_relic_data.list));
         //save the mode and check it somewhere else to assign it
         //register some indication that you ought to swap at your first chance
+        System.out.println("ADRIAN!!! we loaded something!");
         if(switchers == null)
         {
             System.out.println("loaded a null switch array");
@@ -355,7 +357,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
             }
         });
         old_data = new basic_relic_data(my_basic_relic_data.reason_mode,my_basic_relic_data.counter);
-        needs_initialization = true;
+
     }
 }
 
