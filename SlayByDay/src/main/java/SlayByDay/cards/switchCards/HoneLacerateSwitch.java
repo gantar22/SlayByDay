@@ -22,7 +22,7 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
             new switchCard("Lacerate", "Hone", 1, 0, 6, 3, 0, 0, 0, 0,
-                    CardType.ATTACK, CardTarget.ENEMY, false, false, true, false) );
+                    CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
 
     public String reasonCardID() {
         return "Hone";
@@ -73,14 +73,16 @@ public class HoneLacerateSwitch extends AbstractSwitchByModeCard {
 
     @Override
     public void triggerWhenDrawn() {
-        AbstractDungeon.actionManager.addToTop(new HoneAction(this.uuid, this.magicNumber));
+        if (TheMedium.Reason_Mode) {
+            AbstractDungeon.actionManager.addToTop(new HoneAction(this.uuid, this.magicNumber));
+        }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "Hone":
-                AbstractDungeon.actionManager.addToBottom(new HoneAction(this.uuid, this.magicNumber));
+                AbstractDungeon.actionManager.addToTop(new HoneAction(this.uuid, this.magicNumber));
                 break;
             case "Lacerate":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));

@@ -1,10 +1,9 @@
 package SlayByDay.cards.switchCards;
 
+import SlayByDay.actions.ApplyPowersToAllMonstersAction;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.powers.DevilishLuckPower;
-import SlayByDay.powers.PowerUpPower;
 import SlayByDay.powers.PrecisionPower;
-import SlayByDay.powers.SplashDamagePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -54,6 +53,7 @@ public class PrecisionDevilishLuckSwitch extends AbstractSwitchByModeCard {
         switch (this.currentID) {
             case "Precision":
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PrecisionPower(p, p, this.magicNumber), this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowersToAllMonstersAction());
                 break;
             case "DevilishLuck":
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DevilishLuckPower(p, p, this.magicNumber), this.magicNumber));

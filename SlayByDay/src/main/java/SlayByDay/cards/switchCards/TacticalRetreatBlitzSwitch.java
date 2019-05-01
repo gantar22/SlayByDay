@@ -55,12 +55,6 @@ public class TacticalRetreatBlitzSwitch extends AbstractSwitchByModeCard {
     public TacticalRetreatBlitzSwitch() { this(null); }
 
     @Override
-    public void upgrade() {
-        this.upgradeBaseCost(1);
-        super.upgrade();
-    }
-
-    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "TacticalRetreat":

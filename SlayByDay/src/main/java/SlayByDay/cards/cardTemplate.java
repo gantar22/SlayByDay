@@ -13,8 +13,8 @@ import SlayByDay.characters.TheMedium;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
-// public class ${NAME} extends AbstractDefaultCard
-public class cardTemplate extends AbstractDefaultCard {
+// public class ${NAME} extends AbstractMediumCard
+public class cardTemplate extends AbstractMediumCard {
 
     /*
      * "Hey, I wanna make a bunch of cards now." - You, probably.
