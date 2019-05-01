@@ -280,6 +280,14 @@
     "NAME": "Injury",
     "DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card."
+  }, "SpreadInfection": {
+    "NAME": "Spread Infection",
+    "DESCRIPTION": "Human. NL Deal !D! damage. If this kills the enemy, move all debuffs from this enemy onto another random enemy.",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage. If this kills the enemy, move all debuffs from this enemy onto another random enemy."
+  }, "DoubleSweep": {
+    "NAME": "Double Sweep",
+    "DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex."
   }
 
 }
