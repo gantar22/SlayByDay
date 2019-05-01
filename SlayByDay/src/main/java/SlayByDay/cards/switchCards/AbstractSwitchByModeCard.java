@@ -318,7 +318,13 @@ public abstract class AbstractSwitchByModeCard extends AbstractMediumCard {
         this.switch_queued = false;
         if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
             this.applyPowers();
+            this.onSwitch();
         }
+    }
+
+    public void onSwitch()
+    {
+
     }
 
     @Override

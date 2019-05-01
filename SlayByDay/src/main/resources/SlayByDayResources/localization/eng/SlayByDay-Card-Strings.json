@@ -312,6 +312,30 @@
     "NAME": "Devilish Luck",
     "DESCRIPTION": "Spirit. NL Each card you play has a 10% chance to be played again.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Each card you play has a 20% chance to be played again."
+  }, "Insult": {
+    "NAME": "Insult",
+    "DESCRIPTION": "Human. NL Deal !D! damage for each skill you have played this turn while this card is in your hand",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage for for each skill you have played this turn while this card is in your hand"
+  }, "Injury": {
+    "NAME": "Injury",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card."
+  }, "SpreadInfection": {
+    "NAME": "Spread Infection",
+    "DESCRIPTION": "Human. NL Deal !D! damage. If this kills the enemy, move all debuffs from this enemy onto another random enemy.",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage. If this kills the enemy, move all debuffs from this enemy onto another random enemy."
+  }, "DoubleSweep": {
+    "NAME": "Double Sweep",
+    "DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex."
+  }, "SkimOver": {
+    "NAME": "Skim Over",
+    "DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card.",
+    "UPGRADE_DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card."
+  }, "SacrificialCasting": {
+    "NAME": "Sacrificial Casting",
+    "DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile."
   }
 
 }

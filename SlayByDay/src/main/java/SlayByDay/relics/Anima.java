@@ -1,7 +1,9 @@
 package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
+import SlayByDay.cards.switchCards.InsultInjurySwitch;
 import SlayByDay.characters.TheMedium;
+import SlayByDay.powers.InsultPower;
 import SlayByDay.powers.LosePassionOnDamage;
 import SlayByDay.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
@@ -53,6 +55,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     public static final int PASSION_STAT_GAIN = 1;
     public static final String ID = SlayByDay.makeID("Anima");
     public static Anima instance;
+    public boolean started_turn = false;
 
 
     public static ArrayList<IOnSwitch> switchers;
@@ -60,7 +63,6 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("mediumstarterRelic1.png"));
     private static final String my_retain_id = "my_retain";
     private static int persistant_counter = REASON_STARTING_COUNTER;
-    private static boolean needs_initialization = false;
     private basic_relic_data old_data;
 
     public Anima() {
@@ -76,7 +78,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     // Flash at the start of Battle.
     @Override
     public void atBattleStartPreDraw() {
-
+        started_turn = true;
     }
 
     // Do nothing
@@ -184,6 +186,11 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
             switchers.get(i).OnSwitch(TheMedium.Reason_Mode);
         }
         apply_stats_on_switch(TheMedium.Reason_Mode);
+
+        if(AbstractDungeon.player.hand.findCardById("SlayByDay:InsultInjury") != null && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        }
     }
 
     // Description
@@ -192,6 +199,15 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
         return DESCRIPTIONS[0];
     }
 
+
+    @Override
+    public void onCardDraw(AbstractCard drawnCard) {
+
+        if(drawnCard.cardID == "SlayByDay:InsultInjury" && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID) && started_turn)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        }
+    }
 
     @Override
     public int betterOnLoseHp(DamageInfo damageInfo, int i) {
@@ -215,7 +231,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     @Override
     public void atBattleStart()
     {
-        if(needs_initialization)
+        if(old_data != null)
         {
             if(TheMedium.Reason_Mode != old_data.reason_mode)
                 swap();
@@ -223,8 +239,8 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
                 swap();
                 swap();
             }
-
             setCounter(old_data.counter);
+            old_data = null;
         } else {
             setCounter(persistant_counter);
             if(TheMedium.Reason_Mode)
@@ -234,8 +250,10 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
                 AbstractDungeon.actionManager.addToBottom(
                         new ApplyPowerAction( AbstractDungeon.player,AbstractDungeon.player,my_retain)
                 );
+                System.out.println("HI ADRIAN! LKA");
             } else {
                 apply_passion_stats(PASSION_STAT_GAIN);
+                System.out.println("HI ADRIAN! FGH");
             }
         }
     }
@@ -244,6 +262,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     public void onVictory()
     {
         persistant_counter = this.counter;
+        started_turn = false;
     }
 
     void apply_passion_stats(int amount)
@@ -263,6 +282,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         System.out.println("playing: " + c.name + " at " + (m != null ? m.name : "null"));
+
         int dif = 0;
 
             System.out.println("Card: " + c.name + " is doing " + c.damage + " damage.");
@@ -324,6 +344,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
        // switchers = new ArrayList<>(Arrays.asList(basic_relic_data.list));
         //save the mode and check it somewhere else to assign it
         //register some indication that you ought to swap at your first chance
+        System.out.println("ADRIAN!!! we loaded something!");
         if(switchers == null)
         {
             System.out.println("loaded a null switch array");
@@ -336,7 +357,7 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
             }
         });
         old_data = new basic_relic_data(my_basic_relic_data.reason_mode,my_basic_relic_data.counter);
-        needs_initialization = true;
+
     }
 }
 

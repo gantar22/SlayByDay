@@ -6,6 +6,7 @@ import SlayByDay.relics.IOnSwitch;
 import basemod.BaseMod;
 import SlayByDay.cards.switchCards.PossessionExpulsionSwitch;
 import basemod.abstracts.CustomPlayer;
+import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -119,18 +120,19 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     public static boolean Reason_Mode = true;
     public static SpriterAnimation reason_anim = new SpriterAnimation(
             "SlayByDayResources/images/char/defaultCharacter/Spriter/Reason_Anim.scml");
-    public static SpriterAnimation passion_anim = new SpriterAnimation(
-            "SlayByDayResources/images/char/defaultCharacter/Spriter/Passion_Anim.scml");
+    public static SpineAnimation passion_anim = new SpineAnimation(
+            "SlayByDayResources/images/char/defaultCharacter/Passione/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/Passione/skeleton.json",1);
+
+    public static SpineAnimation raison_anim = new SpineAnimation("SlayByDayResources/images/char/defaultCharacter/Raisin/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/Raisin/skeleton.json",1);
 
 
 
     public TheMedium(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "SlayByDayResources/images/char/defaultCharacter/orb/vfx.png", null,
-               reason_anim);
+               raison_anim);
 
         BaseMod.subscribe(this);
-        System.out.println("Constructor called");
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
@@ -147,11 +149,16 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_MEDIUM_SKELETON_ATLAS,
-                THE_MEDIUM_SKELETON_JSON,
+                THE_MEDIUM_SKELETON_ATLAS_P,
+                THE_MEDIUM_SKELETON_JSON_P,
                 1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
+        loadAnimation(
+                THE_MEDIUM_SKELETON_ATLAS_R,
+                THE_MEDIUM_SKELETON_JSON_R,
+                1.0f);
+        AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
+
 
         // =============== /ANIMATIONS/ =================
 
@@ -196,11 +203,13 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
+
+
+        retVal.add(SpiritualCharm.ID);
         retVal.add(Anima.ID);
         //retVal.add(PlaceholderRelic2.ID);
         //retVal.add(DefaultClickableRelic.ID);
         // retVal.add(MarkOfTheOther.ID);
-        retVal.add(SpiritualCharm.ID);
 
         UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
@@ -230,10 +239,12 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
     {
         if(reason_Mode)
         {
-            animation = reason_anim;
+            animation = raison_anim;
         } else {
             animation = passion_anim;
         }
+        AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
     }
 
     // character Select on-button-press sound effect
