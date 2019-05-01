@@ -216,8 +216,8 @@
   },
   "DailyCommune": {
     "NAME": "Daily Commune",
-    "DESCRIPTION": "Human. NL When you draw this card, gain !B! block. Put a card from your hand, and this card, on top of your draw pile.",
-    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, gain !B! block. Put a card from your hand, and this card, on top of your draw pile."
+    "DESCRIPTION": "Human. NL When you draw this card, gain !B! block. NL Put a card from your hand, and this card, on top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, gain !B! block. NL Put a card from your hand, and this card, on top of your draw pile."
   },
   "Bide": {
     "NAME": "Bide",
@@ -236,13 +236,53 @@
   },
   "Renew": {
     "NAME": "Renew",
-    "DESCRIPTION": "Human. NL When you draw this card, draw !M! additional cards. Shuffle this card into your draw pile.",
-    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, draw !M! additional cards. Shuffle this card into your draw pile."
+    "DESCRIPTION": "Human. NL When you draw this card, draw !M! additional cards. NL Shuffle this card into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, draw !M! additional cards. NL Shuffle this card into your draw pile."
   },
   "FeatherBash": {
     "NAME": "Feather Bash",
     "DESCRIPTION": "Spirit. NL Gain !B! block twice. Deal !D! damage twice.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block thrice. Deal !D! damage thrice."
+  },
+  "PurgeTheSoul": {
+    "NAME": "Purge the Soul",
+    "DESCRIPTION": "Human. NL Remove !M! random debuff.",
+    "UPGRADE_DESCRIPTION": "Human. NL Remove !M! random debuffs."
+  },
+  "ReadiedStance": {
+    "NAME": "Readied Stance",
+    "DESCRIPTION": "Spirit. NL Lose 1 strength. Gain !M! thorns.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Lose 1 strength. Gain !M! thorns."
+  },
+  "ReactiveMeasures": {
+    "NAME": "Reactive Measures",
+    "DESCRIPTION": "Human. NL If the enemy intends to attack, apply !M! weak. Otherwise, apply !M! vulnerable.",
+    "UPGRADE_DESCRIPTION": "Human. NL If the enemy intends to attack, apply !M! weak. Otherwise, apply !M! vulnerable."
+  },
+  "ProactiveMeasures": {
+    "NAME": "Proactive Measures",
+    "DESCRIPTION": "Spirit. NL If the enemy intends to attack, gain !B! block. Otherwise, deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL If the enemy intends to attack, gain !B! block. Otherwise, deal !D! damage."
+  },
+  "Entrap": {
+    "NAME": "Entrap",
+    "DESCRIPTION": "Human. NL When you draw this card, apply !M! weak and !M! vulnerable to all enemies. NL Draw 1 card.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, apply !M! weak and !M! vulnerable to all enemies. NL Draw 1 card."
+  },
+  "SkillfulDodge": {
+    "NAME": "Skillful Dodge",
+    "DESCRIPTION": "Spirit. NL Gain !B! block. Dexterity affects this card !M! times.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block. Dexterity affects this card !M! times."
+  },
+  "ResoundingMessage": {
+    "NAME": "Resounding Message",
+    "DESCRIPTION": "Human. NL When you draw this card, deal !D! damage to all enemies. NL Increase this card's damage by !M! this combat.",
+    "UPGRADE_DESCRIPTION": "Human. NL When you draw this card, deal !D! damage to all enemies. NL Increase this card's damage by !M! this combat."
+  },
+  "CullTheWeak": {
+    "NAME": "Cull the Weak",
+    "DESCRIPTION": "Spirit. NL Kill all minions. Deal !D! damage. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Kill all minions. Deal !D! damage."
   },
 
 
@@ -272,6 +312,30 @@
     "NAME": "Devilish Luck",
     "DESCRIPTION": "Spirit. NL Each card you play has a 10% chance to be played again.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Each card you play has a 20% chance to be played again."
+  }, "Insult": {
+    "NAME": "Insult",
+    "DESCRIPTION": "Human. NL Deal !D! damage for each skill you have played this turn while this card is in your hand",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage for for each skill you have played this turn while this card is in your hand"
+  }, "Injury": {
+    "NAME": "Injury",
+    "DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card."
+  }, "SpreadInfection": {
+    "NAME": "Spread Infection",
+    "DESCRIPTION": "Human. NL Deal !D! damage. If this kills the enemy, move all debuffs from this enemy onto another random enemy.",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage. If this kills the enemy, move all debuffs from this enemy onto another random enemy."
+  }, "DoubleSweep": {
+    "NAME": "Double Sweep",
+    "DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex."
+  }, "SkimOver": {
+    "NAME": "Skim Over",
+    "DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card.",
+    "UPGRADE_DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card."
+  }, "SacrificialCasting": {
+    "NAME": "Sacrificial Casting",
+    "DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile."
   }
 
 }

@@ -120,8 +120,10 @@ public class SlayByDay implements
     public static final String BADGE_IMAGE = "SlayByDayResources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_MEDIUM_SKELETON_ATLAS = "SlayByDayResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_MEDIUM_SKELETON_JSON = "SlayByDayResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_MEDIUM_SKELETON_ATLAS_R = "SlayByDayResources/images/char/defaultCharacter/Raisin/skeleton.atlas";
+    public static final String THE_MEDIUM_SKELETON_JSON_R = "SlayByDayResources/images/char/defaultCharacter/Raisin/skeleton.json";
+    public static final String THE_MEDIUM_SKELETON_ATLAS_P = "SlayByDayResources/images/char/defaultCharacter/Passione/skeleton.atlas";
+    public static final String THE_MEDIUM_SKELETON_JSON_P = "SlayByDayResources/images/char/defaultCharacter/Passione/skeleton.json";
 
     // =============== MAKE IMAGE PATHS =================
 
@@ -368,12 +370,19 @@ public class SlayByDay implements
         BaseMod.addCard(new DailyCommuneBideSwitch());
         BaseMod.addCard(new ReinvestSuddenStrikeSwitch());
         BaseMod.addCard(new RenewFeatherBashSwitch());
+        BaseMod.addCard(new PurgeTheSoulReadiedStanceSwitch());
+        BaseMod.addCard(new ReactiveMeasuresProactiveMeasuresSwitch());
+        BaseMod.addCard(new EntrapSkillfulDodgeSwitch());
+        BaseMod.addCard(new ResoundingMessageCullTheWeakSwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());
 
         //Carter's card
         BaseMod.addCard(new PrecisionDevilishLuckSwitch());
+        BaseMod.addCard(new InsultInjurySwitch());
+        BaseMod.addCard(new SpreadInfectionDoubleSweepSwitch());
+        BaseMod.addCard(new SkimOverSacrificalCastingSwitch());
 
 
         logger.info("Making sure the cards are unlocked.");

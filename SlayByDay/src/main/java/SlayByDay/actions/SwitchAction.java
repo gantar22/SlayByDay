@@ -15,13 +15,13 @@ public class SwitchAction extends AbstractGameAction
     public SwitchAction(AbstractSwitchByModeCard card)
     {
         this.card = card;
-        this.duration = Settings.ACTION_DUR_MED;
+        this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
     }
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_MED)
+        if (this.duration == Settings.ACTION_DUR_FAST)
         {
             CardCrawlGame.sound.play("HEAL_1");
             this.card.superFlash();

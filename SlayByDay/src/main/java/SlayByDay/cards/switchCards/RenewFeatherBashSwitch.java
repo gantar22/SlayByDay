@@ -51,8 +51,10 @@ public class RenewFeatherBashSwitch extends AbstractSwitchByModeCard {
 
     @Override
     public void triggerWhenDrawn() {
-        this.flash();
-        AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
+        if (TheMedium.Reason_Mode) {
+            this.flash();
+            AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
+        }
     }
 
     public RenewFeatherBashSwitch() { this(null); }

@@ -13,7 +13,7 @@ import SlayByDay.characters.TheMedium;
 
 import static SlayByDay.SlayByDay.makeCardPath;
 
-public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
+public class DefaultSecondMagicNumberSkill extends AbstractMediumCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -24,7 +24,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
      * For how to create it, check out:
      * https://github.com/daviscook477/BaseMod/wiki/Dynamic-Variables
      * The files in this base that detail this are:
-     * variables.DefaultSecondMagicNumber and cards.AbstractDefaultCard
+     * variables.DefaultSecondMagicNumber and cards.AbstractMediumCard
      *
      * Apply 2(5) vulnerable and 4(9) poison to an enemy.
      */
@@ -63,7 +63,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         magicNumber = baseMagicNumber = VULNERABLE;
-        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POISON;
+        secondMagicNumber = baseSecondMagicNumber = POISON;
 
     }
 
@@ -74,7 +74,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
                 new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), this.magicNumber));
 
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new PoisonPower(m, p, this.defaultSecondMagicNumber), this.defaultSecondMagicNumber));
+                new ApplyPowerAction(m, p, new PoisonPower(m, p, this.secondMagicNumber), this.secondMagicNumber));
 
     }
 
@@ -84,7 +84,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_PLUS_VULNERABLE);
-            this.upgradeDefaultSecondMagicNumber(UPGRADE_PLUS_POISON);
+            this.upgradeSecondMagicNumber(UPGRADE_PLUS_POISON);
             this.initializeDescription();
         }
     }

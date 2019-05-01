@@ -48,7 +48,7 @@ public class ResurgenceAction extends AbstractGameAction {
 
         if (effect > 0) {
             for (int i = 0; i < effect; ++i) {
-                int buffIndex = MathUtils.random(0, 3);
+                int buffIndex = AbstractDungeon.cardRandomRng.random(0, 2);
                 if (buffIndex == 0) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
                 } else if (buffIndex == 1) {

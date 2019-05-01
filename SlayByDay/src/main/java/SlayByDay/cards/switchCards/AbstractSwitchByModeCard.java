@@ -2,6 +2,7 @@ package SlayByDay.cards.switchCards;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.actions.SwitchAction;
+import SlayByDay.cards.AbstractMediumCard;
 import SlayByDay.characters.TheMedium;
 import basemod.abstracts.CustomCard;
 
@@ -23,7 +24,7 @@ import java.util.Iterator;
 
 
 // Source: https://github.com/Tempus/The-Disciple/blob/master/src/main/java/cards/switchCards/AbstractSelfSwitchCard.java#L259
-public abstract class AbstractSwitchByModeCard extends CustomCard {
+public abstract class AbstractSwitchByModeCard extends AbstractMediumCard {
 
     public class switchCard {
         public CardType type;
@@ -317,7 +318,13 @@ public abstract class AbstractSwitchByModeCard extends CustomCard {
         this.switch_queued = false;
         if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
             this.applyPowers();
+            this.onSwitch();
         }
+    }
+
+    public void onSwitch()
+    {
+
     }
 
     @Override

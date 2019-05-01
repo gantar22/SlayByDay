@@ -19,7 +19,7 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
                     CardType.SKILL, CardTarget.NONE, false, false, false, false),
 
             new switchCard("Guard", "Bolster", 1, 0, 0, 0, 5, 3, 0, 0,
-                    CardType.SKILL, CardTarget.SELF, false, false, true, false) );
+                    CardType.SKILL, CardTarget.SELF, false, false, false, false) );
 
     public String reasonCardID() {
         return "Bolster";
@@ -70,14 +70,16 @@ public class BolsterGuardSwitch extends AbstractSwitchByModeCard {
 
     @Override
     public void triggerWhenDrawn() {
-        AbstractDungeon.actionManager.addToTop(new BolsterAction(this.uuid, this.magicNumber));
+        if (TheMedium.Reason_Mode) {
+            AbstractDungeon.actionManager.addToTop(new BolsterAction(this.uuid, this.magicNumber));
+        }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "Bolster":
-                AbstractDungeon.actionManager.addToBottom(new BolsterAction(this.uuid, this.magicNumber));
+                AbstractDungeon.actionManager.addToTop(new BolsterAction(this.uuid, this.magicNumber));
                 break;
             case "Guard":
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
