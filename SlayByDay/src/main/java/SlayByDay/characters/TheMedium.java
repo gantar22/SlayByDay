@@ -32,7 +32,7 @@ import SlayByDay.cards.*;
 
 //import SlayByDay.relics.MarkOfTheOther;
 import SlayByDay.relics.SpiritualCharm;
-import SlayByDay.relics.SpiritualCrystal;
+// import SlayByDay.relics.SpiritualCrystal;
 import basemod.interfaces.PostInitializeSubscriber;
 
 import java.util.ArrayList;

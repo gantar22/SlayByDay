@@ -44,6 +44,9 @@ import SlayByDay.potions.PlaceholderPotion;
 //import SlayByDay.relics.MarkOfTheOther;
 import SlayByDay.relics.SpiritualCharm;
 import SlayByDay.relics.SpiritualCrystal;
+import SlayByDay.relics.MedicinalHerbs;
+import SlayByDay.relics.PortableCauldron;
+import SlayByDay.relics.Magatama;
 
 import SlayByDay.util.TextureLoader;
 import SlayByDay.variables.DefaultCustomVariable;
@@ -297,6 +300,9 @@ public class SlayByDay implements
         // BaseMod.addRelicToCustomPool(new MarkOfTheOther(), TheModal.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new SpiritualCharm(), TheMedium.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new SpiritualCrystal(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new MedicinalHerbs(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new PortableCauldron(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new Magatama(), TheMedium.Enums.COLOR_M_PURPLE);
 
 
         // This adds a relic to the Shared pool. Every character can find this relic.
