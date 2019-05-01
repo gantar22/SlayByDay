@@ -60,7 +60,7 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
                 break;
             case "OffensiveRush":
                 // This uses the same action that Pummel uses. We could also write our own, near identical, action for this instead.
-                for (int i=0; i < magicNumber; i++) {
+                for (int i=0; i < magicNumber - 1; i++) {
                     AbstractDungeon.actionManager.addToBottom(new PummelDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
                 }
 

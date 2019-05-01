@@ -60,7 +60,7 @@ public class ReinvestSuddenStrikeSwitch extends AbstractSwitchByModeCard {
                 break;
             case "SuddenStrike":
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, -this.magicNumber), -this.magicNumber));
                 break;
         }
     }

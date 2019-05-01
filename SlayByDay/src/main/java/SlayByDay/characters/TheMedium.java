@@ -32,9 +32,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import SlayByDay.SlayByDay;
 import SlayByDay.cards.*;
+
 //import SlayByDay.relics.MarkOfTheOther;
 import SlayByDay.relics.SpiritualCharm;
-import SlayByDay.relics.SpiritualCrystal;
+// import SlayByDay.relics.SpiritualCrystal;
 import basemod.interfaces.PostInitializeSubscriber;
 
 import java.util.ArrayList;
@@ -213,7 +214,7 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
         UnlockTracker.markRelicAsSeen(Anima.ID);
         //UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         //UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
-
+        // UnlockTracker.markRelicAsSeen(MarkOfTheOther.ID);
         UnlockTracker.markRelicAsSeen(SpiritualCharm.ID);
 
         Anima.subscribe(new IOnSwitch() {

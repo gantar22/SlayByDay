@@ -2,6 +2,7 @@ package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.characters.TheMedium;
+import SlayByDay.powers.RefillPower;
 import SlayByDay.util.TextureLoader;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
@@ -11,6 +12,7 @@ import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerP
 import com.evacipated.cardcrawl.mod.stslib.relics.BetterOnLoseHpRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -29,18 +31,18 @@ import java.util.ArrayList;
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
 
-public class SpiritualCharm extends CustomRelic {
+public class Magatama extends CustomRelic {
 
-    public static final String ID = "SlayByDay:SpiritualCharm";
+    public static final String ID = "SlayByDay:Magatama";
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SpiritualCharm.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("SpiritualCharm.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Magatama.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Magatama.png"));
 
     private boolean switched;
     private boolean mode;
 
-    public SpiritualCharm() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+    public Magatama() {
+        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
         mode = TheMedium.Reason_Mode;
     }
 
@@ -49,19 +51,11 @@ public class SpiritualCharm extends CustomRelic {
         return DESCRIPTIONS[0];
     }
 
-    @Override
-    public void atBattleStartPreDraw() {
-        switched = false;
-        mode = TheMedium.Reason_Mode;
-    }
-
-    // public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
     public void update() {
         super.update();
-        if (!switched && mode != TheMedium.Reason_Mode) {
-            this.flash();
-            switched = true;
-            AbstractDungeon.player.gainEnergy(1);
+        if (mode != TheMedium.Reason_Mode) {
+            mode = TheMedium.Reason_Mode;
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, 4));
         }
     }
 }

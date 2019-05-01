@@ -6,18 +6,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.Soul;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+// Source: BottledYoYo from Conspire - https://github.com/twanvl/sts-conspire/blob/master/src/main/java/conspire/patches/BottledYoYoField.java
 @SpirePatch(clz=AbstractCard.class, method=SpirePatch.CLASS)
 public class BackToDeckOnPlayPatch {
     public static SpireField<Boolean> toBePutBackInDeck = new SpireField<>(() -> false);
     public static SpireField<Boolean> inRandomSpot = new SpireField<>(() -> false);
-
-//    @SpirePatch(clz=AbstractCard.class, method="makeStatEquivalentCopy")
-//    public static class MakeStatEquivalentCopy {
-//        public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
-//            inBottledYoYo.set(result, inBottledYoYo.get(self));
-//            return result;
-//        }
-//    }
 
     @SpirePatch(clz=Soul.class, method="discard", paramtypez={AbstractCard.class, boolean.class})
     public static class DiscardBackToDeckPatch {

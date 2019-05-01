@@ -2,6 +2,7 @@ package SlayByDay.relics;
 
 import SlayByDay.SlayByDay;
 import SlayByDay.characters.TheMedium;
+import SlayByDay.powers.RefillPower;
 import SlayByDay.util.TextureLoader;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
@@ -29,19 +30,15 @@ import java.util.ArrayList;
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
 
-public class SpiritualCharm extends CustomRelic {
+public class PortableCauldron extends CustomRelic {
 
-    public static final String ID = "SlayByDay:SpiritualCharm";
+    public static final String ID = "SlayByDay:PortableCauldron";
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SpiritualCharm.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("SpiritualCharm.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("PortableCauldron.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("PortableCauldron.png"));
 
-    private boolean switched;
-    private boolean mode;
-
-    public SpiritualCharm() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
-        mode = TheMedium.Reason_Mode;
+    public PortableCauldron() {
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
     }
 
     @Override
@@ -51,18 +48,7 @@ public class SpiritualCharm extends CustomRelic {
 
     @Override
     public void atBattleStartPreDraw() {
-        switched = false;
-        mode = TheMedium.Reason_Mode;
-    }
-
-    // public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-    public void update() {
-        super.update();
-        if (!switched && mode != TheMedium.Reason_Mode) {
-            this.flash();
-            switched = true;
-            AbstractDungeon.player.gainEnergy(1);
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RefillPower(AbstractDungeon.player, AbstractDungeon.player, 1)));
     }
 }
 

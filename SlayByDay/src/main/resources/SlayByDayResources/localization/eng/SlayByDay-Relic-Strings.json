@@ -39,6 +39,9 @@
     ]
   },
 
+
+
+
   "SlayByDay:MarkOfTheOther": {
     "NAME": "Mark of the Other",
     "FLAVOR": "Your other half sees through the same eyes as you.",
@@ -50,14 +53,35 @@
     "NAME": "Spiritual Charm",
     "FLAVOR": "The spirit stirs within you.",
     "DESCRIPTIONS": [
-      "The first time you switch forms each combat, gain 1 energy."
+      "The first time you switch forms each [#2aecd7]combat, gain [#2aecd7]1 [#2aecd7]energy."
     ]
   },
   "SlayByDay:SpiritualCrystal": {
     "NAME": "Spiritual Crystal",
     "FLAVOR": "The spirit rages within you.",
     "DESCRIPTIONS": [
-      "The first time you switch forms each turn, gain 1 energy."
+      "The first time you switch forms each [#2aecd7]turn, gain [#2aecd7]1 [#2aecd7]energy."
+    ]
+  },
+  "SlayByDay:MedicinalHerbs": {
+    "NAME": "Medicinal Herbs",
+    "FLAVOR": "Mmmmm! Drugs!",
+    "DESCRIPTIONS": [
+      "If in Human Form at the end of combat, heal [#2aecd7]3 [#2aecd7]HP."
+    ]
+  },
+  "SlayByDay:PortableCauldron": {
+    "NAME": "Portable Cauldron",
+    "FLAVOR": "Double, double, toil in trouble...",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain [#2aecd7]1 [#2aecd7]Refill."
+    ]
+  },
+  "SlayByDay:Magatama": {
+    "NAME": "Magatama",
+    "FLAVOR": "May fortune smile upon you.",
+    "DESCRIPTIONS": [
+      "When you switch forms, gain [#2aecd7]4 [#2aecd7]Block."
     ]
   }
 }

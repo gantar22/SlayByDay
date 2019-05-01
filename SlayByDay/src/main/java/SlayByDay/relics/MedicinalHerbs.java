@@ -29,19 +29,15 @@ import java.util.ArrayList;
 import static SlayByDay.SlayByDay.makeRelicOutlinePath;
 import static SlayByDay.SlayByDay.makeRelicPath;
 
-public class SpiritualCharm extends CustomRelic {
+public class MedicinalHerbs extends CustomRelic {
 
-    public static final String ID = "SlayByDay:SpiritualCharm";
+    public static final String ID = "SlayByDay:MedicinalHerbs";
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SpiritualCharm.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("SpiritualCharm.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("MedicinalHerbs.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("MedicinalHerbs.png"));
 
-    private boolean switched;
-    private boolean mode;
-
-    public SpiritualCharm() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
-        mode = TheMedium.Reason_Mode;
+    public MedicinalHerbs() {
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.MAGICAL);
     }
 
     @Override
@@ -50,18 +46,9 @@ public class SpiritualCharm extends CustomRelic {
     }
 
     @Override
-    public void atBattleStartPreDraw() {
-        switched = false;
-        mode = TheMedium.Reason_Mode;
-    }
-
-    // public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-    public void update() {
-        super.update();
-        if (!switched && mode != TheMedium.Reason_Mode) {
-            this.flash();
-            switched = true;
-            AbstractDungeon.player.gainEnergy(1);
+    public void onVictory() {
+        if (TheMedium.Reason_Mode) {
+            AbstractDungeon.player.heal(3);
         }
     }
 }
