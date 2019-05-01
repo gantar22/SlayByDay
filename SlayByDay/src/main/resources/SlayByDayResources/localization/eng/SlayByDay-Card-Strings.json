@@ -336,6 +336,14 @@
     "NAME": "Sacrificial Casting",
     "DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile.",
     "UPGRADE_DESCRIPTION": "Exhaust a random card in your hand. Play the card on the top of your draw pile."
+  }, "HaphazardBrew":{
+    "NAME": "Haphazard Brew",
+    "DESCRIPTION": "Obtain 1 of 3 random potions.",
+    "UPGRADE_DESCRIPTION": "Obtain 1 of 3 random potions twice."
+  }, "Hunker" : {
+    "NAME": "Hunker",
+    "DESCRIPTION": "Gain !B! block !M! times. Lose 1 Strength",
+    "UPGRADE_DESCRIPTION": "Gain !B! block !M! times. Lose 1 Strength"
   }
 
 }

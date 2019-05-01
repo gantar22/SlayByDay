@@ -383,6 +383,7 @@ public class SlayByDay implements
         BaseMod.addCard(new InsultInjurySwitch());
         BaseMod.addCard(new SpreadInfectionDoubleSweepSwitch());
         BaseMod.addCard(new SkimOverSacrificalCastingSwitch());
+        BaseMod.addCard(new HaphazardBrewHunkerSwitch());
 
 
         logger.info("Making sure the cards are unlocked.");
