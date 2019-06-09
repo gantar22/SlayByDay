@@ -61,7 +61,7 @@ public class SkimOverSacrificalCastingSwitch extends AbstractSwitchByModeCard{
         {
             case "SkimOver":
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
-                int mana = AbstractDungeon.player.hand.getTopCard().cost;
+                int mana = AbstractDungeon.player.hand.getTopCard().costForTurn;
                 AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(mana));
                 AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                     @Override

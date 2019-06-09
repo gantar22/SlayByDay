@@ -131,8 +131,8 @@
   },
   "Lacerate": {
     "NAME": "Rend",
-    "DESCRIPTION": "Spirit. NL Deal !D! damage. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage. Exhaust."
+    "DESCRIPTION": "Spirit. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! damage."
   },
   "Punishment": {
     "NAME": "Punishment",
@@ -171,8 +171,8 @@
   },
   "Guard": {
     "NAME": "Guard",
-    "DESCRIPTION": "Spirit. NL Gain !B! block. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block. Exhaust."
+    "DESCRIPTION": "Spirit. NL Gain !B! block.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Gain !B! block."
   },
   "Fly": {
     "NAME": "Fly",
