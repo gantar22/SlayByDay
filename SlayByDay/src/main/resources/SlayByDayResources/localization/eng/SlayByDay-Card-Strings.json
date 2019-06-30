@@ -284,6 +284,16 @@
     "DESCRIPTION": "Spirit. NL Kill all minions. Deal !D! damage. Exhaust.",
     "UPGRADE_DESCRIPTION": "Spirit. NL Kill all minions. Deal !D! damage."
   },
+  "Repurpose": {
+    "NAME": "Repurpose",
+    "DESCRIPTION": "Human. NL Replace each of your potions with a random potion.",
+    "UPGRADE_DESCRIPTION": "Human. NL Replace each of your potions with a random potion."
+  },
+  "Adapt": {
+    "NAME": "Adapt",
+    "DESCRIPTION": "Spirit. NL Swap your Strength and Dexterity.",
+    "UPGRADE_DESCRIPTION": "Spirit. NL Swap your Strength and Dexterity."
+  },
 
 
   "__Joey's cards": {},
