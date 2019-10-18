@@ -4,6 +4,7 @@ import SlayByDay.characters.TheMedium;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.ShowCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -61,12 +62,14 @@ public class SkimOverSacrificalCastingSwitch extends AbstractSwitchByModeCard{
         {
             case "SkimOver":
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
-                int mana = AbstractDungeon.player.hand.getTopCard().costForTurn;
-                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(mana));
+                AbstractDungeon.actionManager.addToBottom(new ShowCardAction(AbstractDungeon.player.hand.getTopCard()));
+
                 AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                     @Override
                     public void update() {
                         if(isDone) return;
+                        int mana = AbstractDungeon.player.hand.getTopCard().costForTurn;
+                        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2 * mana));
                         isDone = true;
                         AbstractCard c = AbstractDungeon.player.hand.getTopCard();
                         AbstractDungeon.player.hand.moveToDiscardPile(c);

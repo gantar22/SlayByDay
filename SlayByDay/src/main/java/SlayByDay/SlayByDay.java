@@ -127,6 +127,10 @@ public class SlayByDay implements
 
     // =============== MAKE IMAGE PATHS =================
 
+    public static int cards_drawn_this_turn = 0;
+    public static int debuffs_applied_this_turn = 0;
+    public static int cards_retained_last_turn = 0;
+
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
@@ -277,7 +281,7 @@ public class SlayByDay implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_MEDIUM".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheMedium.Enums.THE_MEDIUM);
+        //BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheMedium.Enums.THE_MEDIUM);
 
         logger.info("Done editing potions");
     }
@@ -384,6 +388,8 @@ public class SlayByDay implements
         BaseMod.addCard(new SpreadInfectionDoubleSweepSwitch());
         BaseMod.addCard(new SkimOverSacrificalCastingSwitch());
         BaseMod.addCard(new HaphazardBrewHunkerSwitch());
+        BaseMod.addCard(new KnowledgeIsPowerThornBarrierSwitch());
+
 
 
         logger.info("Making sure the cards are unlocked.");

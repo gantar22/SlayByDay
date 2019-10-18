@@ -314,8 +314,8 @@
     "UPGRADE_DESCRIPTION": "Spirit. NL Each card you play has a 20% chance to be played again."
   }, "Insult": {
     "NAME": "Insult",
-    "DESCRIPTION": "Human. NL Deal !D! damage for each skill you have played this turn while this card is in your hand",
-    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage for for each skill you have played this turn while this card is in your hand"
+    "DESCRIPTION": "Human. NL Deal !D! damage for each debuff you have applied this turn while this card is in your hand",
+    "UPGRADE_DESCRIPTION": "Human. NL Deal !D! damage for for each debuff you have applied this turn while this card is in your hand"
   }, "Injury": {
     "NAME": "Injury",
     "DESCRIPTION": "Spirit. NL Deal !D! damage. !M!% chance to replay this card.",
@@ -330,7 +330,7 @@
     "UPGRADE_DESCRIPTION": "Spirit. NL Deal !D! Damage to all enemies twice, ignoring armor. Lose !M! dex."
   }, "SkimOver": {
     "NAME": "Skim Over",
-    "DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card.",
+    "DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to twice the cost of that card.",
     "UPGRADE_DESCRIPTION": "Draw and discard the top card of your draw pile. Gain energy equal to the cost of that card."
   }, "SacrificialCasting": {
     "NAME": "Sacrificial Casting",
@@ -344,6 +344,14 @@
     "NAME": "Hunker",
     "DESCRIPTION": "Gain !B! block !M! times. Lose 1 Strength",
     "UPGRADE_DESCRIPTION": "Gain !B! block !M! times. Lose 1 Strength"
+  }, "KnowledgeIsPower": {
+    "NAME": "Knowedge Is Power",
+    "DESCRIPTION": "Deal !D! damage for each card drawn or retained this turn.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage for each card drawn or retained this turn."
+  }, "ThornBarrier": {
+    "NAME": "Thorn Barrier",
+    "DESCRIPTION": "Gain 10 block. Gain !M! Thorns.",
+    "UPGRADE_DESCRIPTION": "Gain 10 block. Gain !M! Thorns."
   }
 
 }

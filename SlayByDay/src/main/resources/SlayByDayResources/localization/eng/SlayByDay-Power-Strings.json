@@ -38,5 +38,8 @@
 }, "SlayByDay:InsultPower": {
         "NAME": "Insult",
         "DESCRIPTIONS": ["You have played "," debuff this turn.", " debuffs this turn.","You haven't played any debuffs this turn."]
+}, "SlayByDay:KnowledgeIsPowerThornBarrierPower": {
+        "NAME": "Knowledge is power",
+        "DESCRIPTIONS": ["You have drawn or retained "," card this turn.", " cards this turn", "You haven't drawn or retained any cards this turn."]
 }
 }

@@ -60,6 +60,7 @@ public class ReactiveMeasuresProactiveMeasuresSwitch extends AbstractSwitchByMod
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         m.flashIntent();
+        m.createIntent();
         boolean not_attacking = m == null || m.intent != AbstractMonster.Intent.ATTACK && m.intent != AbstractMonster.Intent.ATTACK_BUFF && m.intent != AbstractMonster.Intent.ATTACK_DEBUFF && m.intent != AbstractMonster.Intent.ATTACK_DEFEND;
         switch (this.currentID) {
             case "ReactiveMeasures":
@@ -70,7 +71,7 @@ public class ReactiveMeasuresProactiveMeasuresSwitch extends AbstractSwitchByMod
                 }
                 break;
             case "ProactiveMeasures":
-                if (not_attacking) {
+                if (!not_attacking) {
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
                 } else {
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));

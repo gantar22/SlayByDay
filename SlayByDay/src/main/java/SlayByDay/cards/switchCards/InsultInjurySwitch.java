@@ -1,5 +1,6 @@
 package SlayByDay.cards.switchCards;
 
+import SlayByDay.SlayByDay;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.powers.InsultPower;
 import SlayByDay.relics.Anima;
@@ -59,26 +60,12 @@ public class InsultInjurySwitch extends AbstractSwitchByModeCard {
 
     public InsultInjurySwitch() { this(null); }
 
-    @Override
-    public void onSwitch()
-    {
-        //if(this.currentID == "Insult" && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
-            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
-    }
-
-
-    @Override
-    public void triggerWhenDrawn()
-    {
-        //if(!AbstractDungeon.player.hasPower(InsultPower.POWER_ID))
-            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
-    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         switch (this.currentID) {
             case "Insult":
-                for (int i=0; i < AbstractDungeon.player.getPower(InsultPower.POWER_ID).amount; i++) {
+                for (int i = 0; i < SlayByDay.debuffs_applied_this_turn; i++) {
                     AbstractDungeon.actionManager.addToBottom(new PummelDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
                 }            break;
             case "Injury":

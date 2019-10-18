@@ -4,6 +4,7 @@ import SlayByDay.SlayByDay;
 import SlayByDay.cards.switchCards.InsultInjurySwitch;
 import SlayByDay.characters.TheMedium;
 import SlayByDay.powers.InsultPower;
+import SlayByDay.powers.KnowledgeIsPowerThornBarrierPower;
 import SlayByDay.powers.LosePassionOnDamage;
 import SlayByDay.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
@@ -52,6 +53,8 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
 
     public static final int REASON_STARTING_COUNTER = 5;
     public static final int PASSION_STARTING_COUNTER = 5;
+    public static int reason_bonus_counter = 0;
+    public static int passion_bonus_counter = 0;
     public static final int PASSION_STAT_GAIN = 1;
     public static final String ID = SlayByDay.makeID("Anima");
     public static Anima instance;
@@ -78,7 +81,10 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
     // Flash at the start of Battle.
     @Override
     public void atBattleStartPreDraw() {
+
         started_turn = true;
+        reason_bonus_counter = 0;
+        passion_bonus_counter = 0;
     }
 
     // Do nothing
@@ -113,16 +119,16 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
         setCounter(this.counter + i);
         if(TheMedium.Reason_Mode)
         {
-            if(this.counter > REASON_STARTING_COUNTER)
+            if(this.counter > REASON_STARTING_COUNTER + reason_bonus_counter)
             {
-                this.counter = REASON_STARTING_COUNTER;
+                this.counter = REASON_STARTING_COUNTER + reason_bonus_counter;
             }
         }
         if(!TheMedium.Reason_Mode)
         {
-            if(this.counter > PASSION_STARTING_COUNTER)
+            if(this.counter > PASSION_STARTING_COUNTER + passion_bonus_counter)
             {
-                this.counter = PASSION_STARTING_COUNTER;
+                this.counter = PASSION_STARTING_COUNTER + passion_bonus_counter;
             }
         }
     }
@@ -172,12 +178,12 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
         if(TheMedium.Reason_Mode)
         {
             TheMedium.Reason_Mode = false;
-            setCounter(PASSION_STARTING_COUNTER);
+            setCounter(PASSION_STARTING_COUNTER + passion_bonus_counter);
             System.out.println(this.counter);
             System.out.println("switch to passion");
         } else {
             TheMedium.Reason_Mode = true;
-            setCounter(REASON_STARTING_COUNTER);
+            setCounter(REASON_STARTING_COUNTER + reason_bonus_counter);
             System.out.println("switch to reason");
         }
 
@@ -191,6 +197,11 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
         }
+
+        if(AbstractDungeon.player.hand.findCardById("SlayByDay:KnowledgeIsPower") != null && !AbstractDungeon.player.hasPower(KnowledgeIsPowerThornBarrierPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new KnowledgeIsPowerThornBarrierPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        }
     }
 
     // Description
@@ -201,13 +212,19 @@ public class Anima extends CustomRelic implements BetterOnLoseHpRelic, CustomSav
 
 
     @Override
-    public void onCardDraw(AbstractCard drawnCard) {
+    public void onCardDraw(AbstractCard drawnCard) { // oopsie this isn't important anymore
 
         if(drawnCard.cardID == "SlayByDay:InsultInjury" && !AbstractDungeon.player.hasPower(InsultPower.POWER_ID) && started_turn)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new InsultPower(AbstractDungeon.player,AbstractDungeon.player,0)));
+        }
+
+        if(drawnCard.cardID == "SlayByDay:KnowledgeIsPowerThornBarrier" && !AbstractDungeon.player.hasPower(KnowledgeIsPowerThornBarrierPower.POWER_ID) && started_turn)
+        {
+            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,AbstractDungeon.player,new KnowledgeIsPowerThornBarrierPower(AbstractDungeon.player,AbstractDungeon.player,0)));
         }
     }
+
 
     @Override
     public int betterOnLoseHp(DamageInfo damageInfo, int i) {

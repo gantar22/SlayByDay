@@ -21,7 +21,7 @@ public class DefensiveManeuversOffensiveRushSwitch extends AbstractSwitchByModeC
                     CardType.SKILL, CardTarget.SELF, false, false, false, false),
 
             new AbstractSwitchByModeCard.switchCard("OffensiveRush", "DefensiveManeuvers", 1, 0, 2, 0, 0, 0, 3, 1,
-                    CardType.ATTACK, CardTarget.ENEMY, false, false, false, false) );
+                    CardType.ATTACK, CardTarget.ENEMY, true, false, false, false) );
 
     public String reasonCardID() {
         return "DefensiveManeuvers";
