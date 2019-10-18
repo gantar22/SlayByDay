@@ -64,6 +64,10 @@ public class SpiritualCharm extends CustomRelic {
             AbstractDungeon.player.gainEnergy(1);
         }
     }
+
+    public AbstractRelic makeCopy() {
+        return new SpiritualCharm();
+    }
 }
 
 

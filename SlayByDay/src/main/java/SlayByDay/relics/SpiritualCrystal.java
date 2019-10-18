@@ -70,6 +70,8 @@ public class SpiritualCrystal extends CustomRelic {
     public boolean canSpawn() {
         return AbstractDungeon.player.hasRelic("SlayByDay:SpiritualCharm");
     }
+
+    public AbstractRelic makeCopy() { return new SpiritualCrystal(); }
 }
 
 
