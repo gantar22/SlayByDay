@@ -47,9 +47,22 @@ public class ReinvestSuddenStrikeSwitch extends AbstractSwitchByModeCard {
         if (AbstractDungeon.isPlayerInDungeon()) {
             this.validateSwitchCardMode(true);
         }
+
+        // Additional setup
+        tags.add(CardTags.STRIKE);
     }
 
     public ReinvestSuddenStrikeSwitch() { this(null); }
+
+    @Override
+    public void onSwitch() {
+        // This should hypothetically keep the tag updated accordingly
+        if (this.currentID == reasonCardID()) {
+            tags.remove(CardTags.STRIKE);
+        } else {
+            tags.add(CardTags.STRIKE);
+        }
+    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -277,7 +277,7 @@ public class SlayByDay implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_MEDIUM".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheMedium.Enums.THE_MEDIUM);
+//        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheMedium.Enums.THE_MEDIUM);
 
         logger.info("Done editing potions");
     }
@@ -374,6 +374,7 @@ public class SlayByDay implements
         BaseMod.addCard(new ReactiveMeasuresProactiveMeasuresSwitch());
         BaseMod.addCard(new EntrapSkillfulDodgeSwitch());
         BaseMod.addCard(new ResoundingMessageCullTheWeakSwitch());
+        BaseMod.addCard(new RepurposeAdaptSwitch());
 
         // Joey's cards
         BaseMod.addCard(new PossessionExpulsionSwitch());

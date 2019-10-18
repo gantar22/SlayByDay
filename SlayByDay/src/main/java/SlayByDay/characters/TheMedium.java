@@ -10,6 +10,7 @@ import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
@@ -23,6 +24,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -118,13 +120,16 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
             "SlayByDayResources/images/char/defaultCharacter/orb/layer4d.png",
             "SlayByDayResources/images/char/defaultCharacter/orb/layer5d.png",};
 
+    public Texture corpse_R;
+    public Texture corpse_P;
+
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
     // =============== CHARACTER CLASS START =================
 
     public static boolean Reason_Mode = true;
 
-    public static SpineAnimation anim = new SpineAnimation("SlayByDayResources/images/char/defaultCharacter/CombinedAnim/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/CombinedAnim/skeleton.json",.9f);
+    public static SpineAnimation anim = new SpineAnimation("SlayByDayResources/images/char/defaultCharacter/CombinedAnim/skeleton.atlas","SlayByDayResources/images/char/defaultCharacter/CombinedAnim/skeleton.json",1f/.6f);
 
 
 
@@ -140,12 +145,15 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in SlayByDay.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 THE_MEDIUM_SHOULDER_1, // campfire pose
-                THE_MEDIUM_SHOULDER_2, // another campfire pose
+                THE_MEDIUM_SHOULDER_2, // another campfire pos
                 THE_MEDIUM_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
+
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
+        corpse_P =  ImageMaster.loadImage("SlayByDayResources/images/char/defaultCharacter/passionateCorps.png");
+        corpse_R = ImageMaster.loadImage("SlayByDayResources/images/char/defaultCharacter/corpse.png");
 
         // =============== ANIMATIONS =================  
 
@@ -154,7 +162,9 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
                 anim.skeletonUrl,
                 anim.scale);
         atlas = new TextureAtlas(Gdx.files.internal(anim.atlasUrl));
-        skdata = new SkeletonJson(this.atlas).readSkeletonData(Gdx.files.internal(anim.skeletonUrl));
+        SkeletonJson skj = new SkeletonJson(this.atlas);
+        skj.setScale(.6f);
+        skdata = skj.readSkeletonData(Gdx.files.internal(anim.skeletonUrl));
 
         AnimationState.TrackEntry e = state.setAnimation(0, "IdleR", true);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -182,6 +192,16 @@ public class TheMedium extends CustomPlayer implements PostInitializeSubscriber 
                 getStartingDeck(), false);
     }
 
+    @Override
+    public void playDeathAnimation() {
+        super.playDeathAnimation();
+        if(Reason_Mode)
+        {
+            img = corpse_R;
+        } else {
+            img = corpse_P;
+        }
+    }
     // Starting Deck
     @Override
     public ArrayList<String> getStartingDeck() {
