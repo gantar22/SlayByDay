@@ -31,6 +31,7 @@ public class MarkOfTheOther extends CustomRelic {
     // public static final String ID = SlayByDay.makeID("MarkOfTheOther");
     public static final String ID = "SlayByDay:MarkOfTheOther";
     public static MarkOfTheOther instance;
+    private boolean mode;
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
@@ -38,6 +39,7 @@ public class MarkOfTheOther extends CustomRelic {
     public MarkOfTheOther() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
         instance = this;
+        mode = TheMedium.Reason_Mode;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class MarkOfTheOther extends CustomRelic {
 
     @Override
     public void atBattleStartPreDraw() {
-        if (TheMedium.Reason_Mode) {
+        if (mode == TheMedium.Reason_Mode) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player,
                     AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1)));
         } else {

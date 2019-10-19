@@ -19,6 +19,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.characters.TheSilent;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -26,6 +27,9 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.BlackBlood;
+import com.megacrit.cardcrawl.relics.BurningBlood;
+import com.megacrit.cardcrawl.relics.RingOfTheSerpent;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -305,6 +309,11 @@ public class SlayByDay implements
         BaseMod.addRelicToCustomPool(new MedicinalHerbs(), TheMedium.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new PortableCauldron(), TheMedium.Enums.COLOR_M_PURPLE);
         BaseMod.addRelicToCustomPool(new Magatama(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new MarkOfTheOther(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new BallpointPen(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new LeftHemisphere(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new RightHemisphere(), TheMedium.Enums.COLOR_M_PURPLE);
+        BaseMod.addRelicToCustomPool(new UnitedMind(), TheMedium.Enums.COLOR_M_PURPLE);
 
 
         // This adds a relic to the Shared pool. Every character can find this relic.

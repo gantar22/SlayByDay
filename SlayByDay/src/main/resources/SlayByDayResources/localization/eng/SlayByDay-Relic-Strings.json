@@ -46,7 +46,7 @@
     "NAME": "Mark of the Other",
     "FLAVOR": "Your other half sees through the same eyes as you.",
     "DESCRIPTIONS": [
-      "Applies +1 Strength if in Human Form. Applies +1 Dexterity if in Spirit Form."
+      "At the start of battle, gain +1 Strength if in Human Form or +1 Dexterity if in Spirit Form."
     ]
   },
   "SlayByDay:SpiritualCharm": {
@@ -82,6 +82,27 @@
     "FLAVOR": "May fortune smile upon you.",
     "DESCRIPTIONS": [
       "When you switch forms, gain [#2aecd7]4 [#2aecd7]Block."
+    ]
+  },
+  "SlayByDay:LeftHemisphere": {
+    "NAME": "Left Hemisphere",
+    "FLAVOR": "Mind over matter.",
+    "DESCRIPTIONS": [
+      "At the beginning of battle, gain [#2aecd7]-1 [#2aecd7]Strength and [#2aecd7]1 [#2aecd7]Dexterity."
+    ]
+  },
+  "SlayByDay:RightHemisphere": {
+    "NAME": "Right Hemisphere",
+    "FLAVOR": "Follow your heart.",
+    "DESCRIPTIONS": [
+      "At the beginning of battle, gain [#2aecd7]1 [#2aecd7]Strength and [#2aecd7]-1 [#2aecd7]Dexterity."
+    ]
+  },
+  "SlayByDay:UnitedMind": {
+    "NAME": "United Mind",
+    "FLAVOR": "Balance achieved.",
+    "DESCRIPTIONS": [
+      "At the beginning of battle, gain [#2aecd7]2 [#2aecd7]Strength and [#2aecd7]2 [#2aecd7]Dexterity."
     ]
   }
 }
